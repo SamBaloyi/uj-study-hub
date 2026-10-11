@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MNE7XB1 — Study Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080810;--mid:#10101a;--card:#161622;--border:#22223a;--text:#e6e6f2;--muted:#66668a;--c2:#5b8dee;--c3:#0ea880;--c5:#9b6dff;--c6:#e8a020;--c8:#e05a5a;--c9:#38bdf8;--c10:#f472b6;--acc:#7eb3ff;--green:#7effd8;--warn:#ff7575;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.55;}
+nav{position:sticky;top:0;z-index:50;background:rgba(8,8,16,0.97);border-bottom:1px solid var(--border);height:50px;padding:0 14px;display:flex;align-items:center;gap:4px;overflow-x:auto;}
+nav::-webkit-scrollbar{display:none;}
+.brand{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;color:var(--acc);letter-spacing:2px;margin-right:14px;flex-shrink:0;}
+.nb{background:none;border:none;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:0.68rem;font-weight:700;padding:0 9px;height:50px;cursor:pointer;white-space:nowrap;flex-shrink:0;border-bottom:2px solid transparent;text-transform:uppercase;letter-spacing:0.5px;transition:color 0.15s;}
+.nb:hover{color:var(--text);}
+.nb.active{color:#fff;border-bottom-color:var(--acc);}
+.sec{display:none;}.sec.active{display:block;}
+.wrap{max-width:980px;margin:0 auto;padding:30px 16px 80px;}
+.pg-head{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:2px;margin-bottom:4px;}
+.pg-sub{font-size:0.72rem;color:var(--muted);margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+.ch-label{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:2px;margin:26px 0 10px;padding-bottom:5px;border-bottom:1px solid var(--border);}
+
+.cram-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:9px;margin-bottom:12px;}
+.cc{background:var(--card);border:1px solid var(--border);border-radius:9px;padding:13px 15px;}
+.ch{font-size:0.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:2px 7px;border-radius:3px;display:inline-block;margin-bottom:8px;}
+.cc h4{font-size:0.82rem;font-weight:700;margin-bottom:6px;color:#fff;}
+.row{display:flex;gap:8px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.78rem;line-height:1.4;}
+.row:last-of-type{border:none;}
+.rn{font-family:'JetBrains Mono',monospace;font-size:0.6rem;font-weight:700;color:var(--acc);min-width:16px;padding-top:2px;flex-shrink:0;}
+.chip{margin-top:7px;font-size:0.68rem;color:var(--muted);background:rgba(255,255,255,0.04);border-radius:5px;padding:5px 9px;line-height:1.4;}
+.bf{background:var(--mid);border:1px solid var(--border);border-radius:9px;padding:14px 18px;margin:14px 0;}
+.bf-l{font-size:0.58rem;font-weight:700;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:8px;}
+.bff{font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--green);line-height:2.1;}
+.bff .dim{color:var(--muted);}
+.bff .hi{color:#fff;font-weight:600;}
+
+/* TELEPROMPTER */
+.tp-bar{position:sticky;top:50px;z-index:40;background:rgba(8,8,16,0.97);border-bottom:1px solid var(--border);padding:8px 14px;display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+.tp-mw{display:flex;gap:2px;background:var(--mid);border:1px solid var(--border);border-radius:6px;padding:3px;}
+.tpm{background:none;border:none;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:0.68rem;font-weight:700;padding:4px 9px;border-radius:4px;cursor:pointer;transition:all 0.15s;}
+.tpm.active{background:var(--c3);color:#080810;}
+.tpc{background:var(--card);border:1px solid var(--border);color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.68rem;padding:5px 9px;border-radius:6px;cursor:pointer;}
+.tpp{background:var(--c3);border:none;color:#080810;font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:700;padding:6px 15px;border-radius:7px;cursor:pointer;}
+.tp-prog{height:3px;background:var(--border);}
+.tp-pf{height:100%;background:var(--c3);width:0%;transition:width 0.3s;}
+.tp-content{max-width:780px;margin:0 auto;padding:44px 18px 120px;}
+.tl{line-height:1.9;margin-bottom:2px;font-size:18px;}
+.tl.ts{font-family:'Bebas Neue',sans-serif;letter-spacing:3px;font-size:0.78em!important;margin-top:28px;margin-bottom:3px;padding-bottom:3px;border-bottom:1px solid var(--border);}
+.tl.ti{color:var(--text);padding-left:14px;}
+.tl.tn{color:var(--muted);font-size:0.85em!important;padding-left:14px;font-style:italic;}
+.tl.tsp{margin-bottom:14px;}
+.tl.ta{color:#fff!important;text-shadow:0 0 16px rgba(14,168,128,0.5);}
+.tl.tp{opacity:0.2;}
+.tl.tf{opacity:0.6;}
+.mn{display:none;position:fixed;bottom:0;left:0;right:0;background:rgba(8,8,16,0.97);border-top:1px solid var(--border);padding:10px 20px;align-items:center;justify-content:center;gap:12px;}
+
+/* FLASHCARDS */
+.fc-bar{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+.fcb{background:var(--card);border:1px solid var(--border);color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:500;padding:6px 12px;border-radius:6px;cursor:pointer;transition:all 0.15s;}
+.fcb:hover,.fcb.on{background:var(--c2);border-color:var(--c2);color:#fff;}
+.fcb.go{background:var(--c3);border-color:var(--c3);color:#080810;}
+.fc-prog{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--muted);margin-left:auto;}
+.fc-stage{perspective:1000px;min-height:220px;cursor:pointer;margin-bottom:12px;max-width:700px;}
+.fc-inner{position:relative;width:100%;min-height:220px;transform-style:preserve-3d;transition:transform 0.4s ease;}
+.fc-inner.flipped{transform:rotateY(180deg);}
+.fc-face{position:absolute;width:100%;min-height:220px;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:11px;padding:24px;display:flex;flex-direction:column;justify-content:center;}
+.fc-front{background:var(--card);border:1px solid var(--border);}
+.fc-back{background:rgba(14,168,128,0.07);border:1px solid var(--c3);transform:rotateY(180deg);}
+.fc-hint{font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin-bottom:10px;}
+.fc-cat{font-family:'JetBrains Mono',monospace;font-size:0.6rem;padding:2px 7px;border-radius:3px;display:inline-block;margin-bottom:8px;}
+.fc-q{font-size:0.95rem;font-weight:600;line-height:1.4;}
+.fc-a{font-family:'JetBrains Mono',monospace;font-size:0.73rem;line-height:1.8;color:var(--green);}
+.fc-sub{font-size:0.68rem;color:rgba(255,255,255,0.38);margin-top:8px;}
+.pill-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;}
+
+/* QUIZ */
+.qw{max-width:660px;}
+.qpb{height:3px;background:var(--border);border-radius:2px;margin-bottom:18px;}
+.qpf{height:100%;background:var(--c2);border-radius:2px;transition:width 0.3s;}
+.qm{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--muted);margin-bottom:7px;}
+.qq{font-size:0.9rem;font-weight:600;line-height:1.45;margin-bottom:14px;}
+.qop{display:flex;flex-direction:column;gap:7px;margin-bottom:10px;}
+.qo{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;cursor:pointer;font-size:0.8rem;line-height:1.4;transition:all 0.12s;text-align:left;color:var(--text);font-family:'DM Sans',sans-serif;}
+.qo:hover:not(:disabled){border-color:var(--c2);background:rgba(91,141,238,0.08);}
+.qo.correct{border-color:var(--c3);background:rgba(14,168,128,0.1);color:#7effd8;}
+.qo.wrong{border-color:var(--warn);background:rgba(255,117,117,0.08);color:#ffaaaa;}
+.qfb{font-size:0.78rem;line-height:1.6;background:var(--mid);border:1px solid var(--border);border-radius:7px;padding:10px 13px;display:none;}
+.qfb.show{display:block;}
+.qsc{text-align:center;padding:44px 20px;}
+.qsc-n{font-family:'Bebas Neue',sans-serif;font-size:4.8rem;color:var(--c2);line-height:1;}
+.qsc-l{color:var(--muted);margin-bottom:16px;font-size:0.82rem;}
+.qsc-m{font-size:0.95rem;font-weight:600;margin-bottom:18px;}
+/* CHAPTERS */
+.cp-prog{position:sticky;top:50px;z-index:45;height:3px;background:var(--border)}
+.cp-prog i{display:block;height:100%;width:0;background:var(--ac,var(--acc));transition:width .25s}
+.cp{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1160px;margin:0 auto}
+.cp-side{position:sticky;top:53px;align-self:start;max-height:calc(100vh - 53px);overflow:auto;padding:20px 12px;border-right:1px solid var(--border)}
+.cp-side h2{font:400 1.05rem 'Bebas Neue',sans-serif;letter-spacing:2px;color:var(--muted);margin:0 10px 4px}
+.cp-count{font-size:.72rem;color:var(--muted);margin:0 10px 14px}
+.cp-li{display:flex;gap:10px;align-items:center;width:100%;text-align:left;background:none;border:0;color:var(--muted);padding:9px 10px;border-radius:8px;cursor:pointer;font:500 .82rem/1.3 'DM Sans',sans-serif}
+.cp-li:hover{color:var(--text);background:rgba(255,255,255,.03)}
+.cp-li[aria-current=true]{background:var(--card);color:#fff;box-shadow:inset 3px 0 0 var(--k)}
+.cp-dot{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--k);flex:none;display:grid;place-items:center;font-size:.62rem;font-weight:700;color:var(--k)}
+.cp-li.done .cp-dot{background:var(--k);color:#080810}
+.cp-main{padding:30px 22px 100px;min-width:0}
+.cp-art{max-width:720px;margin:0 auto}
+.cp-meta{font-size:.78rem;color:var(--k);font-weight:700;margin-bottom:6px}
+.cp-h1{font:400 2.6rem/1.05 'Bebas Neue',sans-serif;letter-spacing:1.5px;margin-bottom:14px}
+.cp-sum{background:var(--mid);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:16px;font-size:.92rem;line-height:1.6}
+.cp-sum b{color:#fff}
+.cp-jump{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.cp-jump a{font-size:.74rem;color:var(--text);text-decoration:none;border:1px solid var(--border);border-radius:999px;padding:4px 11px}
+.cp-jump a:hover{border-color:var(--k);color:#fff}
+.cp-art h3{font-size:1.15rem;font-weight:700;color:#fff;margin:34px 0 10px;padding-top:18px;border-top:1px solid var(--border);scroll-margin-top:110px}
+.cp-art p{font-size:15px;line-height:1.72;color:#d3d3e4;margin:0 0 12px}
+.cp-art ul{margin:0 0 12px 20px;font-size:15px;line-height:1.7;color:#d3d3e4}
+.cp-art li{margin-bottom:5px}
+.cp-art strong{color:#fff}
+.cp-co{border-left:3px solid var(--k);border-radius:0 9px 9px 0;padding:12px 15px;margin:16px 0;background:var(--mid);font-size:.9rem;line-height:1.65;color:#d3d3e4}
+.cp-co>b{display:block;font-size:.82rem;color:#fff;margin-bottom:4px}
+.cp-co.tip{border-color:var(--green)}.cp-co.warn{border-color:var(--warn)}
+.cp-f{font:600 .83rem/1.9 'JetBrains Mono',monospace;color:var(--green);background:#0b0b14;border:1px solid var(--border);border-radius:9px;padding:10px 14px;margin:14px 0;overflow-x:auto;white-space:pre}
+.cp-tw{overflow-x:auto;margin:14px 0;border:1px solid var(--border);border-radius:9px}
+.cp-tw table{border-collapse:collapse;width:100%;min-width:480px;font-size:.84rem}
+.cp-tw th{text-align:left;background:var(--card);color:#fff;padding:9px 12px;font-weight:700}
+.cp-tw td{padding:9px 12px;border-top:1px solid var(--border);vertical-align:top;color:#d3d3e4;line-height:1.5}
+.cp-q{border:1px solid var(--border);border-radius:9px;margin-bottom:8px;background:var(--card)}
+.cp-q summary{cursor:pointer;padding:11px 14px;font-size:.9rem;font-weight:500;list-style:none}
+.cp-q summary::-webkit-details-marker{display:none}
+.cp-q summary::before{content:'+';color:var(--k);font-weight:700;margin-right:10px}
+.cp-q[open] summary::before{content:'\2212'}
+.cp-q div{padding:0 14px 13px 34px;font-size:.88rem;line-height:1.6;color:var(--green)}
+.cp-nav{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:36px;padding-top:20px;border-top:1px solid var(--border);flex-wrap:wrap}
+.cp-b{background:var(--card);border:1px solid var(--border);color:var(--text);font:500 .84rem 'DM Sans',sans-serif;padding:10px 16px;border-radius:8px;cursor:pointer}
+.cp-b:hover:not(:disabled){border-color:var(--k)}
+.cp-b:disabled{opacity:.35;cursor:default}
+.cp-b.main{background:var(--k);border-color:var(--k);color:#080810;font-weight:700}
+.cp-b.main.on{background:none;color:var(--k)}
+.cp button:focus-visible,.cp a:focus-visible,.cp summary:focus-visible{outline:2px solid #fff;outline-offset:2px}
+@media(max-width:860px){
+.cp{display:block}
+.cp-side{position:sticky;top:53px;z-index:44;max-height:none;border:0;border-bottom:1px solid var(--border);padding:8px 10px;background:rgba(8,8,16,.97);display:flex;gap:6px;overflow-x:auto}
+.cp-side h2,.cp-count{display:none}
+.cp-li{width:auto;white-space:nowrap;border:1px solid var(--border);padding:7px 12px}
+.cp-li[aria-current=true]{box-shadow:none;border-color:var(--k)}
+.cp-h1{font-size:2.1rem}
+.cp-main{padding:22px 14px 90px}
+}
+@media(prefers-reduced-motion:reduce){.cp-prog i{transition:none}html{scroll-behavior:auto}}
+/* SHELL: modules, cheat sidebar */
+[hidden]{display:none!important}
+.ch-label{color:var(--k,var(--acc))}
+.ch{background:color-mix(in srgb,var(--k,var(--acc)) 15%,transparent);color:var(--k,var(--acc))}
+.sw{flex:none;margin-right:10px}
+.sw-b{display:flex;align-items:center;gap:8px;height:34px;padding:0 11px;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--text);font:600 .78rem 'DM Sans',sans-serif;cursor:pointer}
+.sw-b:hover,.sw-b[aria-expanded=true]{border-color:var(--acc)}
+.sw-c{color:var(--acc);font-family:'JetBrains Mono',monospace;font-size:.74rem}
+.sw-n{color:var(--muted);font-weight:500;max-width:170px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sw-m{position:fixed;z-index:80;width:min(340px,calc(100vw - 20px));background:var(--card);border:1px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 18px 50px rgba(0,0,0,.55)}
+.sw-h{font-size:.72rem;color:var(--muted);padding:8px 10px 4px}
+.sw-i{display:block;width:100%;text-align:left;background:none;border:0;border-radius:8px;padding:10px;cursor:pointer;color:var(--text);font-family:'DM Sans',sans-serif}
+.sw-i:hover,.sw-i:focus-visible{background:rgba(255,255,255,.05);outline:none}
+.sw-i[aria-current=true]{background:var(--mid);box-shadow:inset 3px 0 0 var(--m)}
+.sw-i b{font:600 .8rem 'JetBrains Mono',monospace;color:var(--m)}
+.sw-i span{display:block;font-size:.84rem;margin-top:2px}
+.sw-i small{display:block;font-size:.72rem;color:var(--muted);margin-top:3px}
+.cht-bar{max-width:900px;margin:0 auto 18px}
+.cht-bar input{width:100%;background:var(--card);border:1px solid var(--border);border-radius:10px;color:var(--text);font:400 .9rem 'DM Sans',sans-serif;padding:11px 14px}
+.cht-bar input:focus-visible{outline:2px solid var(--k,var(--acc));outline-offset:1px}
+.cp-art.wide{max-width:900px}
+.cht-single .ch-label{display:none}
+.cht-n{font-size:.8rem;color:var(--muted);margin:0 0 6px!important}
+.cht-empty{padding:30px 0;color:var(--muted);font-size:.9rem}
+@media(max-width:700px){.brand{display:none}.sw-n{display:none}}
+</style>
+</head>
+<body>
+<nav aria-label="Study sections">
+  <div class="brand">STUDY HUB</div>
+  <div class="sw"><button class="sw-b" id="swBtn" aria-haspopup="true" aria-expanded="false" aria-controls="swMenu" onclick="swToggle()"><span class="sw-c" id="swCode"></span><span class="sw-n" id="swName"></span><span aria-hidden="true">▾</span></button><div class="sw-m" id="swMenu" role="menu" hidden></div></div>
+  <button class="nb" data-tab="chapters" onclick="go('chapters',this)">📖 Chapters</button>
+  <button class="nb" data-tab="cheat" onclick="go('cheat',this)">📋 Cheat Sheet</button>
+  <button class="nb" data-tab="tp" onclick="go('tp',this)">📺 Teleprompter</button>
+  <button class="nb" data-tab="flash" onclick="go('flash',this)">🃏 Cards</button>
+  <button class="nb" data-tab="quiz" onclick="go('quiz',this)">✅ Quiz</button>
+</nav>
+
+<!-- CHEAT SHEET -->
+<section class="sec" id="chapters"><div class="cp-prog"><i id="cpBar"></i></div><div class="cp" id="cpRoot"><aside class="cp-side" id="cpSide" aria-label="Chapters"></aside><main class="cp-main"><article class="cp-art" id="cpArt"></article></main></div></section>
+<section class="sec" id="cheat"><div class="cp" id="chtRoot"><aside class="cp-side" id="chtSide" aria-label="Cheat sheet chapters"></aside><main class="cp-main"><div class="cht-bar"><input type="search" id="chtQ" placeholder="Search the cram sheet (e.g. multiplier, repo, CPI)" aria-label="Search the cram sheet" oninput="chtFind(this.value)"></div><article class="cp-art wide" id="chtArt"></article></main></div></section>
+
+<!-- TELEPROMPTER -->
+<section class="sec" id="tp">
+  <div class="tp-bar">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--c3);letter-spacing:2px;flex-shrink:0">📺 TELEPROMPTER</div>
+    <div class="tp-mw">
+      <button class="tpm active" id="tpMA" onclick="tpMode('auto')">⏩ Auto</button>
+      <button class="tpm" id="tpMM" onclick="tpMode('manual')">👆 Manual</button>
+    </div>
+    <div id="tpSR" style="display:flex;align-items:center;gap:5px;flex-shrink:0">
+      <span style="font-size:0.63rem;color:var(--muted)">Speed</span>
+      <input type="range" id="tpSpd" min="15" max="180" value="65" style="width:62px;accent-color:var(--c3)" oninput="tpUpS()">
+      <span id="tpSL" style="font-size:0.63rem;color:var(--muted);min-width:20px">65</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
+      <button class="tpc" onclick="tpFnt(-2)">A-</button>
+      <span id="tpFL" style="font-size:0.63rem;color:var(--muted);min-width:22px;text-align:center">18</span>
+      <button class="tpc" onclick="tpFnt(2)">A+</button>
+    </div>
+    <button class="tpp" id="tpPB" onclick="tpToggle()">▶ Play</button>
+    <button class="tpc" onclick="tpReset()" style="margin-left:auto">↩ Reset</button>
+    <span id="tpPct" style="font-size:0.63rem;color:var(--muted);flex-shrink:0">0%</span>
+  </div>
+  <div class="tp-prog"><div class="tp-pf" id="tpPF"></div></div>
+  <div class="tp-content" id="tpC" onclick="tpManAdv()"></div>
+  <div class="mn" id="tpMN">
+    <button class="tpp" style="background:var(--card)" onclick="tpManPrev()">← Prev</button>
+    <span id="tpMP" style="font-size:0.68rem;color:var(--muted)">Line 1</span>
+    <button class="tpp" onclick="tpManNext()">Next →</button>
+  </div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="sec" id="flash">
+<div class="wrap">
+  <div class="pg-head">Flashcards</div>
+  <div class="pg-sub">Tap to flip. Filter by chapter.</div>
+  <div class="pill-row">
+    <button class="fcb go" onclick="fcShuf()">🔀 Shuffle</button>
+    <button class="fcb" onclick="fcPrev()">← Prev</button>
+    <button class="fcb" onclick="fcNext()">Next →</button>
+    <span id="fcPills" style="display:contents"></span>
+    <div class="fc-prog" id="fcP">1 / 35</div>
+  </div>
+  <div class="fc-stage" onclick="fcFlip()">
+    <div class="fc-inner" id="fcI">
+      <div class="fc-face fc-front">
+        <div class="fc-hint">tap to flip</div>
+        <div id="fcCat" class="fc-cat"></div>
+        <div class="fc-q" id="fcQ"></div>
+      </div>
+      <div class="fc-face fc-back">
+        <div class="fc-hint" style="color:rgba(255,255,255,0.32)">answer</div>
+        <div class="fc-a" id="fcA"></div>
+        <div class="fc-sub" id="fcN"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- QUIZ -->
+<section class="sec" id="quiz">
+<div class="wrap">
+  <div class="pg-head">Quiz</div>
+  <div class="pg-sub" id="qSub"></div>
+  <div id="qC" class="qw">
+    <div class="qpb"><div class="qpf" id="qPF"></div></div>
+    <div class="qm" id="qM">Question 1 of 35</div>
+    <div class="qq" id="qQ"></div>
+    <div class="qop" id="qO"></div>
+    <div class="qfb" id="qFB"></div>
+    <div id="qNW" style="margin-top:10px;display:none"><button class="fcb go" onclick="qNext()">Next →</button></div>
+  </div>
+  <div id="qSc" class="qsc" style="display:none">
+    <div class="qsc-n" id="qSN"></div>
+    <div class="qsc-l" id="qOut"></div>
+    <div class="qsc-m" id="qSM"></div>
+    <button class="fcb go" onclick="qRestart()" style="margin-top:10px">Retry</button>
+  </div>
+</div>
+</section>
+
+<script>
+function go(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));
+  document.getElementById(id).classList.add('active');
+  TAB=id;window.scrollTo(0,0);
+  if(id==='chapters')cpInit();
+  if(id==='cheat')chtInit();
+  if(id==='flash')initFC();
+  if(id==='quiz')initQuiz();
+  if(id==='tp')initTP();
+  setHash();
+}
+
+// TELEPROMPTER
+const TP_S=[
+  {t:'s',c:2,x:'CHAPTER 2 — BASIC CONCEPTS IN ECONOMICS'},
+  {t:'sp'},{t:'s',c:2,x:'5 MACROECONOMIC GOALS'},
+  {t:'i',x:'1. High and sustainable economic growth — measured by real GDP growth rate'},
+  {t:'i',x:'2. Price stability — low inflation, CPI within the SARB target of 3 to 6 percent'},
+  {t:'i',x:'3. High employment — low unemployment rate'},
+  {t:'i',x:'4. Balance of payments stability — exports, foreign currency, exchange rate stability'},
+  {t:'i',x:'5. Equitable distribution of income — Gini coefficient and Lorenz curve'},
+  {t:'n',x:'Economic means: Labour, Capital, Natural resources, Entrepreneurs — remunerated by wages, rent, interest, profit'},
+  {t:'sp'},{t:'s',c:2,x:'TYPES OF POLICY'},
+  {t:'i',x:'Fiscal policy — government spending and taxation — managed by National Treasury'},
+  {t:'i',x:'Monetary policy — money supply and interest rates — managed by SARB'},
+  {t:'i',x:'Trade policy — tariffs, quotas, exchange rates'},
+  {t:'i',x:'Expansionary policy: stimulate the economy. Restrictive policy: slow it down.'},
+  {t:'sp'},{t:'s',c:2,x:'TAXATION TYPES'},
+  {t:'i',x:'Progressive (PAYE): rate increases as income increases — more equitable'},
+  {t:'i',x:'Proportional (company tax): rate stays constant'},
+  {t:'i',x:'Regressive (VAT): lower-income earners pay higher percentage of income — worsens inequality'},
+  {t:'sp'},{t:'s',c:3,x:'CHAPTER 3 — MEASURING THE ECONOMY'},
+  {t:'sp'},{t:'s',c:3,x:'INFLATION FORMULAS'},
+  {t:'i',x:'Inflation rate = (New CPI minus Old CPI) divided by Old CPI × 100'},
+  {t:'i',x:'Real value = Nominal divided by (1 + inflation rate)'},
+  {t:'i',x:'If CPI base = 100: Real value = Nominal ÷ CPI × 100'},
+  {t:'sp'},{t:'s',c:3,x:'KEY INFLATION TERMS'},
+  {t:'i',x:'CPI = Consumer Price Index — measures cost of living basket'},
+  {t:'i',x:'PPI = Producer Price Index — measures firms cost of production'},
+  {t:'i',x:'Disinflation: inflation rate FALLS but prices still rising — just slower'},
+  {t:'i',x:'Deflation: persistent FALL in the general price level — negative inflation'},
+  {t:'i',x:'Hyperinflation: more than 1000 percent per annum — money becomes worthless'},
+  {t:'sp'},{t:'s',c:3,x:'GDP — 3 METHODS'},
+  {t:'i',x:'Expenditure method: C + I + G + (X minus Z)'},
+  {t:'i',x:'Income method: Remuneration of employees + Gross operating surplus'},
+  {t:'i',x:'Production method: Value added by each sector of the economy'},
+  {t:'n',x:'GDP = value of FINAL goods and services produced within SA borders. Economic growth = % change in real GDP.'},
+  {t:'sp'},{t:'s',c:3,x:'CIRCULAR FLOW: LEAKAGES AND INJECTIONS'},
+  {t:'i',x:'Leakages (money leaving): Savings, Taxes, Imports'},
+  {t:'i',x:'Injections (money entering): Investment, Government spending, Exports'},
+  {t:'i',x:'At equilibrium: Leakages = Injections'},
+  {t:'sp'},{t:'s',c:5,x:'CHAPTER 5 — BUSINESS CYCLE'},
+  {t:'sp'},{t:'s',c:5,x:'4 PHASES OF THE BUSINESS CYCLE'},
+  {t:'i',x:'1. Recovery: financial markets gain, confidence grows, employment stabilises, consumer spending starts rising'},
+  {t:'i',x:'2. Boom: consumer spending rises with inflation, firms expand and invest, debt and imports rise, financial markets begin to stagnate'},
+  {t:'i',x:'3. Slump: firms costs rise, profits fall, employment and expansion halted, negative expectations, financial market losses'},
+  {t:'i',x:'4. Recession: income, spending, and imports fall sharply, unemployment rises, firms cut production'},
+  {t:'n',x:'Peak = turning point from boom to slump. Trough = turning point from recession to recovery.'},
+  {t:'sp'},{t:'s',c:5,x:'FIRM STRATEGY BY PHASE'},
+  {t:'i',x:'Recovery: start hiring, increase production, begin capital expenditure'},
+  {t:'i',x:'Boom: maximise production, raise prices, expand market share'},
+  {t:'i',x:'Slump: cut costs, reduce inventory, halt expansion plans'},
+  {t:'i',x:'Recession: cut jobs, reduce debt, preserve cash, wait for recovery'},
+  {t:'sp'},{t:'s',c:6,x:'CHAPTER 6 — MONEY, INTEREST RATES AND FINANCIAL MARKETS'},
+  {t:'sp'},{t:'s',c:6,x:'FUNCTIONS OF MONEY'},
+  {t:'i',x:'1. Medium of exchange — used to buy and sell goods and services'},
+  {t:'i',x:'2. Store of value — hold wealth over time'},
+  {t:'i',x:'3. Unit of account — measure and compare prices'},
+  {t:'sp'},{t:'s',c:6,x:'MONEY DEFINITIONS M0 TO M3'},
+  {t:'i',x:'M0 = notes and coins only — physical cash'},
+  {t:'i',x:'M1 = M0 plus demand deposits (current accounts)'},
+  {t:'i',x:'M2 = M1 plus short-term savings deposits'},
+  {t:'i',x:'M3 = ALL deposits — broadest definition of money supply'},
+  {t:'i',x:'Money multiplier = 1 ÷ Reserve Requirement. Example: 20% RR → multiplier = 5 → R100 deposit creates R500 total'},
+  {t:'sp'},{t:'s',c:6,x:'3 MOTIVES FOR HOLDING MONEY'},
+  {t:'i',x:'1. Transactions motive: hold cash for day-to-day spending'},
+  {t:'i',x:'2. Precautionary motive: hold cash for unexpected events'},
+  {t:'i',x:'3. Speculative motive: hold cash to take advantage of investment opportunities'},
+  {t:'n',x:'Motives 1 and 2 = Active balances (related to income). Motive 3 = Passive balances (related to interest rates).'},
+  {t:'sp'},{t:'s',c:6,x:'SARB MONETARY POLICY TOOLS'},
+  {t:'i',x:'Repo rate: rate at which SARB lends to commercial banks. Raise repo = restrict money. Lower repo = expand money.'},
+  {t:'i',x:'Open market operations: SARB buys or sells government bonds to change the money supply'},
+  {t:'i',x:'Quantitative easing: large-scale asset purchases to inject money into the economy'},
+  {t:'i',x:'Chain: Repo ↑ → prime rate ↑ → borrowing costs ↑ → spending ↓ → inflation ↓'},
+  {t:'sp'},{t:'s',c:8,x:'CHAPTER 8 — ROLE OF GOVERNMENT'},
+  {t:'sp'},{t:'s',c:8,x:'3 FUNCTIONS OF GOVERNMENT'},
+  {t:'i',x:'Allocation: correct market failures — monopolies, externalities, public goods'},
+  {t:'i',x:'Distribution: make income more equitable — progressive tax, transfers, subsidies'},
+  {t:'i',x:'Stabilisation: smooth business cycles using monetary and fiscal policy'},
+  {t:'sp'},{t:'s',c:8,x:'FINANCING A BUDGET DEFICIT — 3 WAYS'},
+  {t:'i',x:'1. Domestic borrowing from non-bank private sector: issue Treasury Bills or bonds → higher demand for money → interest rates rise → crowds out private investment'},
+  {t:'i',x:'2. Borrow from SARB (central bank): sell bonds to SARB → money supply increases → inflationary → interest rates fall'},
+  {t:'i',x:'3. Foreign loans: borrow on foreign markets → inflow of foreign money → money supply increases → expansionary impact'},
+  {t:'sp'},{t:'s',c:8,x:'4 PRINCIPLES OF TAXATION'},
+  {t:'i',x:'1. Efficiency — minimise harmful distortions, avoid dead weight loss'},
+  {t:'i',x:'2. Equity — fair, based on ability to pay; horizontal and vertical equity'},
+  {t:'i',x:'3. Transparency and certainty — people can understand and plan their tax affairs'},
+  {t:'i',x:'4. Simplicity — difficult to evade, not too expensive to collect'},
+  {t:'n',x:'Laffer Curve: tax revenue rises then falls as tax rate increases. T* = the tax rate that maximises revenue.'},
+  {t:'sp'},{t:'s',c:9,x:'CHAPTER 9 — TOTAL EXPENDITURE MODEL (KEYNESIAN)'},
+  {t:'sp'},{t:'s',c:9,x:'KEY FORMULAS'},
+  {t:'i',x:'C = Autonomous C + MPC × Yd. Example: C = 100 + 0.8Yd'},
+  {t:'i',x:'S = Negative Autonomous C + MPS × Yd. Example: S = −100 + 0.2Yd'},
+  {t:'i',x:'MPC + MPS = 1 always. Yd = C + S always.'},
+  {t:'i',x:'Multiplier (no tax) = 1 ÷ (1 − MPC). Example: 1 ÷ 0.2 = 5'},
+  {t:'i',x:'Multiplier (with tax) = 1 ÷ (1 − MPC × (1−t)). Example: MPC 0.8, t 25% → 1 ÷ 0.4 = 2.5'},
+  {t:'i',x:'Ye = Multiplier × Autonomous Spending'},
+  {t:'sp'},{t:'s',c:9,x:'WHAT IS MPC?'},
+  {t:'i',x:'MPC = Marginal Propensity to Consume = fraction of each extra rand of income spent on consumption'},
+  {t:'i',x:'Example: income rises by R100, spending rises by R80 → MPC = 0.8'},
+  {t:'i',x:'MPS = Marginal Propensity to Save = 1 − MPC = 0.2 in this case'},
+  {t:'sp'},{t:'s',c:9,x:'THE MULTIPLIER PROCESS'},
+  {t:'i',x:'Invest R150 → someone earns R150 income → spends 80% = R120'},
+  {t:'i',x:'R120 → someone earns R120 → spends 80% = R96'},
+  {t:'i',x:'This continues until total ΔY = R150 × 5 = R750'},
+  {t:'i',x:'Tax reduces the multiplier. More tax → flatter AD curve → smaller change in Y from same injection'},
+  {t:'sp'},{t:'s',c:9,x:'BUILDING THE MODEL — 3 SECTORS'},
+  {t:'i',x:'2-sector: Y = C + I. Multiplier = 1 ÷ (1−MPC). Equilibrium where I = S.'},
+  {t:'i',x:'3-sector: Y = C + I + G. Add tax t. Multiplier = 1 ÷ (1 − MPC(1−t)). G shifts AD curve up. Tax swivels it down.'},
+  {t:'i',x:'4-sector (open): Y = C + I + G + (X−Z). X > Z → positive net exports → AD shifts up. X < Z → AD shifts down.'},
+  {t:'sp'},{t:'s',c:10,x:'CHAPTER 10 — POLICY INTERACTION AND AD-AS MODEL'},
+  {t:'sp'},{t:'s',c:10,x:'KEYNESIAN TRANSMISSION MECHANISM'},
+  {t:'i',x:'Monetary: SARB cuts repo rate → i falls → Investment rises → Production rises → Employment rises → Y rises'},
+  {t:'i',x:'Fiscal: G increases or T falls → Disposable income rises → C rises → Y rises via the multiplier'},
+  {t:'i',x:'Crowding out: G ↑ → demand for money ↑ → i ↑ → private Investment ↓ → partially offsets the fiscal expansion'},
+  {t:'sp'},{t:'s',c:10,x:'AD CURVE — WHY IT SLOPES DOWNWARD'},
+  {t:'i',x:'1. Real balance effect: higher price level → lower purchasing power → less spending'},
+  {t:'i',x:'2. Real wealth effect: higher prices → people feel less wealthy → spend less'},
+  {t:'i',x:'3. Interest rate effect: higher prices → higher interest rates → less investment'},
+  {t:'i',x:'4. Net export effect: higher prices → SA goods more expensive → exports fall, imports rise'},
+  {t:'n',x:'AD shifts RIGHT with: expansionary monetary or fiscal policy, positive expectations, higher foreign income, population growth'},
+  {t:'sp'},{t:'s',c:10,x:'AGGREGATE SUPPLY — SHORT RUN VS LONG RUN'},
+  {t:'i',x:'LRAS: vertical line at full employment output YF. Wages and prices fully flexible. Economy always returns to YF.'},
+  {t:'i',x:'SRAS: positive slope. Nominal wages are sticky — they do not adjust quickly. Y can deviate from YF in the short run.'},
+  {t:'i',x:'SRAS shifts RIGHT (increases): lower input costs, better technology, more labour supply, favourable policies'},
+  {t:'i',x:'SRAS shifts LEFT (supply shock): higher oil prices, higher minimum wages, natural disasters'},
+  {t:'sp'},{t:'s',c:10,x:'AD-AS ADJUSTMENT — EXPANSIONARY MONETARY POLICY'},
+  {t:'i',x:'SHORT RUN: Ms ↑ → i ↓ → I ↑ → AD shifts right → P rises and Y rises above YF'},
+  {t:'i',x:'LONG RUN: Higher P → workers demand higher wages → costs rise → SRAS shifts left → Y falls back to YF'},
+  {t:'i',x:'Final result: higher price level (inflation) but same output YF. No lasting real growth from monetary expansion alone.'},
+  {t:'sp'},{t:'s',c:10,x:'BOP AND EXCHANGE RATE'},
+  {t:'i',x:'BOP surplus: excess demand for Rand → Rand appreciates'},
+  {t:'i',x:'BOP deficit: excess supply of Rand → Rand depreciates'},
+  {t:'i',x:'Rand depreciates: exports become cheaper for foreigners → X rises. Imports become more expensive → Z falls.'},
+  {t:'i',x:'BOP surplus → money supply increases. BOP deficit → money supply decreases.'},
+  {t:'sp'},{t:'s',c:10,x:'END OF CONTENT. GO WRITE THAT TEST. 💪'},
+];
+
+let tpMode_='auto',tpRunning=false,tpManIdx=0,tpFntSz=18,tpInterval=null,tpLines=[];
+
+function initTP(){
+  if(document.getElementById('tpC').children.length>0)return;
+  const c=document.getElementById('tpC');
+  tpLines=[];
+  MOD.tp.forEach(l=>{
+    const el=document.createElement('div');el.className='tl';
+    if(l.t==='s'){el.classList.add('ts');el.style.color=chColorOf(l.c);el.textContent=l.x;}
+    else if(l.t==='i'){el.classList.add('ti');el.textContent=l.x;}
+    else if(l.t==='n'){el.classList.add('tn');el.textContent='↳ '+l.x;}
+    else{el.classList.add('tsp');el.innerHTML='&nbsp;';}
+    el.style.fontSize=tpFntSz+'px';
+    c.appendChild(el);tpLines.push(el);
+  });
+  applyTS();
+}
+function applyTS(){
+  tpLines.forEach((el,i)=>{el.classList.remove('ta','tp','tf');if(i<tpManIdx)el.classList.add('tp');else if(i===tpManIdx)el.classList.add('ta');else el.classList.add('tf');});
+  updTP();
+}
+function tpMode(m){
+  tpMode_=m;stopTP();
+  document.getElementById('tpMA').classList.toggle('active',m==='auto');
+  document.getElementById('tpMM').classList.toggle('active',m==='manual');
+  document.getElementById('tpSR').style.visibility=m==='auto'?'visible':'hidden';
+  const mn=document.getElementById('tpMN');mn.style.display=m==='manual'?'flex':'none';
+  document.getElementById('tpPB').textContent=m==='auto'?'▶ Play':'↑ Top';
+  if(m==='manual'){tpManIdx=0;applyTS();scToAct();}
+}
+function tpToggle(){tpMode_==='manual'?tpReset():(tpRunning?stopTP():startTP());}
+function startTP(){
+  tpRunning=true;document.getElementById('tpPB').textContent='⏸ Pause';
+  const ppf=parseInt(document.getElementById('tpSpd').value)/60;
+  tpInterval=setInterval(()=>{window.scrollBy(0,ppf);if(window.scrollY>=document.documentElement.scrollHeight-window.innerHeight-2)stopTP();updTP();},16);
+}
+function stopTP(){tpRunning=false;clearInterval(tpInterval);document.getElementById('tpPB').textContent=tpMode_==='auto'?'▶ Play':'↑ Top';}
+function tpReset(){stopTP();tpManIdx=0;applyTS();window.scrollTo({top:50,behavior:'smooth'});updTP();}
+function tpUpS(){const v=document.getElementById('tpSpd').value;document.getElementById('tpSL').textContent=v;if(tpRunning){stopTP();startTP();}}
+function updTP(){const dH=document.documentElement.scrollHeight-window.innerHeight;const pct=tpMode_==='auto'?Math.round((window.scrollY/Math.max(dH,1))*100):Math.round((tpManIdx/Math.max(tpLines.length-1,1))*100);document.getElementById('tpPF').style.width=pct+'%';document.getElementById('tpPct').textContent=pct+'%';}
+function tpManAdv(){if(tpMode_==='manual')tpManNext();}
+function tpManNext(){if(tpManIdx<tpLines.length-1){tpManIdx++;applyTS();scToAct();document.getElementById('tpMP').textContent=`Line ${tpManIdx+1}/${tpLines.length}`;}}
+function tpManPrev(){if(tpManIdx>0){tpManIdx--;applyTS();scToAct();}}
+function scToAct(){const el=tpLines[tpManIdx];if(!el)return;const r=el.getBoundingClientRect();window.scrollBy({top:r.top-window.innerHeight/2,behavior:'smooth'});}
+function tpFnt(d){tpFntSz=Math.max(13,Math.min(48,tpFntSz+d));document.getElementById('tpFL').textContent=tpFntSz;tpLines.forEach(el=>el.style.fontSize=tpFntSz+'px');}
+document.addEventListener('keydown',e=>{if(!document.getElementById('tp').classList.contains('active'))return;if(e.key===' '){e.preventDefault();tpToggle();}if(e.key==='ArrowRight'||e.key==='ArrowDown')tpManNext();if(e.key==='ArrowLeft'||e.key==='ArrowUp')tpManPrev();});
+
+// FLASHCARDS
+const CARDS=[
+  {u:2,q:'Name the 5 macroeconomic goals',a:'1. High & sustainable economic growth (real GDP)\n2. Price stability (CPI 3–6%)\n3. High employment\n4. Balance of payments stability\n5. Equitable distribution of income',n:'Economic means: Labour, Capital, Natural resources, Entrepreneurs'},
+  {u:2,q:'What are the 4 types of markets?',a:'1. Product market — goods & services\n2. Factor market — labour, capital, land\n3. Financial market — bonds, shares\n4. Foreign exchange market — currency',n:'Market failure: public goods, imperfect competition, externalities'},
+  {u:2,q:'Progressive vs Regressive taxation — what is the difference?',a:'Progressive (PAYE): rate increases as income rises → more equitable\nProportional (company tax): flat rate\nRegressive (VAT): lower-income earners pay higher % of income → worsens inequality',n:'Direct tax = levied on individuals directly. Indirect = levied on goods/activities.'},
+  {u:3,q:'What is the difference between disinflation, deflation and hyperinflation?',a:'Disinflation: inflation RATE falls (prices still rising, just slower)\nDeflation: persistent FALL in general price level (negative inflation)\nHyperinflation: >1 000% per annum — money becomes worthless',n:''},
+  {u:3,q:'How do you calculate inflation rate and real value?',a:'Inflation rate = (New CPI − Old CPI) ÷ Old CPI × 100\nReal value = Nominal ÷ (1 + inflation rate)\nIf CPI base = 100: Real value = Nominal ÷ CPI × 100',n:'Nominal = rand amount. Real = purchasing power.'},
+  {u:3,q:'What are the 3 methods to calculate GDP?',a:'1. Expenditure: C + I + G + (X − Z)\n2. Income: Remuneration of employees + Gross operating surplus\n3. Production: Sum of value added by each sector',n:'GDP = FINAL goods & services within SA borders. Growth = % change in real GDP.'},
+  {u:3,q:'What are leakages and injections in the circular flow?',a:'Leakages (exit circular flow): Savings (S), Taxes (T), Imports (Z)\nInjections (enter circular flow): Investment (I), Government spending (G), Exports (X)\n\nEquilibrium: Leakages = Injections',n:'Aggregate production = aggregate income = aggregate expenditure'},
+  {u:5,q:'Name the 4 phases of the business cycle with their stylised facts',a:'1. Recovery: markets gain, confidence grows, employment stabilises\n2. Boom: consumer spending rises, firms invest, debt/imports rise, markets stagnate\n3. Slump: costs rise, profits fall, expansion halted, market losses\n4. Recession: income & spending fall sharply, unemployment rises',n:'Peak: boom → slump. Trough: recession → recovery.'},
+  {u:5,q:'What is firm strategy in a recession vs a boom?',a:'Boom: maximise production, raise prices, expand market share\nRecession: cut jobs, reduce debt, preserve cash, wait\n\nKey insight: plan for where the economy is GOING, not where it IS.',n:''},
+  {u:6,q:'What are the 3 functions of money?',a:'1. Medium of exchange — used to buy/sell\n2. Store of value — hold wealth over time\n3. Unit of account — measure and compare prices',n:''},
+  {u:6,q:'Explain M0, M1, M2, M3',a:'M0 = physical notes and coins\nM1 = M0 + demand deposits (current accounts)\nM2 = M1 + short-term savings\nM3 = ALL deposits — broadest definition\n\nMoney multiplier = 1 ÷ RR. eg 20% RR → multiplier 5 → R100 creates R500.',n:''},
+  {u:6,q:'What are the 3 motives for holding money?',a:'1. Transactions: day-to-day spending\n2. Precautionary: unexpected events\n3. Speculative: take advantage of investment opportunities\n\n1+2 = Active balances. 3 = Passive balances (interest-rate sensitive).',n:''},
+  {u:6,q:'How does the money market graph look and what is the equilibrium?',a:'Vertical axis: Interest rate (i). Horizontal: Quantity of money (M).\nMd curve: NEGATIVE slope (higher i → less demand for money)\nMs curve: VERTICAL (supply fixed by SARB, not interest-rate sensitive)\nEquilibrium = where Md meets Ms → equilibrium interest rate',n:''},
+  {u:6,q:'What are the SARB monetary policy tools?',a:'1. Repo rate: rate at which SARB lends to banks. ↑ = restrict, ↓ = expand\n2. Open market operations: buy/sell government bonds\n3. Quantitative easing: large-scale asset purchases\n\nChain: Repo ↑ → prime ↑ → borrowing costs ↑ → spending ↓ → inflation ↓',n:''},
+  {u:8,q:'What are the 3 functions of government?',a:'1. Allocation: correct market failures (monopolies, externalities, public goods)\n2. Distribution: more equitable income (progressive tax, transfers, subsidies)\n3. Stabilisation: smooth business cycles using monetary & fiscal policy',n:''},
+  {u:8,q:'What are the 3 ways to finance a budget deficit?',a:'1. Domestic borrowing (private sector): Treasury Bills/bonds → higher i → crowding out\n2. Borrow from SARB: sell bonds → Ms increases → inflationary → i falls\n3. Foreign loans: foreign money inflow → Ms increases → expansionary',n:'Crowding out: government borrows → higher i → private I decreases.'},
+  {u:8,q:'What are the 4 principles of taxation?',a:'1. Efficiency — avoid dead weight loss\n2. Equity — fair, ability to pay\n3. Transparency & certainty — can plan tax affairs\n4. Simplicity — difficult to evade, cheap to collect',n:'Laffer Curve: tax revenue rises then falls. T* = revenue-maximising tax rate.'},
+  {u:9,q:'What is MPC and what is MPS?',a:'MPC = Marginal Propensity to Consume\n= fraction of extra R1 of income spent on C\neg: R80 spent out of R100 → MPC = 0.8\n\nMPS = Marginal Propensity to Save = 1 − MPC = 0.2\n\nMPC + MPS = 1 always',n:'Higher MPC → steeper C-curve → larger multiplier effect'},
+  {u:9,q:'What is the consumption function formula?',a:'C = Autonomous C + MPC × Yd\neg: C = 100 + 0.8Yd\n\nSavings function:\nS = −Autonomous C + MPS × Yd\neg: S = −100 + 0.2Yd',n:'Autonomous C: consumed even if Yd = 0 (by dissaving or borrowing)'},
+  {u:9,q:'How is the income multiplier calculated with and without tax?',a:'Without tax:\nMultiplier = 1 ÷ (1 − MPC)\neg: MPC 0.8 → 1 ÷ 0.2 = 5\n\nWith tax rate (t):\nMultiplier = 1 ÷ (1 − MPC × (1−t))\neg: MPC 0.8, t 25% → 1 ÷ (1 − 0.6) = 2.5',n:'Tax reduces the multiplier effect.'},
+  {u:9,q:'How does the multiplier actually work? Trace through an example.',a:'I increases by R150 (MPC = 0.8, multiplier = 5):\nR150 earned → R120 spent (80%) → R96 spent (80%) → ...\nTotal ΔY = R150 × 5 = R750\n\nYe = Multiplier × Autonomous Spending',n:'Each round of spending triggers another round of income.'},
+  {u:9,q:'How does Government (G) and Tax (T) affect the expenditure model?',a:'G is autonomous — adds to AD, shifts curve UP\nT reduces Yd — reduces the slope of C (swivels curve DOWN)\nNew multiplier = 1 ÷ (1 − MPC(1−t))\n\nHigher tax rate → flatter AD curve → smaller multiplier',n:'Equilibrium: Ye = Multiplier × Autonomous Spending'},
+  {u:9,q:'How does the foreign sector affect the model?',a:'Add net exports (X − Z)\nAssume NX is autonomous (independent of Y)\nX > Z → positive → AD curve shifts UP\nX < Z → negative → AD curve shifts DOWN\nX = Z → no change\n\nMultiplier stays the same (no change in MPC)',n:'Open economy model: Y = C + I + G + (X−Z)'},
+  {u:10,q:'What is the Keynesian transmission mechanism?',a:'Monetary: Repo ↓ → i ↓ → I ↑ → production ↑ → employment ↑ → Y ↑\nFiscal: G ↑ or T ↓ → Yd ↑ → C ↑ → Y ↑ (via multiplier)\n\nCrowding out: G ↑ → demand for money ↑ → i ↑ → I ↓ (partially offsets fiscal expansion)',n:''},
+  {u:10,q:'Why does the AD curve slope downward?',a:'1. Real balance effect: higher P → lower purchasing power → less spending\n2. Real wealth effect: higher P → feel less wealthy\n3. Interest rate effect: higher P → higher i → less investment\n4. Net export effect: higher P → X falls, Z rises\n\nAD shifts RIGHT: expansionary policy, positive expectations, higher foreign income',n:''},
+  {u:10,q:'Compare SRAS and LRAS',a:'LRAS: vertical at YF. Wages & prices fully flexible. Economy always returns to YF long-run.\n\nSRAS: positive slope. Nominal wages are sticky. Y can deviate from YF short-run.\n\nSRAS right shift: lower input costs, technology, more labour, favourable policy\nSRAS left shift: supply shocks (oil), higher wages',n:''},
+  {u:10,q:'Trace through the AD-AS adjustment after expansionary monetary policy',a:'SHORT RUN:\nMs ↑ → i ↓ → I ↑ → AD shifts right → P rises and Y rises above YF\n\nLONG RUN:\nHigher P → workers demand higher wages → costs rise → SRAS shifts left → Y falls back to YF\n\nFinal result: higher P but same YF. Inflation with no lasting real growth.',n:''},
+  {u:10,q:'How do BOP and exchange rate interact?',a:'BOP surplus → excess demand for Rand → Rand APPRECIATES\nBOP deficit → excess supply of Rand → Rand DEPRECIATES\n\nDepreciation: SA exports cheaper → X rises. Imports more expensive → Z falls.\nThis automatically corrects a BOP deficit.\n\nBOP surplus → Ms increases. BOP deficit → Ms decreases.',n:''},
+  {u:10,q:'What is financial crowding out? Trace the chain.',a:'1. Government increases spending (G ↑)\n2. Government borrows from private sector\n3. Demand for money increases → i rises\n4. Higher interest rates → private Investment falls\n5. Multiplier effect is partially offset\n\nResult: fiscal expansion is less effective than the raw multiplier suggests.',n:''},
+];
+
+let fcDeck=[...CARDS],fcIdx=0,fcFlipped=false;
+function initFC(){fcDeck=[...MOD.cards];fcIdx=0;renderFC();}
+function renderFC(){
+  const c=fcDeck[fcIdx];
+  const catEl=document.getElementById('fcCat');
+  catEl.className='fc-cat';catEl.style.cssText=`color:${chColorOf(c.u)};background:color-mix(in srgb,${chColorOf(c.u)} 15%,transparent)`;
+  catEl.textContent=chShort(c.u);
+  document.getElementById('fcQ').textContent=c.q;
+  document.getElementById('fcA').textContent=c.a;
+  document.getElementById('fcN').textContent=c.n||'';
+  document.getElementById('fcP').textContent=`${fcIdx+1} / ${fcDeck.length}`;
+  fcFlipped=false;document.getElementById('fcI').classList.remove('flipped');
+}
+function fcFlip(){fcFlipped=!fcFlipped;document.getElementById('fcI').classList.toggle('flipped',fcFlipped);}
+function fcNext(){fcIdx=(fcIdx+1)%fcDeck.length;renderFC();}
+function fcPrev(){fcIdx=(fcIdx-1+fcDeck.length)%fcDeck.length;renderFC();}
+function fcShuf(){for(let i=fcDeck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcDeck[i],fcDeck[j]]=[fcDeck[j],fcDeck[i]];}fcIdx=0;renderFC();}
+function fcFlt(u,btn){document.querySelectorAll('#fcPills .fcb').forEach(b=>b.classList.remove('on'));btn.classList.add('on');fcDeck=u==='ALL'?[...MOD.cards]:MOD.cards.filter(c=>c.u===u);fcIdx=0;renderFC();}
+
+// QUIZ
+const QUIZ=[
+  {q:'Which of the following is NOT one of the 5 macroeconomic goals?',o:['Price stability','Maximum profit for firms','High employment','Equitable distribution of income'],a:1,e:'The 5 goals are: economic growth, price stability, high employment, BOP stability, and equitable income distribution. Profit maximisation is a firm goal, not a macroeconomic goal.'},
+  {q:'VAT is an example of which type of taxation?',o:['Progressive','Proportional','Regressive','Direct'],a:2,e:'VAT is regressive — lower-income earners spend a higher proportion of their income on VAT, so it takes a larger share of their income than of wealthy people\'s income.'},
+  {q:'Disinflation means:',o:['A fall in the general price level','The inflation rate is falling (prices still rising, but slower)','Prices rising at more than 1 000% per year','The CPI is negative'],a:1,e:'Disinflation = the rate of inflation is decreasing. Prices are still rising — just not as fast. Deflation = prices actually falling. Hyperinflation = >1 000% per year.'},
+  {q:'CPI in Year 1 = 106.2 and in Year 2 = 111.5. What is the inflation rate?',o:['4.99%','5.00%','111.5%','5.30%'],a:0,e:'Inflation rate = (111.5 − 106.2) ÷ 106.2 × 100 = 5.3 ÷ 106.2 × 100 = 4.99% ≈ 5%.'},
+  {q:'Which of the 3 GDP measurement methods adds up C + I + G + (X−Z)?',o:['Income method','Production method','Expenditure method','Value-added method'],a:2,e:'The expenditure method sums all spending on final products: Consumption (C) + Investment (I) + Government spending (G) + Net Exports (X−Z).'},
+  {q:'In the circular flow, which of the following is an INJECTION?',o:['Savings','Taxes','Imports','Government spending'],a:3,e:'Injections add money INTO the circular flow: Investment (I), Government spending (G), Exports (X). Leakages remove money: Savings (S), Taxes (T), Imports (Z).'},
+  {q:'Which phase of the business cycle features rising consumer spending with inflation, firms expanding but hitting capacity constraints, and financial markets starting to stagnate?',o:['Recovery','Boom','Slump','Recession'],a:1,e:'These are the stylised facts of a BOOM: strong consumer spending, full capacity, rising debt/imports, and financial markets that have already priced in the good news and begin to plateau.'},
+  {q:'What is the money multiplier if the reserve requirement is 25%?',o:['4','25','0.25','2.5'],a:0,e:'Money multiplier = 1 ÷ Reserve Requirement = 1 ÷ 0.25 = 4. A R100 deposit creates R400 total money in the system.'},
+  {q:'Which motive for holding money is most sensitive to changes in interest rates?',o:['Transactions motive','Precautionary motive','Speculative motive','None — all are equally sensitive'],a:2,e:'The speculative motive (passive balances) is most interest-rate sensitive. When interest rates are high, people hold less idle cash and invest instead. When rates are low, they hold more cash speculatively.'},
+  {q:'The money supply curve (Ms) in the money market graph is:',o:['Negatively sloped','Positively sloped','Vertical','Horizontal'],a:2,e:'Ms is VERTICAL because the money supply is set exogenously by the SARB — it is not determined by interest rates. The demand for money (Md) has a negative slope.'},
+  {q:'What are the 3 functions of government in the economy?',o:['Planning, Control, Implementation','Allocation, Distribution, Stabilisation','Taxation, Spending, Regulation','Production, Exchange, Consumption'],a:1,e:'Allocation: correct market failures. Distribution: make income more equitable. Stabilisation: smooth business cycles using fiscal and monetary policy.'},
+  {q:'When government borrows from the SARB to finance a deficit, the PRIMARY effect is:',o:['Higher interest rates and crowding out','Lower interest rates and inflationary expansion','No effect on money supply','Increased tax burden on citizens'],a:1,e:'Borrowing from the SARB means the SARB creates money (sells bonds to itself) → money supply increases → inflationary → interest rates fall → I and C rise.'},
+  {q:'The Laffer Curve shows:',o:['The relationship between tax rates and employment','How tax revenue first rises then falls as tax rate increases','The inverse relationship between inflation and unemployment','The tradeoff between economic growth and inequality'],a:1,e:'The Laffer Curve: as tax rates increase from 0%, tax revenue rises — but beyond T* (optimal rate), higher rates cause evasion and reduced economic activity, so revenue falls again.'},
+  {q:'If MPC = 0.75 and income rises by R200, consumption rises by:',o:['R150','R200','R50','R75'],a:0,e:'ΔC = MPC × ΔYd = 0.75 × R200 = R150. The remaining R50 (MPS = 0.25) is saved.'},
+  {q:'What is the income multiplier when MPC = 0.8 (no tax)?',o:['0.8','1.25','4','5'],a:3,e:'Multiplier = 1 ÷ (1 − MPC) = 1 ÷ (1 − 0.8) = 1 ÷ 0.2 = 5.'},
+  {q:'With MPC = 0.8 and tax rate = 25%, what is the income multiplier?',o:['5','4','2.5','3.33'],a:2,e:'Multiplier = 1 ÷ (1 − MPC × (1−t)) = 1 ÷ (1 − 0.8 × 0.75) = 1 ÷ (1 − 0.6) = 1 ÷ 0.4 = 2.5.'},
+  {q:'In the Keynesian model, what is the effect of a tax increase on the AD curve?',o:['Shifts it upward','Shifts it downward','Swivels (reduces slope) downward','Makes it vertical'],a:2,e:'Tax reduces Yd → reduces MPC (effective) → the AD curve swivels downward (becomes flatter). It doesn\'t just shift parallel — the slope changes because every level of income generates less consumption.'},
+  {q:'In the open economy model (4-sector), if exports = R200 and imports = R100, the AD curve:',o:['Shifts down by R100','Shifts up by R100','Remains unchanged','Becomes steeper'],a:1,e:'(X − Z) = R200 − R100 = +R100 (positive net exports). This is autonomous — it simply shifts the AD curve UP by R100 regardless of income level.'},
+  {q:'Autonomous C = 100, MPC = 0.8, I = 150. What is equilibrium Y (no tax)?',o:['1 000','1 250','750','500'],a:1,e:'Autonomous spending = Auto C + I = 100 + 150 = 250. Multiplier = 1/(1−0.8) = 5. Ye = 5 × 250 = 1 250.'},
+  {q:'What happens to equilibrium Y if I = 150 and the multiplier = 5?',o:['Y rises by 150','Y rises by 750','Y rises by 30','Y rises by 5'],a:1,e:'ΔY = ΔI × Multiplier = 150 × 5 = 750. The multiplier amplifies the initial injection through successive rounds of spending.'},
+  {q:'The AD curve slopes DOWNWARD because of the interest rate effect. This means:',o:['Higher interest rates cause higher prices','Higher price level leads to higher interest rates which reduces investment','Lower investment leads to lower prices','Interest rates and AD have a positive relationship'],a:1,e:'Higher price level → people need more money for same transactions → demand for money rises → interest rates rise → investment falls → AD falls. This is the interest rate channel explaining the AD slope.'},
+  {q:'What causes the AD curve to SHIFT right (increase)?',o:['Higher price level','Restrictive monetary policy (repo rate increase)','Expansionary fiscal policy (G increase)','Lower consumer confidence'],a:2,e:'Expansionary fiscal policy (G ↑) increases autonomous demand → shifts AD right. A change in price level causes movement ALONG the curve, not a shift. Restrictive monetary policy and lower confidence shift it LEFT.'},
+  {q:'The LRAS curve is vertical because:',o:['Supply never responds to demand','In the long run, wages and prices are fully flexible, so the economy always returns to full employment output (YF)','The government fixes output','Investment is autonomous'],a:1,e:'In the long run, nominal wages adjust fully to price changes, keeping real wages constant. This means employment always returns to the natural rate and output to YF, regardless of the price level.'},
+  {q:'A supply shock (e.g. oil price spike) causes:',o:['AD to shift right','SRAS to shift right (increase)','SRAS to shift left (decrease), higher P and lower Y','LRAS to shift left permanently'],a:2,e:'A negative supply shock (oil prices rise) increases input costs → SRAS shifts left → stagflation: higher P AND lower Y simultaneously. This is why supply shocks are particularly damaging.'},
+  {q:'In the AD-AS model, expansionary monetary policy in the LONG RUN results in:',o:['Permanently higher output above YF','Higher price level but output returns to YF','Lower price level and higher output','No change in either price or output'],a:1,e:'Long run: higher AD initially pushes Y above YF → workers demand higher wages → costs rise → SRAS shifts left → Y returns to YF. The only permanent effect is a higher price level (inflation).'},
+  {q:'Financial crowding-out occurs when:',o:['Government prints money to fund spending','Government borrows from private sector, raising interest rates and reducing private investment','SARB lowers interest rates too aggressively','Imports exceed exports'],a:1,e:'Crowding out: G ↑ → government borrows from private sector → demand for loanable funds rises → interest rates rise → private Investment falls. The fiscal expansion partially crowds out private sector activity.'},
+  {q:'A BOP surplus leads to:',o:['Rand depreciation and lower money supply','Rand appreciation and higher money supply','No effect on exchange rate','Lower foreign reserves'],a:1,e:'BOP surplus → more foreign currency flowing in → excess demand for Rand → Rand appreciates. Also, the foreign currency inflows get converted to Rand → money supply increases.'},
+  {q:'Rand depreciation is BENEFICIAL for:',o:['South African importers','South African exporters','People holding foreign debt','Companies that import capital equipment'],a:1,e:'Rand depreciation makes SA goods cheaper in foreign currency terms → exports become more competitive → X rises. It hurts importers (goods become more expensive) and those with foreign debt (repayments cost more).'},
+  {q:'The Keynesian transmission mechanism for fiscal policy is:',o:['G ↑ → Ms ↑ → i ↓ → I ↑ → Y ↑','G ↑ → Y ↑ → C ↑ → Y ↑ further (multiplier)','T ↑ → Yd ↑ → C ↑ → Y ↑','Repo ↓ → i ↓ → I ↑ → Y ↑'],a:1,e:'Fiscal transmission: G ↑ → autonomous demand rises → Y rises directly → higher income → C rises → Y rises further via the multiplier. Note: monetary transmission goes through interest rates and investment (Repo → i → I → Y).'},
+  {q:'In the expenditure model, capital formation (I) is described as:',o:['Determined by the level of GDP (Y)','Autonomous — independent of Y, determined mainly by interest rates','Always equal to savings (S) at all income levels','A component of C'],a:1,e:'I is AUTONOMOUS — it does not depend on Y. On the I-Y graph it appears as a horizontal line. However, I is inversely related to interest rates: higher i → lower planned capital formation.'},
+  {q:'What is the equilibrium condition in the 2-sector Keynesian model?',o:['C = S','I = Y','Y = C + I AND I = S','MPC = MPS'],a:2,e:'Equilibrium: Y = AD = C + I. Also, since Y = C + S, substituting gives C + I = C + S → I = S. Both conditions hold simultaneously at equilibrium.'},
+  {q:'The precautionary motive for holding money relates to:',o:['Earning returns on investments','Day-to-day transactions','Holding cash for unplanned or unexpected expenses','Speculating on bond price movements'],a:2,e:'The precautionary motive: people hold extra cash beyond what they need for transactions, as insurance against unexpected events (medical, car breakdown, etc.). Along with transactions, it forms "active balances."'},
+  {q:'What happens in the money market when SARB increases the money supply?',o:['Ms curve shifts right → equilibrium interest rate falls','Ms curve shifts left → equilibrium interest rate rises','Md curve shifts right → equilibrium interest rate rises','No change in interest rates'],a:0,e:'When SARB increases Ms: the vertical Ms curve shifts RIGHT. At the old interest rate there is now excess money supply. The interest rate falls until a new equilibrium is reached. Lower i → more investment → expansionary.'},
+  {q:'Which phase of the business cycle should a firm use to aggressively hire and invest in capital expenditure?',o:['Slump','Recession','Recovery (early stages)','Boom'],a:2,e:'Recovery is the ideal time to hire and invest — the economy is turning up, costs are still low (from recession), and the firm will benefit from the full boom ahead. Investing in a boom means paying peak prices for labour and capital.'},
+];
+
+let qIdx=0,qScore=0,qAnswered=false,qShuffled=[];
+function initQuiz(){qMeta();qShuffled=[...MOD.quiz].sort(()=>Math.random()-0.5);qIdx=0;qScore=0;document.getElementById('qC').style.display='block';document.getElementById('qSc').style.display='none';renderQ();}
+function renderQ(){
+  qAnswered=false;const q=qShuffled[qIdx];
+  document.getElementById('qM').textContent=`Question ${qIdx+1} of ${qShuffled.length}`;
+  document.getElementById('qPF').style.width=`${(qIdx/qShuffled.length)*100}%`;
+  document.getElementById('qQ').textContent=q.q;
+  document.getElementById('qNW').style.display='none';
+  const fb=document.getElementById('qFB');fb.classList.remove('show');fb.textContent='';
+  const opts=document.getElementById('qO');opts.innerHTML='';
+  q.o.forEach((o,i)=>{const b=document.createElement('button');b.className='qo';b.textContent=o;b.onclick=()=>selQ(i,q.a,q.e);opts.appendChild(b);});
+}
+function selQ(chosen,correct,exp){
+  if(qAnswered)return;qAnswered=true;
+  document.querySelectorAll('.qo').forEach((b,i)=>{b.disabled=true;if(i===correct)b.classList.add('correct');if(i===chosen&&chosen!==correct)b.classList.add('wrong');});
+  if(chosen===correct)qScore++;
+  const fb=document.getElementById('qFB');fb.textContent=(chosen===correct?'✅ Correct. ':'❌ Not quite. ')+exp;fb.classList.add('show');
+  document.getElementById('qNW').style.display='block';
+}
+function qNext(){qIdx++;if(qIdx>=qShuffled.length){showQSc();}else{renderQ();}}
+function showQSc(){
+  document.getElementById('qC').style.display='none';
+  const pct=Math.round((qScore/qShuffled.length)*100);
+  document.getElementById('qSN').textContent=`${qScore}/${qShuffled.length}`;
+  document.getElementById('qSM').textContent=pct>=85?'Strong. You know the material.':pct>=65?'Good — review what you missed.':'Go back through the cheat sheet first.';
+  document.getElementById('qSc').style.display='block';
+}
+function qRestart(){initQuiz();}
+// CHAPTERS
+const CP=[
+{n:2,short:'Basic Concepts',k:'#5b8dee',t:'Basic concepts in economics',test:'Test 1',sum:`Economics starts with <b>scarcity</b>: unlimited wants, limited resources. Everything else (goals, markets, government, policy) is a response to that problem.`,
+S:[
+['Scarcity and opportunity cost',
+`Scarce resources, called <strong>economic means</strong>, are labour (earns wages), capital (interest), natural resources (rent) and entrepreneurship (profit). Because they are limited, every household, firm and government must choose.`,
+['ex','Opportunity cost in practice',`You have R3 000: a second-hand laptop, or a semester of transport and textbooks. If you buy the laptop, your opportunity cost is the transport and textbooks, the <em>next best thing you gave up</em>. Trade-offs are measured by opportunity cost.`],
+['warn','Trap in Activity 6',`“The best choice is the one with the highest opportunity cost” is <strong>false</strong>. A good choice is one where the benefit outweighs the opportunity cost.`]],
+['The five macroeconomic goals (economic ends)',
+['tbl',['Goal','Main indicator'],[['High, sustainable growth','Real GDP growth rate'],['Price stability','Inflation (CPI); SARB target 3–6%'],['High employment','Unemployment rate'],['Balance of payments stability','Current vs financial account, exchange rate'],['Equitable income distribution','Gini coefficient, Lorenz curve']]],
+['ex','Spot the goal (Activity 14)',`“Cut unemployment from 27% to 23%” is the <strong>employment</strong> goal. “Keep inflation within the SARB range” is <strong>price stability</strong>. “Spend more on expanding manufacturing” is an <em>action</em> (a means), not a goal.`]],
+['Economic objects and subjects',
+['ul',[`<strong>Real assets</strong> are physical (machinery, buildings). <strong>Financial assets</strong> are claims: shares, bonds, savings accounts, unit trusts.`,`<strong>Subjects</strong>: households, firms, financial intermediaries, government (national, provincial, local, public enterprises) and the foreign sector.`]],
+['ex','Is it a financial asset? (Activity 5)',`JSE shares, a government bond, an ABSA savings account and a unit trust are all <strong>yes</strong>. Production equipment bought on credit is <strong>no</strong>: the equipment is a real asset (the credit is a liability).`]],
+['Markets, market failure and the mixed economy',
+['ul',[`<strong>Free markets</strong>: product, factor, financial and foreign exchange markets.`,`<strong>Market failure</strong>: public goods, imperfect competition, externalities.`,`<strong>Mixed economy</strong>: government spends (exhaustive expenditure, transfers, subsidies), taxes (direct or indirect; progressive, proportional, regressive), runs a budget (surplus, deficit, debt trap) and sets policy.`,`<strong>Policy</strong>: fiscal (Treasury), monetary (SARB), balance of payments, wage and price. <em>Expansionary</em> stimulates; <em>restrictive</em> slows the economy down.`]],
+['ex','Positive or normative?',`“Unemployment is above 30%” can be tested, so it is <strong>positive</strong>. “Government should create more jobs” is a value judgement, so it is <strong>normative</strong>.`]]],
+Q:[['Name the four production factors and what each earns.',`Labour: wages. Capital: interest. Natural resources: rent. Entrepreneurship: profit.`],['“The minimum wage is too low.” Positive or normative?',`Normative: it contains a value judgement.`],['Why is a bank loan taken to buy a machine not a financial asset for the buyer?',`For the buyer it is a liability. The machine is the real asset.`]]},
+
+{n:3,short:'Measuring Economy',k:'#0ea880',t:'Measuring the economy',test:'Test 1',sum:`Four things get measured: <b>prices</b> (inflation), <b>output</b> (GDP), <b>jobs</b> (unemployment) and <b>trade</b> (balance of payments). Know each formula and its worked example.`,
+S:[
+['Circular flow',
+`Households sell factors to firms and receive income; firms sell goods to households and receive spending. Aggregate production = aggregate income = aggregate expenditure. <strong>Leakages</strong> (savings, taxes, imports) pull money out; <strong>injections</strong> (investment, government spending, exports) put it back.`],
+['Inflation',
+['f',`Inflation rate = (CPI new − CPI old) ÷ CPI old × 100\nReal value     = Nominal ÷ (1 + inflation rate)\nBase year = 100: Real value = Nominal ÷ CPI × 100`],
+['ul',[`<strong>CPI</strong> tracks consumers’ cost of living (weighted basket: price × weight). <strong>PPI</strong> tracks firms’ production costs. <strong>Headline inflation</strong> is CPI-based.`,`<strong>Disinflation</strong>: inflation falls, but prices still rise, just slower. <strong>Deflation</strong>: the price level falls. <strong>Hyperinflation</strong>: money becomes worthless (over 1 000% a year in the slides).`,`<strong>Measurement problems</strong>: hundreds of products and shifting habits; an average hides group differences and quality changes; uses advertised prices, not discounts.`]],
+['ex','Worked examples (CPI: 20X2 = 100, 20X3 = 106.2, 20X4 = 111.5)',`<strong>1.</strong> R20 000 stock held through 20X4. Inflation = (111.5 − 106.2) ÷ 106.2 = 5%. Real value = 20 000 ÷ 1.05 = <strong>R19 047.62</strong>.<br><strong>2.</strong> R40 000 held from the start of 20X2 to end of 20X4. Base is 100, so real value = 40 000 ÷ 1.115 = <strong>R35 874</strong>.<br><strong>3.</strong> R10 000 protected against inflation to 20X5, CPI forecast 116.9. Payout = 10 000 × 1.169 = <strong>R11 690</strong>.<br><strong>4.</strong> Salary R600 000 in 20X4. Real wage = 600 000 ÷ 1.05 = R571 428.57. Lost purchasing power = <strong>R28 571.43</strong>.`],
+['tip',`Which year is the “old” CPI? Use the CPI at the <em>start</em> of the period you hold the asset. If it starts at 100, skip the inflation step and divide by the index.`]],
+['GDP and economic growth',
+['ul',[`<strong>GDP</strong> = value of final goods and services produced inside a country’s borders. <strong>Growth rate</strong> = % change in <em>real</em> GDP.`,`<strong>Expenditure method</strong>: C + I + G + (X − Z). <strong>Income method</strong>: remuneration of employees + gross operating surplus. <strong>Production method</strong>: add each sector’s value added.`,`<strong>Sectors</strong>: primary (agriculture, forestry, mining), secondary (manufacturing, construction), tertiary (services).`,`<strong>GDP per capita</strong> = real GDP ÷ population. <strong>GNP (GNI)</strong> = GDP − primary income paid to the rest of the world + primary income received from it.`]]],
+['Unemployment',
+['f',`Unemployment rate = unemployed ÷ labour force × 100\nParticipation rate = labour force ÷ working-age population × 100`],
+['ex','Using SA numbers',`Slide data: labour force 18.4m out of 33.4m working-age people gives 18.4 ÷ 33.4 = <strong>55.1%</strong> participation. Illustration: if 5.9m of those 18.4m are jobless, the rate is 5.9 ÷ 18.4 = <strong>32.1%</strong>.`],
+['tbl',['Type','Cause','Example'],[['Frictional','Between jobs','Graduate searching for a first role'],['Seasonal','Work only part of the year','Harvest or holiday-season workers'],['Cyclical','Business cycle downturn','Retrenchments in a recession'],['Structural','Lasting shift in labour demand','Automation replaces mine jobs']]]],
+['Balance of payments and distribution',
+['f',`Current account  = exports − imports (X > Z surplus, X < Z deficit)\nFinancial account = net portfolio investment + net FDI\nChange in reserves = current account + financial account`],
+['ex','Illustration',`X = R900bn, Z = R850bn: current surplus <strong>R50bn</strong>. Net capital outflow of R30bn: financial account −R30bn. Reserves rise by <strong>R20bn</strong>.`],
+`The <strong>Lorenz curve</strong> plots income distribution; the further it bows from the 45° equality line, the more unequal. The <strong>Gini coefficient</strong> runs from 0 (perfect equality) to 1 (perfect inequality).`]],
+Q:[['Prices rose from CPI 100 to 108. What is the real value of R5 400 nominal?',`5 400 ÷ 1.08 = R5 000.`],['Is falling inflation the same as falling prices?',`No. Falling inflation is disinflation; prices still rise, slower. Falling prices is deflation.`],['Seasonal or structural: a ski-resort worker laid off each summer?',`Seasonal.`]]},
+
+{n:5,short:'Business Cycle',k:'#9b6dff',t:'The business cycle',test:'Test 2',sum:`The economy moves through <b>recovery, boom, slump and recession</b>. Firms that plan for where the economy is <em>going</em> beat those that react to where it is.`,
+S:[
+['Why managers care',
+`The economy determines roughly 16–53% of a firm’s profits (slides). Basil O’Hagan went from R100m to nothing in six months after borrowing to expand at the wrong time. Like the soccer rule: do not run to where the ball is, run to where it is going to be.`],
+['The four phases',
+['tbl',['Phase','What happens'],[['Recovery','Trough passed. Financial markets gain, confidence grows, consumers spend a bit more, firms stop cutting jobs.'],['Boom','Spending and inflation rise. Firms expand, hit capacity limits, invest more. Debt and imports rise. Financial markets stagnate.'],['Slump','Costs rise, profits fall. Expansion and hiring halted. Income and imports stabilise. Pessimism hits financial markets.'],['Recession','Spending falls, firms cut jobs, many go bankrupt. Negative growth, lower inflation or deflation. Debt and imports fall.']]],
+`<strong>Turning points</strong>: the <em>peak</em> (boom to slump) and the <em>trough</em> (recession to recovery). The trend line is long-run growth.`],
+['How policy responds',
+`Counter-cyclical policy avoids big swings: <strong>stimulate</strong> in recession (negative growth, unemployment) and <strong>cool</strong> a boom (inflation, current account deficit).`,
+['tbl',['Phase','Monetary policy','Fiscal policy'],[['Recovery','Low, stable rates','Tax revenue stabilises; spending rises to secure recovery'],['Boom','Higher rates to slow credit and spending','Revenue rises with incomes; extra spending not needed'],['Slump','Stable rates, cuts possible later','Revenue slows as incomes stagnate'],['Recession','Lower rates (deflation danger)','Revenue falls; government spends to stimulate']]]],
+['Indicators: where are we?',
+['ul',[`<strong>Leading</strong> indicator: where we are <em>going</em>.`,`<strong>Coincident</strong> indicator: where we <em>are</em>.`,`<strong>Lagging</strong> indicator: where we <em>were</em>.`]],
+`All three come from the SARB. One indicator alone can mislead, so compare them.`],
+['Business decisions across the cycle',
+['ex','Typical reasoning (not stated in the slides)',`<strong>Finance</strong>: borrow long-term before rates rise in a boom; avoid fresh debt near the peak. <strong>Capex</strong>: costs fall in recession, so cheap to expand if cash allows. <strong>Pricing</strong>: raise prices ahead of inflation in a boom. <strong>Employment</strong>: train during slack periods. <strong>Cash flow</strong>: watch it hardest around the peak and slump when costs rise and profits fall.`],
+['ul',[`The slides ask, per function (purchasing, employment, finance, capex, acquisitions, marketing, pricing): <em>where in the cycle do I increase or cut this?</em>`,`Most cycle-sensitive sectors: industrial metals, motor vehicles and parts, electronic and electrical equipment, travel and leisure.`]],
+['tip',`Signals can be false. Do not try to time decisions exactly: <strong>better vaguely right than exactly wrong</strong>.`]]],
+Q:[['Which phase has rising inflation, rising imports and firms at capacity?',`The boom.`],['What does the SARB do to rates in a boom, and why?',`Raises them to slow credit and spending and curb inflation.`],['Leading or lagging: an indicator that tells you where the economy was?',`Lagging.`]]},
+
+{n:6,short:'Money & Interest',k:'#e8a020',t:'Money, interest rates and financial markets',test:'Test 2',sum:`Money is <b>created by bank lending</b>, and the SARB steers the economy by setting the <b>repo rate</b>, which works through a slow, multi-channel transmission mechanism.`,
+S:[
+['What money is and how it is counted',
+`Money is what money does: a <strong>medium of exchange</strong>, a <strong>store of value</strong> and a <strong>unit of account</strong>. It evolved from IOUs and barter, to commodities (gold), notes and coins, cheques and e-money.`,
+['tbl',['Measure','Covers'],[['M0','Notes and coins'],['M1a, M1, M2','Progressively more bank deposits'],['M3','All deposits (broadest)']]],
+`Because all deposits count, <strong>credit is money</strong>.`],
+['Money creation',
+['f',`Money multiplier = 1 ÷ reserve requirement\nTotal deposits   = initial deposit × 1/RR`],
+['ex','R100 and a 20% reserve requirement',`The bank keeps R20 and lends R80. That R80 is deposited, the bank keeps R16 and lends R64, and so on. Total deposits = 100 × 1/0.2 = <strong>R500</strong>.`],
+`<strong>The real process</strong>: banks do not wait for deposits. Lerato wants a R30 000 student loan. If the bank thinks she is a good risk and has capital, it credits her account with R30 000, so the loan <em>creates</em> a deposit. It then needs reserves of 10% (R3 000), found or borrowed from the SARB. Banks lend only if there is <strong>demand</strong>, the loan looks <strong>profitable</strong> and they have enough <strong>capital</strong>.`,
+['tip',`Bank capital = assets − liabilities. It is the buffer that absorbs losses when loans default.`]],
+['The market for credit and the repo rate',
+['ul',[`<strong>Demand for credit</strong> slopes down because borrowing has an opportunity cost. Higher income shifts it right (more credit).`,`<strong>Repo rate</strong> up means prime rate up, credit dearer, quantity of credit falls (a <em>movement along</em> the demand curve).`,`The SARB makes the repo rate bite by keeping banks short of reserves, using open-market operations, quantitative easing or tapering, and reserve requirements.`]]],
+['Transmission and inflation targeting',
+`Repo rate changes ripple through prime rate, money and credit, asset prices, the rand, and inflation expectations. They affect aggregate demand, import prices, wages and production costs, and finally CPI, but it takes <strong>12–24 months</strong>. So the SARB targets forecast inflation about two years ahead, not today’s. The target band is <strong>3–6%</strong>.`,
+['ul',[`<strong>Independence</strong> builds credibility: goal independence (sets own target) vs instrumental independence (chooses how to reach it). Credibility anchors inflation expectations.`,`The system runs on faith: the SARB protects the rand’s buying power, regulates banks, avoids bank runs and uses moral suasion.`]]],
+['Yield curve',
+`A <strong>yield</strong> is the rate of return on a financial asset. Assets differ by <strong>maturity</strong> (how long until repaid). The repo rate is short-term, so it mainly moves short-term rates.`,
+['ex','Reading the curve (Lemuria)',`90-day T-bill 5%, 5-year bond 7%, 10-year bond 8%. Yield rises with maturity: an <strong>upward-sloping</strong> (normal) curve. A R1m bond with a 10% coupon pays R100 000 interest a year until it matures.`]]],
+Q:[['A R200 deposit, 10% reserve requirement. Maximum total deposits?',`200 × 1/0.1 = R2 000.`],['Name the three limits on a bank’s lending.',`Demand for loans, expected profitability, enough capital.`],['Why does the SARB target inflation 24 months ahead?',`Rate changes take 12–24 months to work through the transmission mechanism.`]]},
+
+{n:8,short:'Government',k:'#e05a5a',t:'Role of government',test:'Test 2',sum:`Government fixes market failure and spreads income more fairly through <b>allocation, distribution and stabilisation</b>, funded by tax and borrowing.`,
+S:[
+['The three functions',
+['tbl',['Function','Problem','Tools'],[['Allocation','Monopoly (high prices, low output), externalities, collective goods the market cannot provide (free-rider problem)','Anti-monopoly measures, regulation, direct provision'],['Distribution','Markets follow money demand, not need','Progressive tax, transfers (aged, disabled, unemployed), food and health subsidies'],['Stabilisation','Booms and slumps','Fiscal and monetary measures']]],
+`Judge any intervention on <strong>efficiency, effectiveness, equity and sustainability</strong>. The NDP aims to build a capable developmental state.`],
+['Government spending',
+['ul',[`<strong>Final consumption</strong>: non-capital items such as public servant salaries.`,`<strong>Transfer payments</strong>: social grants.`,`<strong>Capital expenditure</strong>: economic and social infrastructure.`,`Treasury’s fiscal goals: <strong>equity</strong>, <strong>funding</strong> spending without a harmful debt burden, and <strong>macro stability</strong>.`]]],
+['Taxation',
+['tbl',['Type','Rule','SA example','Effect on inequality'],[['Progressive','Rate rises with income','PAYE','Reduces it'],['Proportional','Same rate','Company tax','Unchanged'],['Regressive','Share of income falls as income rises','VAT','Worsens it']]],
+['ex','Why VAT is regressive',`R1 000 of groceries carries R150 VAT. On a R5 000 income that is <strong>3%</strong>; on R50 000 it is <strong>0.3%</strong>.`],
+['ul',[`<strong>Principles</strong>: efficiency (avoid distortions and deadweight loss), equity (benefit received, ability to pay, horizontal and vertical equity), transparency and certainty.`,`<strong>Laffer curve</strong>: revenue rises with tax rates, at a diminishing rate, up to T*. Beyond T* higher rates <em>reduce</em> revenue.`,`Taxes change <strong>work incentives, demand patterns and productivity</strong>.`,`<strong>SA</strong>: personal income tax is the biggest source; VAT now exceeds company tax; borrowing funds capital spending.`]],
+`<strong>Privatisation</strong> sells state functions; <strong>deregulation</strong> removes rules to strengthen the private sector.`],
+['The budget and deficit financing',
+`The budget is the plan for the year’s revenue and spending and gives government legal authority to tax and spend. A <strong>deficit</strong> is spending above revenue; a <strong>surplus</strong> is the reverse.`,
+['tbl',['Financing a deficit','Chain of effects'],[['Borrow from non-bank private sector','Money demand ↑, interest rates ↑, private investment ↓ (<strong>crowding out</strong>)'],['Borrow from the central bank','Money supply ↑, rates ↓, C and I ↑; <strong>inflationary</strong>'],['Foreign loans','Inflow raises money supply, rates ↓, expansionary']]],
+['ul',[`<strong>Automatic stabilisers</strong>: in a recession unemployment benefits rise and tax revenue falls, so the deficit widens on its own. Discretionary changes face time lags and can destabilise.`,`<strong>Debt</strong>: watch the deficit and debt as a % of GDP (debt-GDP ratio). Large debt means a heavy interest bill, a transfer to wealthier bondholders, fiscal instability and a burden on future generations.`]]]],
+Q:[['Which tax type worsens inequality, and why?',`Regressive (VAT): lower earners pay a bigger share of income.`],['What happens to revenue past T* on the Laffer curve?',`It falls as higher rates discourage work and activity.`],['Why is borrowing from the central bank inflationary?',`It raises the money supply and banks’ ability to create more money.`]]},
+
+{n:9,short:'Expenditure Model',k:'#38bdf8',t:'Total expenditure model',test:'Test 3',sum:`Income settles where <b>planned spending equals output</b>. Add sectors one at a time: C, then I, then G and taxes, then net exports. Master the multiplier.`,
+S:[
+['Household sector: C and S',
+['f',`Yd = C + S\nC  = a + MPC × Yd        (a = autonomous consumption)\nS  = −a + MPS × Yd       MPS = 1 − MPC`],
+['ul',[`<strong>Keynes’ law</strong>: when income rises, consumption rises, but by less.`,`<strong>Autonomous</strong> C is spent even at zero income (by dissaving or borrowing); <strong>induced</strong> C is caused by income.`,`MPC = ΔC ÷ ΔYd. APC = C ÷ Yd. Same idea for MPS and APS.`]],
+['ex','Numbers',`a = 100, MPC = 0.8. At Yd = 1 000: C = 100 + 0.8 × 1 000 = <strong>900</strong>, and S = −100 + 0.2 × 1 000 = <strong>100</strong>. Break-even (C = Yd, S = 0) is at Yd = 500.`],
+['tip',`<strong>Move along</strong> the C curve only when Yd changes. <strong>Shift</strong> the curve for anything else (wealth, expectations, autonomous C).`]],
+['Capital formation (I) and the two-sector model',
+`Planned I (machines, change in inventories) falls when the interest rate rises (higher cost, higher opportunity cost). A change in <em>r</em> is a move along the I curve; taxes, conditions or expectations shift it. I is treated as <strong>autonomous</strong>, independent of income.`,
+['f',`AD = C + I = a + I + MPC × Y\nEquilibrium: Y = AD, and S = I\nYe = autonomous AD × multiplier\nMultiplier = 1 ÷ (1 − MPC)`],
+['ex','Finding Ye',`a = 100, I = 150, MPC = 0.8. Autonomous AD = 250. Multiplier = 1 ÷ 0.2 = 5. Ye = 250 × 5 = <strong>1 250</strong>. Check: S = −100 + 0.2 × 1 250 = 150 = I ✓. An extra R150 of I raised income by R750.`],
+`<strong>Adjustment</strong>: if AD &gt; Y, stock runs down and firms produce more. If AD &lt; Y, unsold stock builds and firms produce less. Both push income toward Ye.`],
+['Adding government and tax',
+`G is autonomous, so it shifts AD up. A tax rate t reduces disposable income, so MPC is replaced by <strong>MPC × (1 − t)</strong>, which swivels (flattens) the curve and shrinks the multiplier.`,
+['f',`Multiplier (with tax) = 1 ÷ [1 − MPC(1 − t)]`],
+['ex','G = 350 and t = 25%',`MPC(1 − t) = 0.8 × 0.75 = 0.6. Multiplier = 1 ÷ 0.4 = <strong>2.5</strong>. Autonomous AD = 100 + 150 + 350 = 600. Ye = 600 × 2.5 = <strong>1 500</strong>. Without tax the multiplier would have been 5.`]],
+['Adding the foreign sector',
+`Net exports (X − Z) are autonomous: positive NX shifts AD <em>up</em>, negative shifts it <em>down</em>, zero changes nothing. MPC and t are unchanged, so the <strong>multiplier stays the same</strong>.`,
+['ex','X = 200, Z = 100',`NX = +100, autonomous AD = 700, Ye = 700 × 2.5 = <strong>1 750</strong>.`]],
+['Exam-style calculation',
+['ex','Full question',`Autonomous C = 50, G = 20, I = 30, X = 40, Z = 60. MPC = 0.6, t = 30%.<br><strong>1.</strong> Autonomous AD = 50 + 20 + 30 + (40 − 60) = 80.<br><strong>2.</strong> Multiplier = 1 ÷ [1 − 0.6(0.7)] = 1 ÷ 0.58 = 1.72.<br><strong>3.</strong> Ye = 80 × 1.72 = <strong>138</strong>.<br><strong>4.</strong> If G rises by 10: ΔYe = 10 × 1.72 = <strong>17.2</strong>.`],
+['warn','Common slip',`Do not forget (1 − t) in the multiplier once a tax rate is given, and remember net exports can be <em>negative</em>.`]]],
+Q:[['MPC = 0.75, no tax. What is the multiplier?',`1 ÷ 0.25 = 4.`],['MPC = 0.9, t = 20%. Multiplier?',`1 ÷ [1 − 0.9 × 0.8] = 1 ÷ 0.28 ≈ 3.57.`],['Does the foreign sector change the multiplier?',`No, only a shift in AD (when NX is autonomous).`]]},
+
+{n:10,short:'AD-AS & Policy',k:'#f472b6',t:'Policy interaction and the AD-AS model',test:'Test 3 and exam',sum:`Monetary and fiscal policy reach the real economy through <b>interest rates, investment and the exchange rate</b>. The AD-AS model then shows the effect on <b>prices and output</b>.`,
+S:[
+['Keynesian transmission mechanism',
+['f',`Expansionary monetary: Ms ↑ → i ↓ → I ↑ → AD ↑ → Y ↑ → jobs ↑`],
+`So yes, a repo rate change <em>can</em> affect unemployment, but indirectly. The <strong>interest rate elasticity of investment</strong> links the monetary and real sectors: the more investment reacts to rates, the stronger the effect.`,
+['ex','Does infrastructure spending change interest rates?',`If government <strong>borrows from the private sector</strong>, money demand ↑, i ↑, private I ↓. That is <strong>financial crowding-out</strong>. Borrowing from the central bank or abroad instead raises money supply and lowers rates, with inflationary consequences.`]],
+['The open economy',
+['tbl',['Variable','Depends on','Sign'],[['Imports (M)','SA income','Positive'],['','SA prices ÷ foreign prices','Positive'],['','Exchange rate (rand strength)','Positive'],['Exports (X)','Foreign income','Positive'],['','SA prices ÷ foreign prices','Negative'],['','Exchange rate','Negative'],['Capital inflow','Interest rate differential, relative returns','Positive'],['','Exchange rate','Negative']]],
+`Tariffs, quotas, sanctions and WTO rules also affect imports. Political certainty and expectations drive capital flows.`],
+['Balance of payments and the BP curve',
+['f',`BoP = current account + financial account\nSurplus → reserves build; deficit → reserves fall`],
+['ul',[`The <strong>BP curve</strong> shows combinations of interest rate and income where BoP balances. It slopes <strong>up</strong>: higher income raises imports (deficit), so a higher rate must attract capital to compensate.`,`Anything that improves the BoP (other than Y and i) shifts the curve <strong>right</strong>; anything that weakens it shifts it left.`,`<strong>Exchange rate</strong>: BoP surplus means excess demand for rand, so the rand appreciates (exports ↓, imports ↑). A deficit means depreciation (exports ↑, imports ↓), which self-corrects.`,`<strong>Consequences of imbalance</strong>: foreign reserves (aim to cover three months of imports; low reserves push rates up), money supply (a surplus raises M1) and the exchange rate.`]]],
+['Unintended effects of policy on the BoP',
+['ex','Expansionary monetary policy',`<strong>Part 1</strong>: Ms ↑, i ↓. Capital flows out (financial deficit). Also I ↑, Y ↑, imports ↑ (current deficit). BoP deficit.<br><strong>Part 2</strong>: outflow shrinks Ms, i ↑, I ↓, Y ↓, imports ↓ (automatic stabiliser). Rand depreciates, X ↑, Z ↓, so BoP moves back toward zero.`],
+['ex','Expansionary fiscal policy',`G ↑ or tax ↓ raises Y and imports (current deficit), but money demand and i ↑ attract capital (financial surplus). The first effect is normally bigger, so a BoP deficit follows. Then the same correction as above.`]],
+['AD-AS: aggregate demand',
+`AD = C + I + G + (X − Z), negatively related to the price level. <strong>Why it slopes down</strong>: real balance effect, real wealth effect, interest rate effect, net export effect. A price change is a <em>move along</em> AD.`,
+['ul',[`<strong>Shifts right</strong>: expansionary fiscal or monetary policy, higher confidence, stronger foreign demand or rand depreciation, more wealth or population.`,`<strong>Shifts left</strong>: contractionary policy (Ms ↓, i ↑, I ↓), weaker confidence, trade barriers, global slowdown.`]]],
+['AD-AS: aggregate supply',
+['ul',[`<strong>Long run</strong>: wages and prices are flexible, so the economy returns to full-employment output (YF). LRAS is <strong>vertical</strong>.`,`<strong>Short run</strong>: nominal wages are sticky (annual negotiations; COSATU will rarely accept a cut), so SRAS slopes <strong>up</strong>. Rising output needs more costly labour and lower-quality inputs.`,`<strong>SRAS shifts right</strong>: lower company tax, bigger or better-skilled workforce, lower input costs, new technology, optimism.`]]],
+['Short-run and long-run adjustment',
+['ex','Expansionary monetary policy (AD shifts right)',`<strong>Short run (A to B)</strong>: P ↑, real wage (w ÷ P) ↓, labour is cheaper, firms use overtime, so Y rises <strong>above</strong> YF.<br><strong>Long run (B to C)</strong>: labour demand pushes wages up, costs rise, SRAS shifts left, P rises again and Y falls back to YF. Result: <strong>higher prices, same output</strong>.`],
+['warn','Supply shock',`A fall in AS (SRAS left) raises P and lowers Y at once: output falls <em>and</em> prices rise (stagflation).`]]],
+Q:[['Why does the BP curve slope upward?',`Higher income lifts imports, so a higher interest rate is needed to attract capital and keep BoP balanced.`],['Why can Y exceed YF in the short run but not the long run?',`Sticky nominal wages let firms overuse labour; once wages catch up, SRAS shifts left and output returns to YF.`],['Fiscal expansion financed by private borrowing: effect on private investment?',`It falls: crowding-out through higher interest rates.`]]}
+];
+
+let cpCur=0,cpDone=[];const cpKey=()=>'sh:'+MOD.id+':done';
+function cpLoad(){try{let v=localStorage.getItem(cpKey());if(v===null&&MOD.id==='mne7xb1')v=localStorage.getItem('mne-cp-done');cpDone=JSON.parse(v||'[]')}catch(e){cpDone=[]}}
+function cpSave(){try{localStorage.setItem(cpKey(),JSON.stringify(cpDone))}catch(e){}}
+function cpItem(x){
+  if(typeof x==='string')return `<p>${x}</p>`;
+  const t=x[0];
+  if(t==='ul')return `<ul>${x[1].map(i=>`<li>${i}</li>`).join('')}</ul>`;
+  if(t==='f')return `<div class="cp-f">${x[1]}</div>`;
+  if(t==='tbl')return `<div class="cp-tw"><table><thead><tr>${x[1].map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${x[2].map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  if(t==='ex')return `<div class="cp-co"><b>${x[1]}</b>${x[2]}</div>`;
+  if(t==='tip')return `<div class="cp-co tip"><b>Exam tip</b>${x[1]}</div>`;
+  if(t==='warn')return `<div class="cp-co warn"><b>${x[1]}</b>${x[2]}</div>`;
+  return '';
+}
+function cpRender(i,scroll){
+  cpCur=i;try{localStorage.setItem('sh:'+MOD.id+':ch',i)}catch(e){}const c=MOD.chapters[i],done=cpDone.includes(c.n);
+  const root=document.getElementById('cpRoot');
+  root.style.setProperty('--k',c.k);
+  document.getElementById('cpSide').innerHTML=`<h2>Chapters</h2><div class="cp-count">${cpDone.length} of ${MOD.chapters.length} complete</div>`+MOD.chapters.map((x,j)=>`<button class="cp-li${cpDone.includes(x.n)?' done':''}" style="--k:${x.k}" aria-current="${j===i}" onclick="cpRender(${j},true)"><span class="cp-dot">${cpDone.includes(x.n)?'✓':x.n}</span>${x.t}</button>`).join('');
+  document.getElementById('cpBar').style.cssText=`width:${cpDone.length/MOD.chapters.length*100}%;background:${c.k}`;
+  const jump=c.S.map((s,j)=>`<a href="#cp-s${j}" onclick="event.preventDefault();document.getElementById('cp-s${j}').scrollIntoView({behavior:'smooth'})">${s[0]}</a>`).join('');
+  const body=c.S.map((s,j)=>`<h3 id="cp-s${j}">${s[0]}</h3>`+s.slice(1).map(cpItem).join('')).join('');
+  const qs=c.Q.map(q=>`<details class="cp-q"><summary>${q[0]}</summary><div>${q[1]}</div></details>`).join('');
+  document.getElementById('cpArt').innerHTML=`<div class="cp-meta">Chapter ${c.n}${c.test?` · Assessed in ${c.test}`:''}</div><h1 class="cp-h1">${c.t}</h1><div class="cp-sum"><b>In short:</b> ${c.sum}</div><nav class="cp-jump" aria-label="In this chapter">${jump}</nav>${body}<h3 id="cp-q">Check yourself</h3><p>Try answering before you open each one.</p>${qs}<div class="cp-nav"><button class="cp-b" ${i===0?'disabled':''} onclick="cpRender(${i-1},true)">← Previous</button><button class="cp-b main${done?' on':''}" onclick="cpToggle()">${done?'✓ Completed (undo)':'Mark chapter complete'}</button><button class="cp-b" ${i===MOD.chapters.length-1?'disabled':''} onclick="cpRender(${i+1},true)">Next →</button></div>`;
+  if(scroll)window.scrollTo(0,0);
+}
+function cpToggle(){const n=MOD.chapters[cpCur].n,p=cpDone.indexOf(n);p<0?cpDone.push(n):cpDone.splice(p,1);cpSave();cpRender(cpCur,false)}
+function cpInit(){if(!document.getElementById('cpArt').innerHTML){cpLoad();let i=0;try{i=Math.min(+localStorage.getItem('sh:'+MOD.id+':ch')||0,MOD.chapters.length-1)}catch(e){}cpRender(i,false)}}
+
+const CHEAT={"2": "<div class=\"ch-label\">Chapter 2 — Basic Concepts in Economics<\/div>\n<div class=\"cram-grid\">\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 2<\/span>\n    <h4>5 Macroeconomic Goals<\/h4>\n    <div class=\"row\"><span class=\"rn\">1<\/span><span><strong>High & sustainable economic growth<\/strong> — real GDP growth rate<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">2<\/span><span><strong>Price stability<\/strong> — low inflation, CPI within target (3–6% SA)<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">3<\/span><span><strong>High employment<\/strong> — low unemployment rate<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">4<\/span><span><strong>Balance of payments stability<\/strong> — exports, foreign currency, exchange rate<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">5<\/span><span><strong>Equitable distribution of income<\/strong> — Gini coefficient, Lorenz curve<\/span><\/div>\n    <div class=\"chip\">Economic means: Labour + Capital + Natural resources + Entrepreneurs (remunerated by wages, rent, interest, profit)<\/div>\n  <\/div>\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 2<\/span>\n    <h4>Types of Markets<\/h4>\n    <div class=\"row\"><span class=\"rn\">1<\/span><span><strong>Product market<\/strong> — goods & services bought/sold<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">2<\/span><span><strong>Factor market<\/strong> — labour, capital, land<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">3<\/span><span><strong>Financial market<\/strong> — bonds, shares, savings<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">4<\/span><span><strong>Foreign exchange market<\/strong> — currency trading<\/span><\/div>\n    <div class=\"chip\">Market failure: public goods, imperfect competition, externalities<\/div>\n  <\/div>\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 2<\/span>\n    <h4>Types of Policy<\/h4>\n    <div class=\"row\"><span class=\"rn\">→<\/span><span><strong>Fiscal policy<\/strong> — government spending & taxation (National Treasury)<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">→<\/span><span><strong>Monetary policy<\/strong> — money supply & interest rates (SARB)<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">→<\/span><span><strong>Trade policy<\/strong> — tariffs, quotas, exchange rates<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">→<\/span><span><strong>Wage & price policy<\/strong> — direct controls<\/span><\/div>\n    <div class=\"chip\">Expansionary policy = stimulate economy | Restrictive policy = slow it down<\/div>\n  <\/div>\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 2<\/span>\n    <h4>Progressive vs Regressive Tax<\/h4>\n    <div class=\"row\"><span class=\"rn\">P<\/span><span><strong>Progressive<\/strong> (PAYE): rate increases as income increases → more equitable<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">P<\/span><span><strong>Proportional<\/strong> (Company tax): rate stays constant<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">R<\/span><span><strong>Regressive<\/strong> (VAT): lower-income earners pay higher % of income → worsens inequality<\/span><\/div>\n  <\/div>\n<\/div>", "3": "<div class=\"ch-label\">Chapter 3 — Measuring the Economy<\/div>\n<div class=\"cram-grid\">\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 3<\/span>\n    <h4>Inflation — Key Terms<\/h4>\n    <div class=\"row\"><span class=\"rn\">CPI<\/span><span>Consumer Price Index — measures changes in cost of living basket<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">PPI<\/span><span>Producer Price Index — measures firms' cost of production<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">DI<\/span><span><strong>Disinflation<\/strong> — inflation rate falls (prices still rising, just slower)<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">HI<\/span><span><strong>Hyperinflation<\/strong> — >1000% p.a., money becomes worthless<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">DE<\/span><span><strong>Deflation<\/strong> — persistent FALL in general price level (negative inflation)<\/span><\/div>\n    <div class=\"chip\">Inflation rate = (New CPI − Old CPI) ÷ Old CPI × 100<\/div>\n  <\/div>\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 3<\/span>\n    <h4>Real vs Nominal Values<\/h4>\n    <div class=\"bf\" style=\"margin:0;padding:10px 12px\">\n      <div class=\"bff\" style=\"font-size:0.72rem\">Inflation rate = (New CPI − Old CPI) ÷ Old CPI × 100<br>Real value = Nominal ÷ (1 + inflation rate)<br>Real value = Nominal ÷ CPI × 100 (when base=100)<\/div>\n    <\/div>\n    <div class=\"chip\">Nominal = rand value. Real = adjusted for inflation = purchasing power<\/div>\n  <\/div>\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 3<\/span>\n    <h4>GDP — 3 Measurement Methods<\/h4>\n    <div class=\"row\"><span class=\"rn\">1<\/span><span><strong>Expenditure:<\/strong> C + I + G + (X − Z)<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">2<\/span><span><strong>Income:<\/strong> Remuneration + Gross operating surplus<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">3<\/span><span><strong>Production:<\/strong> Value-added by each sector<\/span><\/div>\n    <div class=\"chip\">GDP = value of FINAL goods & services within SA borders. Growth rate = % change in real GDP year-to-year.<\/div>\n  <\/div>\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 3<\/span>\n    <h4>Circular Flow — Leakages & Injections<\/h4>\n    <div class=\"row\"><span class=\"rn\" style=\"color:var(--warn)\">L<\/span><span><strong>Leakages:<\/strong> Savings (S), Taxes (T), Imports (Z) — money leaving circular flow<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\" style=\"color:var(--green)\">I<\/span><span><strong>Injections:<\/strong> Investment (I), Government spending (G), Exports (X) — money entering<\/span><\/div>\n    <div class=\"chip\">Equilibrium: Leakages = Injections | Aggregate production = income = expenditure<\/div>\n  <\/div>\n<\/div>", "5": "<div class=\"ch-label\">Chapter 5 — Business Cycle<\/div>\n<div class=\"cram-grid\">\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 5<\/span>\n    <h4>4 Phases of the Business Cycle<\/h4>\n    <div class=\"row\"><span class=\"rn\">1<\/span><span><strong>Recovery<\/strong> — financial markets gain, confidence grows, employment stabilises<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">2<\/span><span><strong>Boom<\/strong> — C rises with inflation, firms expand & invest, debt & imports rise, financial markets stagnate<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">3<\/span><span><strong>Slump<\/strong> — costs rise, profits fall, employment & expansion halted, financial market losses<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">4<\/span><span><strong>Recession<\/strong> — income, spending & imports fall sharply, unemployment rises<\/span><\/div>\n    <div class=\"chip\">Turning points: Peak (boom → slump) | Trough (recession → recovery)<\/div>\n  <\/div>\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 5<\/span>\n    <h4>Firm Strategy by Phase<\/h4>\n    <div class=\"row\"><span class=\"rn\">R<\/span><span><strong>Recovery:<\/strong> Start hiring, increase production, begin capital expenditure<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">B<\/span><span><strong>Boom:<\/strong> Maximise production, raise prices, expand market share<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">S<\/span><span><strong>Slump:<\/strong> Cut costs, reduce inventory, halt expansion<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">R<\/span><span><strong>Recession:<\/strong> Cut jobs, reduce debt, preserve cash<\/span><\/div>\n    <div class=\"chip\">\"Don't plan based on where the economy IS — plan for where it's GOING to be\"<\/div>\n  <\/div>\n<\/div>", "6": "<div class=\"ch-label\">Chapter 6 — Money, Interest Rates & Financial Markets<\/div>\n<div class=\"cram-grid\">\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 6<\/span>\n    <h4>Functions of Money<\/h4>\n    <div class=\"row\"><span class=\"rn\">1<\/span><span><strong>Medium of exchange<\/strong> — used to buy/sell<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">2<\/span><span><strong>Store of value<\/strong> — hold wealth over time<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">3<\/span><span><strong>Unit of account<\/strong> — measure prices<\/span><\/div>\n  <\/div>\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 6<\/span>\n    <h4>Money Definitions (M0→M3)<\/h4>\n    <div class=\"row\"><span class=\"rn\">M0<\/span><span>Notes and coins only (physical cash)<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">M1<\/span><span>M0 + demand deposits (current accounts)<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">M2<\/span><span>M1 + short-term savings deposits<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">M3<\/span><span>ALL deposits — broadest definition<\/span><\/div>\n    <div class=\"chip\">Money multiplier = 1 ÷ Reserve Requirement. eg: 20% RR → multiplier = 5. R100 deposit → R500 total money created.<\/div>\n  <\/div>\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 6<\/span>\n    <h4>Demand for Money — 3 Motives<\/h4>\n    <div class=\"row\"><span class=\"rn\">1<\/span><span><strong>Transactions motive<\/strong> — hold cash for day-to-day spending<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">2<\/span><span><strong>Precautionary motive<\/strong> — hold cash for unexpected events<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">3<\/span><span><strong>Speculative motive<\/strong> — hold cash to take advantage of investment opportunities<\/span><\/div>\n    <div class=\"chip\">1+2 = Active balances (vary with income). 3 = Passive balances (vary with interest rates).<\/div>\n  <\/div>\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 6<\/span>\n    <h4>Monetary Policy — SARB Tools<\/h4>\n    <div class=\"row\"><span class=\"rn\">R<\/span><span><strong>Repo rate<\/strong> — rate at which SARB lends to banks. Raise = restrict. Lower = expand.<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">O<\/span><span><strong>Open market operations<\/strong> — buy/sell government bonds to change money supply<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">Q<\/span><span><strong>Quantitative easing<\/strong> — large-scale asset purchases to inject money<\/span><\/div>\n    <div class=\"chip\">SARB target: inflation 3–6%. Repo rate ↑ → prime rate ↑ → borrowing costs ↑ → spending ↓ → inflation ↓<\/div>\n  <\/div>\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 6<\/span>\n    <h4>Money Market Graph<\/h4>\n    <div class=\"row\"><span class=\"rn\">Y<\/span><span>Vertical axis = Interest rate (i)<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">X<\/span><span>Horizontal axis = Quantity of money (M)<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">Md<\/span><span>Demand curve — NEGATIVE slope (higher i → less demand for money)<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">Ms<\/span><span>Supply curve — VERTICAL (supply fixed by SARB, not affected by i)<\/span><\/div>\n    <div class=\"chip\">Equilibrium where Md meets Ms → equilibrium interest rate<\/div>\n  <\/div>\n<\/div>", "8": "<div class=\"ch-label\">Chapter 8 — Role of Government<\/div>\n<div class=\"cram-grid\">\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 8<\/span>\n    <h4>3 Functions of Government<\/h4>\n    <div class=\"row\"><span class=\"rn\">A<\/span><span><strong>Allocation<\/strong> — correct market failures (monopolies, externalities, public goods)<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">D<\/span><span><strong>Distribution<\/strong> — make income distribution more equitable (progressive tax, transfers, subsidies)<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">S<\/span><span><strong>Stabilisation<\/strong> — smooth business cycles using monetary & fiscal policy<\/span><\/div>\n  <\/div>\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 8<\/span>\n    <h4>Financing a Budget Deficit<\/h4>\n    <div class=\"row\"><span class=\"rn\">1<\/span><span><strong>Domestic borrowing<\/strong> (non-bank private sector) — issue Treasury Bills/bonds → higher interest rates → crowds out private investment<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">2<\/span><span><strong>Borrow from SARB<\/strong> — sells bonds to SARB → increases money supply → inflationary → lower interest rates<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">3<\/span><span><strong>Foreign loans<\/strong> — borrow on foreign markets → inflow of foreign money → increases money supply<\/span><\/div>\n    <div class=\"chip\">Crowding out: government borrowing → higher i → less private investment (I↓)<\/div>\n  <\/div>\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 8<\/span>\n    <h4>4 Principles of Taxation<\/h4>\n    <div class=\"row\"><span class=\"rn\">1<\/span><span><strong>Efficiency<\/strong> — minimise harmful distortions (avoid dead weight loss)<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">2<\/span><span><strong>Equity<\/strong> — fair, based on ability to pay; horizontal & vertical equity<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">3<\/span><span><strong>Transparency & certainty<\/strong> — people can plan their tax affairs<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">4<\/span><span><strong>Simplicity<\/strong> — difficult to evade, not expensive to collect<\/span><\/div>\n    <div class=\"chip\">Laffer Curve: tax revenue rises then falls as tax rate increases. T* = optimal tax rate.<\/div>\n  <\/div>\n<\/div>", "9": "<div class=\"ch-label\">Chapter 9 — Total Expenditure Model (Keynesian)<\/div>\n<div class=\"bf\">\n  <div class=\"bf-l\">Keynesian Model — Key Formulas<\/div>\n  <div class=\"bff\">\nC <span class=\"dim\">=<\/span> <span class=\"hi\">Autonomous C + MPC × Yd<\/span>   <span class=\"dim\">(eg: C = 100 + 0.8Yd)<\/span>\nS <span class=\"dim\">=<\/span> <span class=\"hi\">−Autonomous C + MPS × Yd<\/span>   <span class=\"dim\">(eg: S = −100 + 0.2Yd)<\/span>\nMPC + MPS <span class=\"dim\">=<\/span> 1   <span class=\"dim\">|   Yd = C + S<\/span>\nMultiplier <span class=\"dim\">=<\/span> <span class=\"hi\">1 ÷ (1 − MPC)<\/span>   <span class=\"dim\">no tax (eg: 1÷0.2 = 5)<\/span>\nMultiplier <span class=\"dim\">=<\/span> <span class=\"hi\">1 ÷ (1 − MPC(1−t))<\/span>   <span class=\"dim\">with tax (eg: 1÷0.4 = 2.5)<\/span>\nYe <span class=\"dim\">=<\/span> <span class=\"hi\">Multiplier × Autonomous Spending<\/span>\nAutonomous spending <span class=\"dim\">=<\/span> Auto C + I + G + (X − Z)\n  <\/div>\n<\/div>\n<div class=\"cram-grid\">\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 9<\/span>\n    <h4>MPC & MPS<\/h4>\n    <div class=\"row\"><span class=\"rn\">MPC<\/span><span>Marginal Propensity to Consume — fraction of extra R1 of income spent on C. eg: R80 out of R100 = 0.8<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">MPS<\/span><span>Marginal Propensity to Save — fraction saved. eg: R20 out of R100 = 0.2<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">=<\/span><span>MPC + MPS = 1 always<\/span><\/div>\n    <div class=\"chip\">Higher MPC → steeper C-curve → larger multiplier effect<\/div>\n  <\/div>\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 9<\/span>\n    <h4>The Multiplier — How It Works<\/h4>\n    <div class=\"row\"><span class=\"rn\">→<\/span><span>Invest R150 → someone earns R150 income<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">→<\/span><span>They spend 80% (R120) → someone else earns R120<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">→<\/span><span>They spend 80% (R96) → and so on...<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">=<\/span><span>Final ΔY = R150 × 5 = R750 total<\/span><\/div>\n    <div class=\"chip\">Tax reduces the multiplier. More tax → flatter AD curve → smaller ΔY from same injection.<\/div>\n  <\/div>\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 9<\/span>\n    <h4>Building the Model (3 Steps)<\/h4>\n    <div class=\"row\"><span class=\"rn\">1<\/span><span><strong>2-sector:<\/strong> Y = C + I. Multiplier = 1/(1−MPC)<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">2<\/span><span><strong>3-sector:<\/strong> Y = C + I + G. Add tax → multiplier = 1/(1−MPC(1−t))<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">3<\/span><span><strong>4-sector (open):<\/strong> Y = C + I + G + (X−Z). X>Z → AD curve shifts up. X&lt;Z → shifts down.<\/span><\/div>\n  <\/div>\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 9<\/span>\n    <h4>Capital Formation (Investment I)<\/h4>\n    <div class=\"row\"><span class=\"rn\">→<\/span><span>I = fixed capital formation + changes in inventories<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">→<\/span><span>Higher interest rate → higher cost of borrowing → less I<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">→<\/span><span>I is AUTONOMOUS — independent of Y (horizontal line on I-Y graph)<\/span><\/div>\n    <div class=\"chip\">I-curve shifts when: taxation changes, economic conditions change, political expectations shift<\/div>\n  <\/div>\n<\/div>", "10": "<div class=\"ch-label\">Chapter 10 — Policy Interaction & AD-AS Model<\/div>\n<div class=\"cram-grid\">\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 10<\/span>\n    <h4>Keynesian Transmission Mechanism<\/h4>\n    <div class=\"row\"><span class=\"rn\">M<\/span><span><strong>Monetary:<\/strong> SARB repo ↓ → i ↓ → I ↑ → Y ↑ → employment ↑<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">F<\/span><span><strong>Fiscal:<\/strong> G ↑ or T ↓ → Yd ↑ → C ↑ → Y ↑ (via multiplier)<\/span><\/div>\n    <div class=\"chip\">Crowding out: G ↑ → demand for money ↑ → i ↑ → I ↓. Government spending crowds out private investment.<\/div>\n  <\/div>\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 10<\/span>\n    <h4>AD Curve — Why It Slopes Down<\/h4>\n    <div class=\"row\"><span class=\"rn\">1<\/span><span><strong>Real balance effect<\/strong> — higher P → lower purchasing power<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">2<\/span><span><strong>Real wealth effect<\/strong> — higher P → people feel less wealthy → spend less<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">3<\/span><span><strong>Interest rate effect<\/strong> — higher P → higher i → less I<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">4<\/span><span><strong>Net export effect<\/strong> — higher P → SA goods more expensive → X ↓, Z ↑<\/span><\/div>\n    <div class=\"chip\">AD shifts RIGHT: expansionary monetary/fiscal policy, positive expectations, higher foreign income, population growth<\/div>\n  <\/div>\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 10<\/span>\n    <h4>AS Curves — Short Run vs Long Run<\/h4>\n    <div class=\"row\"><span class=\"rn\">LR<\/span><span><strong>LRAS:<\/strong> Vertical at YF (full employment). Wages & prices fully flexible. Economy always returns to YF.<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">SR<\/span><span><strong>SRAS:<\/strong> Positive slope. Nominal wages are STICKY (don't adjust quickly). Y can deviate from YF.<\/span><\/div>\n    <div class=\"chip\">SRAS shifts right: lower input costs, better technology, more labour supply, favourable policy. SRAS shifts left: supply shocks (oil prices), higher wages.<\/div>\n  <\/div>\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 10<\/span>\n    <h4>AD-AS Adjustment — Expansionary Monetary Policy<\/h4>\n    <div class=\"row\"><span class=\"rn\">SR<\/span><span>Ms ↑ → i ↓ → I ↑ → AD shifts right → P ↑ and Y ↑ above YF<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">LR<\/span><span>Higher P → workers demand higher wages → costs ↑ → SRAS shifts left → Y returns to YF but P higher<\/span><\/div>\n    <div class=\"chip\">Long-run result of expansionary policy: higher price level but same output (YF). Inflation with no lasting growth benefit.<\/div>\n  <\/div>\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 10<\/span>\n    <h4>BOP & Exchange Rate<\/h4>\n    <div class=\"row\"><span class=\"rn\">+<\/span><span>BOP surplus → excess demand for Rand → Rand <strong>appreciates<\/strong><\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">−<\/span><span>BOP deficit → excess supply of Rand → Rand <strong>depreciates<\/strong><\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">D<\/span><span>Rand depreciates → X ↑ (cheaper for foreigners) → Z ↓ (imports more expensive) → current account improves<\/span><\/div>\n    <div class=\"chip\">BOP surplus → Ms ↑. BOP deficit → Ms ↓. Automatic adjustment mechanism.<\/div>\n  <\/div>\n  <div class=\"cc\">\n    <span class=\"ch\">Ch 10<\/span>\n    <h4>Financial Crowding-Out Chain<\/h4>\n    <div class=\"row\"><span class=\"rn\">1<\/span><span>G ↑ (fiscal expansion)<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">2<\/span><span>Government borrows from private sector<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">3<\/span><span>Demand for money ↑ → i ↑<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">4<\/span><span>Private investment I ↓ (crowded out)<\/span><\/div>\n    <div class=\"row\"><span class=\"rn\">5<\/span><span>Multiplier effect partially offset<\/span><\/div>\n  <\/div>\n<\/div>"};
+/* ===== MODULE REGISTRY =====
+To add a module, push one object into MODULES:
+ { id, code, name, sub, accent,
+   chapters:[{n,k,t,short,test,sum,S:[[heading,...items]],Q:[[q,a]]}],  // "Chapters" tab
+   cheat:{ [n]: 'html cards' },   // "Cheat sheet" tab
+   tp:[{t:'s'|'i'|'n'|'sp',c:n,x:text}],  // "Teleprompter" tab
+   cards:[{u:n,q,a,n}],           // "Cards" tab
+   quiz:[{q,o:[..],a:index,e}] }  // "Quiz" tab
+Leave out any key and that tab hides itself. Progress is saved per module id. */
+const MODULES=[{id:'mne7xb1',code:'MNE7XB1',name:'Management Economics',sub:'UJ School of Economics · Semester 2, 2026',accent:'#7eb3ff',chapters:CP,cheat:CHEAT,tp:TP_S,cards:CARDS,quiz:QUIZ}];
+let MOD=MODULES[0],TAB='chapters';
+const $=id=>document.getElementById(id);
+function chOf(n){return MOD.chapters.find(c=>c.n===n)||{k:MOD.accent,short:'Chapter '+n}}
+function chColorOf(n){return chOf(n).k}
+function chShort(n){return 'Ch '+n+' · '+chOf(n).short}
+function tabsAvail(){const a=[];if(MOD.chapters)a.push('chapters');if(MOD.cheat)a.push('cheat');if(MOD.tp)a.push('tp');if(MOD.cards)a.push('flash');if(MOD.quiz)a.push('quiz');return a}
+function setHash(){try{history.replaceState(null,'','#/'+MOD.id+'/'+TAB)}catch(e){}}
+
+/* module switcher */
+function swProgress(m){try{let v=localStorage.getItem('sh:'+m.id+':done');if(v===null&&m.id==='mne7xb1')v=localStorage.getItem('mne-cp-done');return JSON.parse(v||'[]').length}catch(e){return 0}}
+function swRender(){
+  $('swCode').textContent=MOD.code;$('swName').textContent=MOD.name;
+  $('swMenu').innerHTML='<div class="sw-h">Your modules</div>'+MODULES.map(m=>`<button class="sw-i" role="menuitem" style="--m:${m.accent}" aria-current="${m===MOD}" onclick="swPick('${m.id}')"><b>${m.code}</b><span>${m.name}</span><small>${m.sub} · ${swProgress(m)} of ${m.chapters?m.chapters.length:0} chapters complete</small></button>`).join('');
+}
+function swClose(){const m=$('swMenu');if(m.hidden)return;m.hidden=true;$('swBtn').setAttribute('aria-expanded','false')}
+function swToggle(){
+  const m=$('swMenu'),b=$('swBtn');
+  if(!m.hidden){swClose();return}
+  swRender();m.hidden=false;b.setAttribute('aria-expanded','true');
+  const r=b.getBoundingClientRect();m.style.top=(r.bottom+8)+'px';m.style.left=Math.max(10,Math.min(r.left,innerWidth-m.offsetWidth-10))+'px';
+  const cur=m.querySelector('[aria-current=true]');if(cur)cur.focus();
+}
+function swPick(id){swClose();if(MODULES.find(m=>m.id===id)!==MOD)setModule(id,TAB);$('swBtn').focus()}
+document.addEventListener('click',e=>{if(!e.target.closest('.sw')&&!e.target.closest('#swMenu'))swClose()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){swClose()}});
+
+function setModule(id,tab){
+  MOD=MODULES.find(m=>m.id===id)||MODULES[0];
+  document.documentElement.style.setProperty('--acc',MOD.accent);
+  document.title=MOD.code+' · Study Hub';
+  try{localStorage.setItem('sh:last',MOD.id)}catch(e){}
+  /* reset every per-module view */
+  if(typeof stopTP==='function')stopTP();
+  tpManIdx=0;$('tpC').innerHTML='';
+  $('cpArt').innerHTML='';$('chtArt').dataset.m='';
+  $('fcPills').innerHTML=MOD.cards?`<button class="fcb on" data-f="ALL" onclick="fcFlt('ALL',this)">All</button>`+MOD.chapters.filter(c=>MOD.cards.some(x=>x.u===c.n)).map(c=>`<button class="fcb" data-f="${c.n}" onclick="fcFlt(${c.n},this)">Ch ${c.n}</button>`).join(''):'';
+  const av=tabsAvail();
+  document.querySelectorAll('.nb').forEach(b=>b.hidden=!av.includes(b.dataset.tab));
+  swRender();
+  go(av.includes(tab)?tab:av[0]);
+}
+function qMeta(){const n=MOD.quiz.length;$('qSub').textContent=n+(n===1?' question':' questions')+' · '+MOD.chapters.length+(MOD.chapters.length===1?' chapter':' chapters')+' · Shuffled · Instant feedback';$('qOut').textContent='out of '+n+' correct'}
+
+/* cheat sheet with chapter sidebar */
+let chtSel=null,chtQ='';
+function chtList(){return MOD.chapters.filter(c=>MOD.cheat&&MOD.cheat[c.n])}
+function chtInit(){if($('chtArt').dataset.m!==MOD.id){$('chtArt').dataset.m=MOD.id;chtSel=chtList()[0].n;chtQ='';$('chtQ').value='';chtRender(false)}}
+function chtPick(n){chtSel=n;chtQ='';$('chtQ').value='';chtRender(true)}
+function chtFind(v){chtQ=v.trim().toLowerCase();chtRender(false)}
+function chtRender(scroll){
+  const L=chtList(),all=chtSel==='ALL'||!!chtQ,cur=all?null:L.find(c=>c.n===chtSel),A=$('chtArt');
+  $('chtRoot').style.setProperty('--k',cur?cur.k:MOD.accent);
+  $('chtSide').innerHTML=`<h2>Cram sheet</h2><div class="cp-count">${L.length} chapters</div><button class="cp-li" style="--k:${MOD.accent}" aria-current="${all}" onclick="chtSel='ALL';chtQ='';$('chtQ').value='';chtRender(true)"><span class="cp-dot">≡</span>All chapters</button>`+L.map(c=>`<button class="cp-li" style="--k:${c.k}" aria-current="${!all&&c.n===chtSel}" onclick="chtPick(${c.n})"><span class="cp-dot">${c.n}</span>${c.t}</button>`).join('');
+  const wrap=c=>`<div class="cht-ch" style="--k:${c.k}">${MOD.cheat[c.n]}</div>`;
+  if(all){A.className='cp-art wide';A.innerHTML=`<div class="cp-meta">${MOD.code} · ${MOD.name}</div><h1 class="cp-h1">Cram sheet</h1><p class="cht-n" id="chtN"></p>`+L.map(wrap).join('')+'<div class="cht-empty" id="chtE" hidden>No cards match. Try a shorter word, such as “multiplier” or “repo”.</div>'}
+  else{const i=L.indexOf(cur);A.className='cp-art wide cht-single';A.innerHTML=`<div class="cp-meta">Chapter ${cur.n}</div><h1 class="cp-h1">${cur.t}</h1>`+wrap(cur)+`<div class="cp-nav"><button class="cp-b" ${i===0?'disabled':''} onclick="chtPick(${i?L[i-1].n:0})">← Previous</button><button class="cp-b" ${i===L.length-1?'disabled':''} onclick="chtPick(${i<L.length-1?L[i+1].n:0})">Next →</button></div>`}
+  if(chtQ){let hits=0;A.querySelectorAll('.cht-ch').forEach(w=>{let any=0;w.querySelectorAll('.cc,.bf').forEach(x=>{const m=x.textContent.toLowerCase().includes(chtQ);x.hidden=!m;if(m){any++;hits++}});w.querySelectorAll('.cram-grid').forEach(g=>g.hidden=![...g.children].some(x=>!x.hidden));w.hidden=!any});$('chtN').textContent=hits+(hits===1?' matching card':' matching cards')+' for “'+chtQ+'”';$('chtE').hidden=hits>0}
+  if(scroll)window.scrollTo(0,0);
+}
+
+function boot(){
+  let id=null,tab=null;
+  try{const m=(location.hash||'').match(/^#\/([^/]+)\/?([^/]*)/);if(m){id=m[1];tab=m[2]}}catch(e){}
+  if(!id){try{id=localStorage.getItem('sh:last')}catch(e){}}
+  setModule(id,tab||'chapters');
+}
+boot();
+</script>
+</body>
+</html>
