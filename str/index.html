@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STR7XB1 — Study Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080810;--mid:#10101a;--card:#161622;--border:#22223a;--text:#e6e6f2;--muted:#66668a;--c2:#5b8dee;--c3:#0ea880;--c5:#9b6dff;--c6:#e8a020;--c8:#e05a5a;--c9:#38bdf8;--c10:#f472b6;--acc:#7eb3ff;--green:#7effd8;--warn:#ff7575;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.55;}
+nav{position:sticky;top:0;z-index:50;background:rgba(8,8,16,0.97);border-bottom:1px solid var(--border);height:50px;padding:0 14px;display:flex;align-items:center;gap:4px;overflow-x:auto;}
+nav::-webkit-scrollbar{display:none;}
+.brand{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;color:var(--acc);letter-spacing:2px;margin-right:14px;flex-shrink:0;}
+.nb{background:none;border:none;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:0.68rem;font-weight:700;padding:0 9px;height:50px;cursor:pointer;white-space:nowrap;flex-shrink:0;border-bottom:2px solid transparent;text-transform:uppercase;letter-spacing:0.5px;transition:color 0.15s;}
+.nb:hover{color:var(--text);}
+.nb.active{color:#fff;border-bottom-color:var(--acc);}
+.sec{display:none;}.sec.active{display:block;}
+.wrap{max-width:980px;margin:0 auto;padding:30px 16px 80px;}
+.pg-head{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:2px;margin-bottom:4px;}
+.pg-sub{font-size:0.72rem;color:var(--muted);margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+.ch-label{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:2px;margin:26px 0 10px;padding-bottom:5px;border-bottom:1px solid var(--border);}
+
+.cram-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:9px;margin-bottom:12px;}
+.cc{background:var(--card);border:1px solid var(--border);border-radius:9px;padding:13px 15px;}
+.ch{font-size:0.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:2px 7px;border-radius:3px;display:inline-block;margin-bottom:8px;}
+.cc h4{font-size:0.82rem;font-weight:700;margin-bottom:6px;color:#fff;}
+.row{display:flex;gap:8px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.78rem;line-height:1.4;}
+.row:last-of-type{border:none;}
+.rn{font-family:'JetBrains Mono',monospace;font-size:0.6rem;font-weight:700;color:var(--acc);min-width:16px;padding-top:2px;flex-shrink:0;}
+.chip{margin-top:7px;font-size:0.68rem;color:var(--muted);background:rgba(255,255,255,0.04);border-radius:5px;padding:5px 9px;line-height:1.4;}
+.bf{background:var(--mid);border:1px solid var(--border);border-radius:9px;padding:14px 18px;margin:14px 0;}
+.bf-l{font-size:0.58rem;font-weight:700;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:8px;}
+.bff{font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--green);line-height:2.1;}
+.bff .dim{color:var(--muted);}
+.bff .hi{color:#fff;font-weight:600;}
+
+/* TELEPROMPTER */
+.tp-bar{position:sticky;top:50px;z-index:40;background:rgba(8,8,16,0.97);border-bottom:1px solid var(--border);padding:8px 14px;display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+.tp-mw{display:flex;gap:2px;background:var(--mid);border:1px solid var(--border);border-radius:6px;padding:3px;}
+.tpm{background:none;border:none;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:0.68rem;font-weight:700;padding:4px 9px;border-radius:4px;cursor:pointer;transition:all 0.15s;}
+.tpm.active{background:var(--c3);color:#080810;}
+.tpc{background:var(--card);border:1px solid var(--border);color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.68rem;padding:5px 9px;border-radius:6px;cursor:pointer;}
+.tpp{background:var(--c3);border:none;color:#080810;font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:700;padding:6px 15px;border-radius:7px;cursor:pointer;}
+.tp-prog{height:3px;background:var(--border);}
+.tp-pf{height:100%;background:var(--c3);width:0%;transition:width 0.3s;}
+.tp-content{max-width:780px;margin:0 auto;padding:44px 18px 120px;}
+.tl{line-height:1.9;margin-bottom:2px;font-size:18px;}
+.tl.ts{font-family:'Bebas Neue',sans-serif;letter-spacing:3px;font-size:0.78em!important;margin-top:28px;margin-bottom:3px;padding-bottom:3px;border-bottom:1px solid var(--border);}
+.tl.ti{color:var(--text);padding-left:14px;}
+.tl.tn{color:var(--muted);font-size:0.85em!important;padding-left:14px;font-style:italic;}
+.tl.tsp{margin-bottom:14px;}
+.tl.ta{color:#fff!important;text-shadow:0 0 16px rgba(14,168,128,0.5);}
+.tl.tp{opacity:0.2;}
+.tl.tf{opacity:0.6;}
+.mn{display:none;position:fixed;bottom:0;left:0;right:0;background:rgba(8,8,16,0.97);border-top:1px solid var(--border);padding:10px 20px;align-items:center;justify-content:center;gap:12px;}
+
+/* FLASHCARDS */
+.fc-bar{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+.fcb{background:var(--card);border:1px solid var(--border);color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:500;padding:6px 12px;border-radius:6px;cursor:pointer;transition:all 0.15s;}
+.fcb:hover,.fcb.on{background:var(--c2);border-color:var(--c2);color:#fff;}
+.fcb.go{background:var(--c3);border-color:var(--c3);color:#080810;}
+.fc-prog{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--muted);margin-left:auto;}
+.fc-stage{perspective:1000px;min-height:220px;cursor:pointer;margin-bottom:12px;max-width:700px;}
+.fc-inner{position:relative;width:100%;min-height:220px;transform-style:preserve-3d;transition:transform 0.4s ease;}
+.fc-inner.flipped{transform:rotateY(180deg);}
+.fc-face{position:absolute;width:100%;min-height:220px;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:11px;padding:24px;display:flex;flex-direction:column;justify-content:center;}
+.fc-front{background:var(--card);border:1px solid var(--border);}
+.fc-back{background:rgba(14,168,128,0.07);border:1px solid var(--c3);transform:rotateY(180deg);}
+.fc-hint{font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin-bottom:10px;}
+.fc-cat{font-family:'JetBrains Mono',monospace;font-size:0.6rem;padding:2px 7px;border-radius:3px;display:inline-block;margin-bottom:8px;}
+.fc-q{font-size:0.95rem;font-weight:600;line-height:1.4;}
+.fc-a{font-family:'JetBrains Mono',monospace;font-size:0.73rem;line-height:1.8;color:var(--green);}
+.fc-sub{font-size:0.68rem;color:rgba(255,255,255,0.38);margin-top:8px;}
+.pill-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;}
+
+/* QUIZ */
+.qw{max-width:660px;}
+.qpb{height:3px;background:var(--border);border-radius:2px;margin-bottom:18px;}
+.qpf{height:100%;background:var(--c2);border-radius:2px;transition:width 0.3s;}
+.qm{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--muted);margin-bottom:7px;}
+.qq{font-size:0.9rem;font-weight:600;line-height:1.45;margin-bottom:14px;}
+.qop{display:flex;flex-direction:column;gap:7px;margin-bottom:10px;}
+.qo{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;cursor:pointer;font-size:0.8rem;line-height:1.4;transition:all 0.12s;text-align:left;color:var(--text);font-family:'DM Sans',sans-serif;}
+.qo:hover:not(:disabled){border-color:var(--c2);background:rgba(91,141,238,0.08);}
+.qo.correct{border-color:var(--c3);background:rgba(14,168,128,0.1);color:#7effd8;}
+.qo.wrong{border-color:var(--warn);background:rgba(255,117,117,0.08);color:#ffaaaa;}
+.qfb{font-size:0.78rem;line-height:1.6;background:var(--mid);border:1px solid var(--border);border-radius:7px;padding:10px 13px;display:none;}
+.qfb.show{display:block;}
+.qsc{text-align:center;padding:44px 20px;}
+.qsc-n{font-family:'Bebas Neue',sans-serif;font-size:4.8rem;color:var(--c2);line-height:1;}
+.qsc-l{color:var(--muted);margin-bottom:16px;font-size:0.82rem;}
+.qsc-m{font-size:0.95rem;font-weight:600;margin-bottom:18px;}
+/* CHAPTERS */
+.cp-prog{position:sticky;top:50px;z-index:45;height:3px;background:var(--border)}
+.cp-prog i{display:block;height:100%;width:0;background:var(--ac,var(--acc));transition:width .25s}
+.cp{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1160px;margin:0 auto}
+.cp-side{position:sticky;top:53px;align-self:start;max-height:calc(100vh - 53px);overflow:auto;padding:20px 12px;border-right:1px solid var(--border)}
+.cp-side h2{font:400 1.05rem 'Bebas Neue',sans-serif;letter-spacing:2px;color:var(--muted);margin:0 10px 4px}
+.cp-count{font-size:.72rem;color:var(--muted);margin:0 10px 14px}
+.cp-li{display:flex;gap:10px;align-items:center;width:100%;text-align:left;background:none;border:0;color:var(--muted);padding:9px 10px;border-radius:8px;cursor:pointer;font:500 .82rem/1.3 'DM Sans',sans-serif}
+.cp-li:hover{color:var(--text);background:rgba(255,255,255,.03)}
+.cp-li[aria-current=true]{background:var(--card);color:#fff;box-shadow:inset 3px 0 0 var(--k)}
+.cp-dot{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--k);flex:none;display:grid;place-items:center;font-size:.62rem;font-weight:700;color:var(--k)}
+.cp-li.done .cp-dot{background:var(--k);color:#080810}
+.cp-main{padding:30px 22px 100px;min-width:0}
+.cp-art{max-width:720px;margin:0 auto}
+.cp-meta{font-size:.78rem;color:var(--k);font-weight:700;margin-bottom:6px}
+.cp-h1{font:400 2.6rem/1.05 'Bebas Neue',sans-serif;letter-spacing:1.5px;margin-bottom:14px}
+.cp-sum{background:var(--mid);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:16px;font-size:.92rem;line-height:1.6}
+.cp-sum b{color:#fff}
+.cp-jump{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.cp-jump a{font-size:.74rem;color:var(--text);text-decoration:none;border:1px solid var(--border);border-radius:999px;padding:4px 11px}
+.cp-jump a:hover{border-color:var(--k);color:#fff}
+.cp-art h3{font-size:1.15rem;font-weight:700;color:#fff;margin:34px 0 10px;padding-top:18px;border-top:1px solid var(--border);scroll-margin-top:110px}
+.cp-art p{font-size:15px;line-height:1.72;color:#d3d3e4;margin:0 0 12px}
+.cp-art ul{margin:0 0 12px 20px;font-size:15px;line-height:1.7;color:#d3d3e4}
+.cp-art li{margin-bottom:5px}
+.cp-art strong{color:#fff}
+.cp-co{border-left:3px solid var(--k);border-radius:0 9px 9px 0;padding:12px 15px;margin:16px 0;background:var(--mid);font-size:.9rem;line-height:1.65;color:#d3d3e4}
+.cp-co>b{display:block;font-size:.82rem;color:#fff;margin-bottom:4px}
+.cp-co.tip{border-color:var(--green)}.cp-co.warn{border-color:var(--warn)}
+.cp-f{font:600 .83rem/1.9 'JetBrains Mono',monospace;color:var(--green);background:#0b0b14;border:1px solid var(--border);border-radius:9px;padding:10px 14px;margin:14px 0;overflow-x:auto;white-space:pre}
+.cp-tw{overflow-x:auto;margin:14px 0;border:1px solid var(--border);border-radius:9px}
+.cp-tw table{border-collapse:collapse;width:100%;min-width:480px;font-size:.84rem}
+.cp-tw th{text-align:left;background:var(--card);color:#fff;padding:9px 12px;font-weight:700}
+.cp-tw td{padding:9px 12px;border-top:1px solid var(--border);vertical-align:top;color:#d3d3e4;line-height:1.5}
+.cp-q{border:1px solid var(--border);border-radius:9px;margin-bottom:8px;background:var(--card)}
+.cp-q summary{cursor:pointer;padding:11px 14px;font-size:.9rem;font-weight:500;list-style:none}
+.cp-q summary::-webkit-details-marker{display:none}
+.cp-q summary::before{content:'+';color:var(--k);font-weight:700;margin-right:10px}
+.cp-q[open] summary::before{content:'\2212'}
+.cp-q div{padding:0 14px 13px 34px;font-size:.88rem;line-height:1.6;color:var(--green)}
+.cp-nav{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:36px;padding-top:20px;border-top:1px solid var(--border);flex-wrap:wrap}
+.cp-b{background:var(--card);border:1px solid var(--border);color:var(--text);font:500 .84rem 'DM Sans',sans-serif;padding:10px 16px;border-radius:8px;cursor:pointer}
+.cp-b:hover:not(:disabled){border-color:var(--k)}
+.cp-b:disabled{opacity:.35;cursor:default}
+.cp-b.main{background:var(--k);border-color:var(--k);color:#080810;font-weight:700}
+.cp-b.main.on{background:none;color:var(--k)}
+.cp button:focus-visible,.cp a:focus-visible,.cp summary:focus-visible{outline:2px solid #fff;outline-offset:2px}
+@media(max-width:860px){
+.cp{display:block}
+.cp-side{position:sticky;top:53px;z-index:44;max-height:none;border:0;border-bottom:1px solid var(--border);padding:8px 10px;background:rgba(8,8,16,.97);display:flex;gap:6px;overflow-x:auto}
+.cp-side h2,.cp-count{display:none}
+.cp-li{width:auto;white-space:nowrap;border:1px solid var(--border);padding:7px 12px}
+.cp-li[aria-current=true]{box-shadow:none;border-color:var(--k)}
+.cp-h1{font-size:2.1rem}
+.cp-main{padding:22px 14px 90px}
+}
+@media(prefers-reduced-motion:reduce){.cp-prog i{transition:none}html{scroll-behavior:auto}}
+/* SHELL: modules, cheat sidebar */
+[hidden]{display:none!important}
+.ch-label{color:var(--k,var(--acc))}
+.ch{background:color-mix(in srgb,var(--k,var(--acc)) 15%,transparent);color:var(--k,var(--acc))}
+.sw{flex:none;margin-right:10px}
+.sw-b{display:flex;align-items:center;gap:8px;height:34px;padding:0 11px;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--text);font:600 .78rem 'DM Sans',sans-serif;cursor:pointer}
+.sw-b:hover,.sw-b[aria-expanded=true]{border-color:var(--acc)}
+.sw-c{color:var(--acc);font-family:'JetBrains Mono',monospace;font-size:.74rem}
+.sw-n{color:var(--muted);font-weight:500;max-width:170px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sw-m{position:fixed;z-index:80;width:min(340px,calc(100vw - 20px));background:var(--card);border:1px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 18px 50px rgba(0,0,0,.55)}
+.sw-h{font-size:.72rem;color:var(--muted);padding:8px 10px 4px}
+.sw-i{display:block;width:100%;text-align:left;background:none;border:0;border-radius:8px;padding:10px;cursor:pointer;color:var(--text);font-family:'DM Sans',sans-serif}
+.sw-i:hover,.sw-i:focus-visible{background:rgba(255,255,255,.05);outline:none}
+.sw-i[aria-current=true]{background:var(--mid);box-shadow:inset 3px 0 0 var(--m)}
+.sw-i b{font:600 .8rem 'JetBrains Mono',monospace;color:var(--m)}
+.sw-i span{display:block;font-size:.84rem;margin-top:2px}
+.sw-i small{display:block;font-size:.72rem;color:var(--muted);margin-top:3px}
+.cht-bar{max-width:900px;margin:0 auto 18px}
+.cht-bar input{width:100%;background:var(--card);border:1px solid var(--border);border-radius:10px;color:var(--text);font:400 .9rem 'DM Sans',sans-serif;padding:11px 14px}
+.cht-bar input:focus-visible{outline:2px solid var(--k,var(--acc));outline-offset:1px}
+.cp-art.wide{max-width:900px}
+.cht-single .ch-label{display:none}
+.cht-n{font-size:.8rem;color:var(--muted);margin:0 0 6px!important}
+.cht-empty{padding:30px 0;color:var(--muted);font-size:.9rem}
+@media(max-width:700px){.brand{display:none}.sw-n{display:none}}
+</style>
+</head>
+<body>
+<nav aria-label="Study sections">
+  <div class="brand">STUDY HUB</div>
+  <div class="sw"><button class="sw-b" id="swBtn" aria-haspopup="true" aria-expanded="false" aria-controls="swMenu" onclick="swToggle()"><span class="sw-c" id="swCode"></span><span class="sw-n" id="swName"></span><span aria-hidden="true">▾</span></button><div class="sw-m" id="swMenu" role="menu" hidden></div></div>
+  <button class="nb" data-tab="chapters" onclick="go('chapters',this)">📖 Chapters</button>
+  <button class="nb" data-tab="cheat" onclick="go('cheat',this)">📋 Cheat Sheet</button>
+  <button class="nb" data-tab="tp" onclick="go('tp',this)">📺 Teleprompter</button>
+  <button class="nb" data-tab="flash" onclick="go('flash',this)">🃏 Cards</button>
+  <button class="nb" data-tab="quiz" onclick="go('quiz',this)">✅ Quiz</button>
+</nav>
+
+<!-- CHEAT SHEET -->
+<section class="sec" id="chapters"><div class="cp-prog"><i id="cpBar"></i></div><div class="cp" id="cpRoot"><aside class="cp-side" id="cpSide" aria-label="Chapters"></aside><main class="cp-main"><article class="cp-art" id="cpArt"></article></main></div></section>
+<section class="sec" id="cheat"><div class="cp" id="chtRoot"><aside class="cp-side" id="chtSide" aria-label="Cheat sheet chapters"></aside><main class="cp-main"><div class="cht-bar"><input type="search" id="chtQ" placeholder="Search the cram sheet (e.g. King, mission, VUCA)" aria-label="Search the cram sheet" oninput="chtFind(this.value)"></div><article class="cp-art wide" id="chtArt"></article></main></div></section>
+
+<!-- TELEPROMPTER -->
+<section class="sec" id="tp">
+  <div class="tp-bar">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--c3);letter-spacing:2px;flex-shrink:0">📺 TELEPROMPTER</div>
+    <div class="tp-mw">
+      <button class="tpm active" id="tpMA" onclick="tpMode('auto')">⏩ Auto</button>
+      <button class="tpm" id="tpMM" onclick="tpMode('manual')">👆 Manual</button>
+    </div>
+    <div id="tpSR" style="display:flex;align-items:center;gap:5px;flex-shrink:0">
+      <span style="font-size:0.63rem;color:var(--muted)">Speed</span>
+      <input type="range" id="tpSpd" min="15" max="180" value="65" style="width:62px;accent-color:var(--c3)" oninput="tpUpS()">
+      <span id="tpSL" style="font-size:0.63rem;color:var(--muted);min-width:20px">65</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
+      <button class="tpc" onclick="tpFnt(-2)">A-</button>
+      <span id="tpFL" style="font-size:0.63rem;color:var(--muted);min-width:22px;text-align:center">18</span>
+      <button class="tpc" onclick="tpFnt(2)">A+</button>
+    </div>
+    <button class="tpp" id="tpPB" onclick="tpToggle()">▶ Play</button>
+    <button class="tpc" onclick="tpReset()" style="margin-left:auto">↩ Reset</button>
+    <span id="tpPct" style="font-size:0.63rem;color:var(--muted);flex-shrink:0">0%</span>
+  </div>
+  <div class="tp-prog"><div class="tp-pf" id="tpPF"></div></div>
+  <div class="tp-content" id="tpC" onclick="tpManAdv()"></div>
+  <div class="mn" id="tpMN">
+    <button class="tpp" style="background:var(--card)" onclick="tpManPrev()">← Prev</button>
+    <span id="tpMP" style="font-size:0.68rem;color:var(--muted)">Line 1</span>
+    <button class="tpp" onclick="tpManNext()">Next →</button>
+  </div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="sec" id="flash">
+<div class="wrap">
+  <div class="pg-head">Flashcards</div>
+  <div class="pg-sub">Tap to flip. Filter by chapter.</div>
+  <div class="pill-row">
+    <button class="fcb go" onclick="fcShuf()">🔀 Shuffle</button>
+    <button class="fcb" onclick="fcPrev()">← Prev</button>
+    <button class="fcb" onclick="fcNext()">Next →</button>
+    <span id="fcPills" style="display:contents"></span>
+    <div class="fc-prog" id="fcP">1 / 35</div>
+  </div>
+  <div class="fc-stage" onclick="fcFlip()">
+    <div class="fc-inner" id="fcI">
+      <div class="fc-face fc-front">
+        <div class="fc-hint">tap to flip</div>
+        <div id="fcCat" class="fc-cat"></div>
+        <div class="fc-q" id="fcQ"></div>
+      </div>
+      <div class="fc-face fc-back">
+        <div class="fc-hint" style="color:rgba(255,255,255,0.32)">answer</div>
+        <div class="fc-a" id="fcA"></div>
+        <div class="fc-sub" id="fcN"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- QUIZ -->
+<section class="sec" id="quiz">
+<div class="wrap">
+  <div class="pg-head">Quiz</div>
+  <div class="pg-sub" id="qSub"></div>
+  <div id="qC" class="qw">
+    <div class="qpb"><div class="qpf" id="qPF"></div></div>
+    <div class="qm" id="qM">Question 1 of 35</div>
+    <div class="qq" id="qQ"></div>
+    <div class="qop" id="qO"></div>
+    <div class="qfb" id="qFB"></div>
+    <div id="qNW" style="margin-top:10px;display:none"><button class="fcb go" onclick="qNext()">Next →</button></div>
+  </div>
+  <div id="qSc" class="qsc" style="display:none">
+    <div class="qsc-n" id="qSN"></div>
+    <div class="qsc-l" id="qOut"></div>
+    <div class="qsc-m" id="qSM"></div>
+    <button class="fcb go" onclick="qRestart()" style="margin-top:10px">Retry</button>
+  </div>
+</div>
+</section>
+
+<script>
+function go(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));
+  document.getElementById(id).classList.add('active');
+  TAB=id;window.scrollTo(0,0);
+  if(id==='chapters')cpInit();
+  if(id==='cheat')chtInit();
+  if(id==='flash')initFC();
+  if(id==='quiz')initQuiz();
+  if(id==='tp')initTP();
+  setHash();
+}
+
+// TELEPROMPTER
+const TP_S=[{"t": "s", "c": 1, "x": "CHAPTER 1 — THE STRATEGIC MANAGEMENT PROCESS"}, {"t": "sp"}, {"t": "s", "c": 1, "x": "INTRODUCTION: A CHANGING COMPETITIVE LANDSCAPE"}, {"t": "i", "x": "Competition is fierce and the environment often unpredictable, so organisations must plan for the future and prepare for unforeseen circumstances."}, {"t": "i", "x": "The competitive landscape changes significantly and continuously, driven by the impact and spread of the Internet."}, {"t": "i", "x": "Managers' own actions and decisions can influence the competitive landscape."}, {"t": "n", "x": "Transformations influencing business models and strategists: The available strategic space has expanded; Business is global (globalisation); Speed is critical; Innovation is a new source of competitive advantage; Knowledge management: finding, unlocking, sharing and capitalising on expertise, skills and relationships; Collaboration"}, {"t": "n", "x": "Heads-up: The slide title says “four transformations” but lists six bullets. The learning guide asks you to “describe four transformations”, so check textbook pp. 1–6 for the exact four."}, {"t": "sp"}, {"t": "s", "c": 1, "x": "WHAT IS STRATEGIC MANAGEMENT AND WHY IT MATTERS"}, {"t": "i", "x": "Strategic management: the process whereby all organisational functions and resources are integrated and coordinated to implement formulated strategies, aligned with the environment, to achieve long-term goals and gain a competitive advantage by adding value for stakeholders."}, {"t": "i", "x": "Strategy: an effort or deliberate action that an organisation implements in order to outperform its rivals."}, {"t": "i", "x": "Offers a route to competitive advantage through several strategies"}, {"t": "i", "x": "Provides clear organisational direction"}, {"t": "i", "x": "Improves strategic decision-making"}, {"t": "i", "x": "Promotes efficient resource allocation"}, {"t": "i", "x": "Supports organisational adaptability and sustainability"}, {"t": "sp"}, {"t": "s", "c": 1, "x": "VIEWS ON STRATEGY"}, {"t": "i", "x": "Emerging vs traditional view (Table 1.1, p. 5)."}, {"t": "i", "x": "The missing dimension of strategy: strategy as a set solution vs strategy as a dynamic process (Table 1.2, p. 6)."}, {"t": "i", "x": "Characteristics of a good strategy (p. 7): takes opportunities and threats into account, gives long-term direction, relates to all units of the business, and must be revisited when changes occur."}, {"t": "n", "x": "The tables themselves aren't in the slides. Learn Table 1.1 from the textbook, because “distinguish between traditional and emerging views of strategy” is a self-assessment question."}, {"t": "sp"}, {"t": "s", "c": 1, "x": "PEOPLE INVOLVED AND STRATEGIC PLANNING CHAMPIONS"}, {"t": "n", "x": "Human resources (human capital) are the most important asset: they are the catalyst for implementing the firm's planned strategies."}, {"t": "i", "x": "1. Environmental analysis | Every manager at every managerial level"}, {"t": "i", "x": "2. Strategy formulation | Top management"}, {"t": "i", "x": "3. Strategy implementation (often the most challenging) | All levels of employees, sometimes other stakeholders too"}, {"t": "i", "x": "Strategic planning champions (SPCs): strategy practitioners who “introduce, promote and guide the strategic planning process in an organisation”. An SPC is a skilful strategic thinker and analytical planner."}, {"t": "n", "x": "Three roles of an SPC: Social craftsperson · Artful interpreter · Known stranger"}, {"t": "sp"}, {"t": "s", "c": 1, "x": "STRATEGIC INTUITION: QUALITATIVE VS QUANTITATIVE"}, {"t": "n", "x": "Strategic management is not an exact science of three easy steps. It involves both qualitative and quantitative assessment and analysis."}, {"t": "i", "x": "What | Intuition: knowing something immediately, based on feeling rather than facts (gut feeling) | Proper strategic analysis"}, {"t": "sp"}, {"t": "s", "c": 1, "x": "THE STRATEGIC MANAGEMENT PROCESS (AND THE TEXTBOOK MAP)"}, {"t": "i", "x": "Strategic management | Planning, implementing and evaluating strategies to achieve long-term goals | 1"}, {"t": "i", "x": "Organisational direction and governance | Vision, mission, values, strategic objectives | 2 & 3"}, {"t": "i", "x": "Environmental analysis | Internal and external environment (SWOT) | 4 & 5"}, {"t": "i", "x": "Strategic formulation | Strategies that align capabilities with environmental opportunities and challenges | 6 & 7"}, {"t": "i", "x": "Business model and strategic implementation | Resource allocation, leadership, structure, operational plans | 8 & 11"}, {"t": "i", "x": "Continuous strategic management cycle | Ongoing planning, implementing, reviewing and adapting | 14"}, {"t": "sp"}, {"t": "s", "c": 1, "x": "BENEFITS AND RISKS"}, {"t": "i", "x": "Higher profitability | Time"}, {"t": "i", "x": "Higher productivity | Unrealistic expectations from managers and employees"}, {"t": "i", "x": "Improved communication across functions | The uncertain chain of implementation"}, {"t": "i", "x": "Employee empowerment | Negative perception of strategic management"}, {"t": "i", "x": "Discipline and a sense of responsibility | No specific objectives or measurable outcomes"}, {"t": "i", "x": "More effective time management | Culture of change"}, {"t": "i", "x": "More effective resource management | Success groove"}, {"t": "i", "x": "Framework for change management"}, {"t": "sp"}, {"t": "s", "c": 1, "x": "STRATEGIC ISSUES AND CONCEPTS LEADING INTO THE FUTURE"}, {"t": "i", "x": "Ethics and strategy"}, {"t": "i", "x": "Shareholder management"}, {"t": "i", "x": "Innovation economy and knowledge management: knowledge management, innovation management, knowledge innovation, multiculturalism in SA organisations and knowledge management, corporate entrepreneurship"}, {"t": "i", "x": "Change management: themes of change (Table 1.4)"}, {"t": "i", "x": "Strategic leadership"}, {"t": "n", "x": "Cohesion case study: Shoprite Checkers is the textbook's cohesion case (pp. 29–48). Outcome 2.10: analyse Shoprite using strategic management principles."}, {"t": "sp"}, {"t": "s", "c": 2, "x": "CHAPTER 2 — STRATEGIC DIRECTION"}, {"t": "sp"}, {"t": "s", "c": 2, "x": "STRATEGIC LEADERSHIP IN A VUCA WORLD"}, {"t": "i", "x": "VUCA = Volatility, Uncertainty, Complexity, Ambiguity."}, {"t": "n", "x": "Strategic leadership becomes possible when strategic intelligence is determined and improved where necessary: better strategic intelligence leads to better strategic leadership."}, {"t": "i", "x": "Strategic leadership: the ability of a leader or leadership team to anticipate, envision, maintain flexibility and empower others to create strategic change that enhances performance and ensures long-term sustainability (Hitt, Ireland & Hoskisson, 2017)."}, {"t": "n", "x": "Essence of leadership: a well-communicated vision, building trust among colleagues and taking effective action. It is a process of persuasion and example."}, {"t": "sp"}, {"t": "s", "c": 2, "x": "GREAT LEADER VIEW VS GREAT GROUPS VIEW"}, {"t": "i", "x": "CEO alone responsible, a “Lone Ranger” shaping the company | Organisation seen as a community"}, {"t": "i", "x": "CEO isolated from “the ones being led” | Leadership distributed among diverse individuals (“great groups”)"}, {"t": "i", "x": "Top-down direction | Collaboration; innovative thinking and speedy acceptance of change"}, {"t": "i", "x": "Worked when environments were predictable and stable | Still needs a top management team"}, {"t": "sp"}, {"t": "s", "c": 2, "x": "COMPONENTS OF STRATEGIC LEADERSHIP"}, {"t": "i", "x": "Determining the company's purpose or vision"}, {"t": "i", "x": "Exploiting and maintaining core capabilities"}, {"t": "i", "x": "Developing human capital"}, {"t": "i", "x": "Sustaining an effective organisational culture"}, {"t": "i", "x": "Emphasising ethical practices"}, {"t": "i", "x": "Establishing balanced organisational controls"}, {"t": "i", "x": "Change orientation: driving and managing transformation in VUCA environments; embracing innovation, adaptation and resilience"}, {"t": "sp"}, {"t": "s", "c": 2, "x": "SIX LEADERSHIP TASKS EMERGING AS PRIORITIES (ABELL, 2006)"}, {"t": "i", "x": "Recognise the dual nature of strategy (short term and long term)"}, {"t": "i", "x": "Start with a vision, mission and distinctive profile"}, {"t": "i", "x": "Replace “resource-based” strategy with a new basis for strategy formulation"}, {"t": "i", "x": "Focus on strategy as aligning the company's external and internal worlds"}, {"t": "i", "x": "Compete through business systems, not through businesses"}, {"t": "i", "x": "Recognise the growing decentralisation of strategy-making and leadership"}, {"t": "sp"}, {"t": "s", "c": 2, "x": "VISION STATEMENT"}, {"t": "i", "x": "Vision: “a description of what the organisation aspires to become, to achieve, or to create in the long-term future. It serves as a guiding star for strategy and decision-making” (Collins & Porras, 1996)."}, {"t": "i", "x": "Answers: “What do we want to become in the future?”"}, {"t": "i", "x": "The long-range idea that drives the organisation: a road map, a dream and an enduring promise."}, {"t": "i", "x": "Guided by general requirements; some things are not representative of a vision statement and should be avoided."}, {"t": "n", "x": "When formulating one: As many managers as possible should contribute; It should be achievable in the long term; It is an exercise in creative thinking about future direction; Once achieved, it loses its power and must be redeveloped"}, {"t": "sp"}, {"t": "s", "c": 2, "x": "STRATEGIC INTENT"}, {"t": "i", "x": "Strategic intent “envisions a desired leadership position and establishes the criterion the organisation will use to chart its progress”."}, {"t": "i", "x": "An overarching, ambitious goal that stretches the organisation, focused on winning in the long run"}, {"t": "i", "x": "Gives a sense of direction and purpose"}, {"t": "sp"}, {"t": "s", "c": 2, "x": "MISSION STATEMENT"}, {"t": "i", "x": "Mission: “an enduring statement of purpose that distinguishes one organization from others. It identifies the scope of its operations in terms of product, market, and technology, and reflects the values and priorities of the organization” (Pearce & David, 1987)."}, {"t": "i", "x": "Often derived from the vision or strategic intent"}, {"t": "i", "x": "Answers: “What is our business?”"}, {"t": "i", "x": "Typically has four focus areas; see the textbook for its components, stakeholders and formulation factors (Strategy in action 2.7)"}, {"t": "sp"}, {"t": "s", "c": 2, "x": "VALUES, AND HOW THE PIECES FIT TOGETHER"}, {"t": "i", "x": "Core values significantly influence behaviour and attitude and are essential to the structural fibre of an organisation"}, {"t": "i", "x": "Prioritising core values is important; winning organisations show consistency"}, {"t": "i", "x": "Shared core values help everyone act consistently according to predetermined guidelines"}, {"t": "i", "x": "The core value statement forms the basis of every activity"}, {"t": "i", "x": "Examples: honesty, integrity, openness, transparency"}, {"t": "n", "x": "Vision vs mission vs intent: Mission and vision are different concepts. Strategic intent contains elements of both, and a vision or mission statement can articulate the strategic intent."}, {"t": "n", "x": "Whatever an organisation uses to set direction, it should be unique, reflect the culture and be implementable. Case studies: Vodacom, Woolworths, Shoprite Checkers."}, {"t": "sp"}, {"t": "s", "c": 3, "x": "CHAPTER 3 — CORPORATE GOVERNANCE AND STRATEGY"}, {"t": "sp"}, {"t": "s", "c": 3, "x": "DEFINITION AND KEY ELEMENTS"}, {"t": "i", "x": "Corporate governance: the system of rules, practices and processes by which a company is directed, managed and controlled to ensure accountability, fairness and transparency. It balances the interests of shareholders, management, customers, suppliers, financiers, government and the community."}, {"t": "n", "x": "Organisations cannot focus solely on economic gain; they must consider the well-being of all stakeholders."}, {"t": "i", "x": "Board of directors | Oversees strategy, performance and risk management"}, {"t": "i", "x": "Senior management | Implements decisions, runs daily operations"}, {"t": "i", "x": "Shareholders and stakeholders | Provide capital, have interests in success"}, {"t": "i", "x": "Accountability, transparency and disclosure | Open reporting of financial and operational information"}, {"t": "i", "x": "Accountability and compliance | Adherence to laws, regulations and ethical standards"}, {"t": "sp"}, {"t": "s", "c": 3, "x": "RESPONSIBLE LEADERSHIP, CSR AND SUSTAINABILITY"}, {"t": "i", "x": "Organisations must embrace responsible leadership: corporate financial prosperity vs ESG (Ecological, Social, Governance); purpose over profit."}, {"t": "i", "x": "They must take ownership of the economic, social and environmental consequences of their decisions and actions."}, {"t": "i", "x": "Related concepts: corporate citizenship, social accountability | Measured by the triple bottom line: economic, social, environmental impact"}, {"t": "n", "x": "Good corporate governance benefits all stakeholders beyond shareholders and achieves a triple bottom line."}, {"t": "sp"}, {"t": "s", "c": 3, "x": "AGENCY THEORY VS STEWARDSHIP THEORY"}, {"t": "i", "x": "Managers (agents) may act in their own interest rather than shareholders' (principals) | Managers are stewards who act responsibly for long-term success and stakeholders' benefit"}, {"t": "i", "x": "So governance mechanisms are needed to align interests | Assumes they can be trusted to act in the organisation's best interest"}, {"t": "n", "x": "Example: Enron (USA, 2001): Lack of transparency and poor governance led to massive fraud and bankruptcy, prompting new global governance regulations."}, {"t": "sp"}, {"t": "s", "c": 3, "x": "GOVERNANCE IN THE STRATEGIC MANAGEMENT PROCESS"}, {"t": "i", "x": "Formulation | Setting direction on broader principles of economic, social and environmental performance"}, {"t": "i", "x": "Implementation | Clarifying the role of the board and management in overseeing implementation"}, {"t": "i", "x": "Control and evaluation | Clarifying the role of the audit committee in managing and overseeing implementation"}, {"t": "n", "x": "Traditionally, strategic management focused on formulating the most competitive strategy. A governance focus means thinking differently about selecting the optimal strategy: ensuring accountability and transparency and upholding ethical standards."}, {"t": "sp"}, {"t": "s", "c": 3, "x": "ETHICS AND THE SEVEN SIGNS OF ETHICAL COLLAPSE"}, {"t": "n", "x": "Corporate governance should be based on sound ethical values: accountability and responsible decision-making, transparency and trust, stakeholder rights and fair treatment, protecting customers, fair treatment of employees."}, {"t": "i", "x": "1. Pressure to meet the numbers"}, {"t": "i", "x": "2. Far away and silent"}, {"t": "i", "x": "3. Sycophantic (flattering) executives and an iconic CEO"}, {"t": "i", "x": "4. A weak board"}, {"t": "i", "x": "5. Conflicts of interest"}, {"t": "i", "x": "6. Overconfidence"}, {"t": "i", "x": "7. Social responsibility as the only measure of goodness"}, {"t": "sp"}, {"t": "s", "c": 3, "x": "CORPORATE GOVERNANCE IN SOUTH AFRICA"}, {"t": "i", "x": "After 1994, SA organisations faced a new political system, rapid trade liberalisation, demanding international investors, an emerging markets crisis and rapid regulatory reform."}, {"t": "i", "x": "Legislation, regulations, listing rules and accounting standards are converging to international norms."}, {"t": "i", "x": "Governance can be statutory, a code of principles and practices, or both. USA: Sarbanes-Oxley Act 2002 (SOX). SA and the 27 EU states chose a code of principles and practices."}, {"t": "i", "x": "Various Acts affect governance, but the definitive authority is the King Report on Corporate Governance."}, {"t": "sp"}, {"t": "s", "c": 3, "x": "THE KING REPORTS"}, {"t": "i", "x": "King I (1994) | Fundamental principles for good financial, social, ethical and environmental practice. Two dimensions: financial (responsibility to shareholders) and ethical (standards of ethics)"}, {"t": "i", "x": "King II (2002) | Replaced King I; went beyond the Companies Act of 1973; Code of Corporate Practice and Conduct. Seven characteristics: discipline, transparency, independence, accountability, responsibility, fairness, social responsibility"}, {"t": "i", "x": "King III (released for comment 25 Feb 2009) | Prompted by the anticipated new Companies Act and international trends. Philosophy: good governance is effective leadership; sustainability is the primary moral and economic imperative; corporate citizenship; the apartheid legacy is unsustainable (transformation and redress); requires sustainability reporting"}, {"t": "i", "x": "King IV (Nov 2016, IoDSA) | Ethical leadership; integrated thinking; organisation as integral to society; corporate citizenship; stakeholder inclusivity; integrated reporting. Principles, practices and governance outcomes (Table 3.4)"}, {"t": "i", "x": "King V (draft proposal, 2025) | Outcomes-based approach (ethical culture, performance, conformance, legitimacy); ethical AI and technology; opportunity-focused risk management; integrated thinking incl. SDGs; stronger “apply and explain” disclosure; proportional application"}, {"t": "n", "x": "King III key points adopted: Risk-based approach (not pure legal compliance); integrated reporting; explanation of the financial crisis; sustainability, ethics and new-era risk (e.g. reputation); executive remuneration fixed by stakeholders; internal audit assesses controls."}, {"t": "n", "x": "Good governance supports a successful strategy that considers sustainability and the triple bottom line. Case studies: MTN, Shoprite Checkers."}, {"t": "sp"}, {"t": "s", "c": 3, "x": "END OF CHAPTERS 1–3. 💪"}];
+
+let tpMode_='auto',tpRunning=false,tpManIdx=0,tpFntSz=18,tpInterval=null,tpLines=[];
+
+function initTP(){
+  if(document.getElementById('tpC').children.length>0)return;
+  const c=document.getElementById('tpC');
+  tpLines=[];
+  MOD.tp.forEach(l=>{
+    const el=document.createElement('div');el.className='tl';
+    if(l.t==='s'){el.classList.add('ts');el.style.color=chColorOf(l.c);el.textContent=l.x;}
+    else if(l.t==='i'){el.classList.add('ti');el.textContent=l.x;}
+    else if(l.t==='n'){el.classList.add('tn');el.textContent='↳ '+l.x;}
+    else{el.classList.add('tsp');el.innerHTML='&nbsp;';}
+    el.style.fontSize=tpFntSz+'px';
+    c.appendChild(el);tpLines.push(el);
+  });
+  applyTS();
+}
+function applyTS(){
+  tpLines.forEach((el,i)=>{el.classList.remove('ta','tp','tf');if(i<tpManIdx)el.classList.add('tp');else if(i===tpManIdx)el.classList.add('ta');else el.classList.add('tf');});
+  updTP();
+}
+function tpMode(m){
+  tpMode_=m;stopTP();
+  document.getElementById('tpMA').classList.toggle('active',m==='auto');
+  document.getElementById('tpMM').classList.toggle('active',m==='manual');
+  document.getElementById('tpSR').style.visibility=m==='auto'?'visible':'hidden';
+  const mn=document.getElementById('tpMN');mn.style.display=m==='manual'?'flex':'none';
+  document.getElementById('tpPB').textContent=m==='auto'?'▶ Play':'↑ Top';
+  if(m==='manual'){tpManIdx=0;applyTS();scToAct();}
+}
+function tpToggle(){tpMode_==='manual'?tpReset():(tpRunning?stopTP():startTP());}
+function startTP(){
+  tpRunning=true;document.getElementById('tpPB').textContent='⏸ Pause';
+  const ppf=parseInt(document.getElementById('tpSpd').value)/60;
+  tpInterval=setInterval(()=>{window.scrollBy(0,ppf);if(window.scrollY>=document.documentElement.scrollHeight-window.innerHeight-2)stopTP();updTP();},16);
+}
+function stopTP(){tpRunning=false;clearInterval(tpInterval);document.getElementById('tpPB').textContent=tpMode_==='auto'?'▶ Play':'↑ Top';}
+function tpReset(){stopTP();tpManIdx=0;applyTS();window.scrollTo({top:50,behavior:'smooth'});updTP();}
+function tpUpS(){const v=document.getElementById('tpSpd').value;document.getElementById('tpSL').textContent=v;if(tpRunning){stopTP();startTP();}}
+function updTP(){const dH=document.documentElement.scrollHeight-window.innerHeight;const pct=tpMode_==='auto'?Math.round((window.scrollY/Math.max(dH,1))*100):Math.round((tpManIdx/Math.max(tpLines.length-1,1))*100);document.getElementById('tpPF').style.width=pct+'%';document.getElementById('tpPct').textContent=pct+'%';}
+function tpManAdv(){if(tpMode_==='manual')tpManNext();}
+function tpManNext(){if(tpManIdx<tpLines.length-1){tpManIdx++;applyTS();scToAct();document.getElementById('tpMP').textContent=`Line ${tpManIdx+1}/${tpLines.length}`;}}
+function tpManPrev(){if(tpManIdx>0){tpManIdx--;applyTS();scToAct();}}
+function scToAct(){const el=tpLines[tpManIdx];if(!el)return;const r=el.getBoundingClientRect();window.scrollBy({top:r.top-window.innerHeight/2,behavior:'smooth'});}
+function tpFnt(d){tpFntSz=Math.max(13,Math.min(48,tpFntSz+d));document.getElementById('tpFL').textContent=tpFntSz;tpLines.forEach(el=>el.style.fontSize=tpFntSz+'px');}
+document.addEventListener('keydown',e=>{if(!document.getElementById('tp').classList.contains('active'))return;if(e.key===' '){e.preventDefault();tpToggle();}if(e.key==='ArrowRight'||e.key==='ArrowDown')tpManNext();if(e.key==='ArrowLeft'||e.key==='ArrowUp')tpManPrev();});
+
+// FLASHCARDS
+const CARDS=[{"u": 1, "q": "Define strategy.", "a": "An effort or deliberate action that an organisation implements in order to outperform its rivals.", "n": ""}, {"u": 1, "q": "Define strategic management.", "a": "The process whereby all organisational functions and resources are integrated and coordinated to implement formulated strategies, aligned with the environment, to achieve long-term goals and gain a competitive advantage by adding value for stakeholders.", "n": ""}, {"u": 1, "q": "Describe the people involved in the strategic management process.", "a": "Environmental analysis: every manager at every level. Formulation: top management. Implementation (often hardest): all levels of employees and sometimes other stakeholders. SPCs introduce, promote and guide strategic planning (roles: social craftsperson, artful interpreter, known stranger).", "n": ""}, {"u": 1, "q": "Distinguish between qualitative and quantitative decisions.", "a": "Qualitative = intuition, a gut feeling about a problem rather than facts. Quantitative = proper strategic analysis. Strategic management needs both.", "n": ""}, {"u": 1, "q": "Briefly describe the strategic management phases.", "a": "Direction and governance (vision, mission, values, objectives) → environmental analysis (SWOT) → formulation → business model and implementation → continuous cycle of reviewing and adapting.", "n": ""}, {"u": 1, "q": "Explain the benefits and the risks of strategic management.", "a": "Benefits: higher profitability and productivity, better communication, empowerment, discipline, better time and resource management, a framework for change. Risks: time, unrealistic expectations, uncertain chain of implementation, negative perception, no measurable objectives, culture of change, success groove.", "n": ""}, {"u": 2, "q": "Define strategic leadership.", "a": "The ability of a leader or leadership team to anticipate, envision, maintain flexibility and empower others to create strategic change that enhances performance and ensures long-term sustainability (Hitt, Ireland & Hoskisson, 2017).", "n": ""}, {"u": 2, "q": "Distinguish between the great leader and great groups views.", "a": "Great leader: CEO as a “Lone Ranger”, isolated, top-down; it suited stable environments. Great groups: organisation as a community, leadership distributed among diverse individuals, collaboration, still with a top management team.", "n": ""}, {"u": 2, "q": "Identify the key components of strategic leadership.", "a": "Purpose/vision; core capabilities; human capital; effective culture; ethical practices; balanced controls; change orientation.", "n": ""}, {"u": 2, "q": "Describe the six leadership tasks (Abell, 2006).", "a": "Dual nature of strategy; start with vision, mission and distinctive profile; replace resource-based strategy; align external and internal worlds; compete through business systems; recognise decentralised strategy-making.", "n": ""}, {"u": 2, "q": "Vision vs mission: which question does each answer?", "a": "Vision: “What do we want to become in the future?” Mission: “What is our business?”", "n": ""}, {"u": 3, "q": "Define corporate governance.", "a": "The system of rules, practices and processes by which a company is directed, managed and controlled to ensure accountability, fairness and transparency, balancing the interests of its stakeholders.", "n": ""}, {"u": 3, "q": "Distinguish between corporate citizenship (CSR) and corporate sustainability.", "a": "CSR is a business responsibility movement with related concepts of corporate citizenship and social accountability. Corporate sustainability measures performance by the triple bottom line: economic, social and environmental impact.", "n": ""}, {"u": 3, "q": "Discuss the main assumption of the agency problem.", "a": "Managers (agents) may act in their own interest rather than in shareholders' (principals') interest, so governance mechanisms are needed to align interests.", "n": ""}, {"u": 3, "q": "What role does governance play in formulation and implementation?", "a": "Formulation: setting direction on broader economic, social and environmental principles. Implementation: clarifying the roles of the board and management in overseeing it. Control: the audit committee's oversight role.", "n": ""}, {"u": 3, "q": "Fully discuss the signs of ethical collapse.", "a": "Pressure to meet the numbers; far away and silent; sycophantic executives and an iconic CEO; a weak board; conflicts of interest; overconfidence; social responsibility as the only measure of goodness.", "n": ""}, {"u": 3, "q": "Distinguish the main focus of King I and King II.", "a": "King I (1994): financial (to shareholders) and ethical dimensions. King II (2002): a Code of Corporate Practice and Conduct beyond the 1973 Companies Act, with seven characteristics: discipline, transparency, independence, accountability, responsibility, fairness, social responsibility.", "n": ""}, {"u": 1, "q": "What are the three roles of a strategic planning champion?", "a": "Social craftsperson\nArtful interpreter\nKnown stranger", "n": "SPCs introduce, promote and guide the strategic planning process."}, {"u": 1, "q": "Name the transformations influencing business models (slides)", "a": "Strategic space expanded\nGlobalisation\nSpeed is critical\nInnovation as competitive advantage\nKnowledge management\nCollaboration", "n": "Check textbook pp. 1–6 for the “four”."}, {"u": 2, "q": "What does VUCA stand for?", "a": "Volatility, Uncertainty, Complexity, Ambiguity", "n": ""}, {"u": 2, "q": "Define strategic intent", "a": "Envisions a desired leadership position and establishes the criterion the organisation will use to chart its progress. An ambitious, stretching goal focused on winning in the long run.", "n": ""}, {"u": 3, "q": "Agency vs stewardship theory", "a": "Agency: managers (agents) may act in their own interest rather than shareholders' (principals'), so governance aligns interests.\nStewardship: managers are trustworthy stewards acting for long-term success.", "n": "Enron 2001 is the governance-failure example."}, {"u": 3, "q": "King III philosophy", "a": "Good governance = effective leadership\nSustainability = primary moral and economic imperative\nCorporate citizenship\nApartheid legacy unsustainable: transformation and redress\nSustainability reporting required", "n": ""}, {"u": 3, "q": "King IV emphases", "a": "Ethical leadership, integrated thinking, organisation as integral part of society, corporate citizenship, stakeholder inclusivity, integrated reporting", "n": "Released Nov 2016 by the IoDSA"}];
+
+let fcDeck=[...CARDS],fcIdx=0,fcFlipped=false;
+function initFC(){fcDeck=[...MOD.cards];fcIdx=0;renderFC();}
+function renderFC(){
+  const c=fcDeck[fcIdx];
+  const catEl=document.getElementById('fcCat');
+  catEl.className='fc-cat';catEl.style.cssText=`color:${chColorOf(c.u)};background:color-mix(in srgb,${chColorOf(c.u)} 15%,transparent)`;
+  catEl.textContent=chShort(c.u);
+  document.getElementById('fcQ').textContent=c.q;
+  document.getElementById('fcA').textContent=c.a;
+  document.getElementById('fcN').textContent=c.n||'';
+  document.getElementById('fcP').textContent=`${fcIdx+1} / ${fcDeck.length}`;
+  fcFlipped=false;document.getElementById('fcI').classList.remove('flipped');
+}
+function fcFlip(){fcFlipped=!fcFlipped;document.getElementById('fcI').classList.toggle('flipped',fcFlipped);}
+function fcNext(){fcIdx=(fcIdx+1)%fcDeck.length;renderFC();}
+function fcPrev(){fcIdx=(fcIdx-1+fcDeck.length)%fcDeck.length;renderFC();}
+function fcShuf(){for(let i=fcDeck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcDeck[i],fcDeck[j]]=[fcDeck[j],fcDeck[i]];}fcIdx=0;renderFC();}
+function fcFlt(u,btn){document.querySelectorAll('#fcPills .fcb').forEach(b=>b.classList.remove('on'));btn.classList.add('on');fcDeck=u==='ALL'?[...MOD.cards]:MOD.cards.filter(c=>c.u===u);fcIdx=0;renderFC();}
+
+// QUIZ
+const QUIZ=[{"q": "Strategy is best defined as:", "o": ["A long-term budget", "An effort or deliberate action an organisation implements to outperform its rivals", "The board's annual report", "A mission statement"], "a": 1, "e": "Slide definition (Ch 1): a strategy is an effort or deliberate action implemented to outperform rivals."}, {"q": "Who is responsible for strategy formulation?", "o": ["Every manager at every level", "All employees", "Top management", "The audit committee"], "a": 2, "e": "Environmental analysis: every manager. Formulation: top management. Implementation: all levels of employees."}, {"q": "Which is NOT a role of a strategic planning champion?", "o": ["Social craftsperson", "Artful interpreter", "Known stranger", "Lone Ranger"], "a": 3, "e": "The SPC roles are social craftsperson, artful interpreter and known stranger. “Lone Ranger” describes the great leader view (Ch 2)."}, {"q": "Intuition (gut feeling) in strategic decisions is:", "o": ["Quantitative", "Qualitative", "Irrelevant", "A governance mechanism"], "a": 1, "e": "Intuition = qualitative; proper strategic analysis = quantitative. Strategic management uses both."}, {"q": "Which is a dysfunctional aspect (risk) of strategic management?", "o": ["Employee empowerment", "Success groove", "Higher productivity", "Framework for change management"], "a": 1, "e": "The success groove is listed with time, unrealistic expectations, uncertain implementation chain, negative perception, no measurable objectives and culture of change."}, {"q": "Environmental analysis (SWOT) is covered in which chapters?", "o": ["2 & 3", "4 & 5", "6 & 7", "8 & 11"], "a": 1, "e": "Direction and governance: 2–3; environmental analysis: 4–5; formulation: 6–7; implementation: 8 & 11."}, {"q": "VUCA stands for:", "o": ["Value, Uncertainty, Competition, Agility", "Volatility, Uncertainty, Complexity, Ambiguity", "Vision, Unity, Culture, Accountability", "Volatility, Urgency, Change, Adaptation"], "a": 1, "e": "Volatility, Uncertainty, Complexity and Ambiguity."}, {"q": "The great groups view of strategic leadership:", "o": ["Uses a top-down approach", "Sees the CEO as a Lone Ranger", "Distributes leadership among diverse individuals but still needs a top team", "Works only in stable environments"], "a": 2, "e": "Great groups: the organisation is a community with distributed leadership. A top management team is still needed."}, {"q": "“What is our business?” is answered by the:", "o": ["Vision statement", "Mission statement", "Strategic intent", "Values statement"], "a": 1, "e": "Mission: “What is our business?” Vision: “What do we want to become in the future?”"}, {"q": "What happens once a vision statement has been achieved?", "o": ["It becomes the mission", "It loses its power and must be redeveloped", "It is filed with the King committee", "Nothing; it stays forever"], "a": 1, "e": "From the slides: once achieved, a vision loses its power and has to be redeveloped."}, {"q": "Which is one of Abell's six leadership tasks?", "o": ["Compete through business systems, not through businesses", "Centralise all strategy-making", "Focus only on short-term results", "Rely only on resource-based strategy"], "a": 0, "e": "The others contradict the tasks: recognise the dual nature, replace resource-based strategy, and recognise decentralisation."}, {"q": "Strategic intent contains elements of:", "o": ["Only the vision", "Only values", "Both the vision and the mission", "The audit report"], "a": 2, "e": "Slide 2.17: strategic intent contains elements of both the vision and the mission."}, {"q": "Agency theory assumes that:", "o": ["Managers are always trustworthy stewards", "Managers (agents) may act in their own interest rather than shareholders'", "Shareholders run daily operations", "Boards are unnecessary"], "a": 1, "e": "Agency theory, so governance mechanisms are needed. The trusting view is stewardship theory."}, {"q": "The triple bottom line measures:", "o": ["Revenue, profit, cash", "Economic, social and environmental impact", "Board, management, shareholders", "King I, II and III"], "a": 1, "e": "Corporate sustainability is measured by economic, social and environmental impact."}, {"q": "In control and evaluation, governance clarifies the role of the:", "o": ["Marketing department", "Audit committee", "Customers", "Unions"], "a": 1, "e": "Formulation: direction principles. Implementation: board and management. Control and evaluation: audit committee."}, {"q": "Which is NOT one of the signs of ethical collapse?", "o": ["A weak board", "Overconfidence", "Integrated reporting", "Conflicts of interest"], "a": 2, "e": "Integrated reporting is a King III/IV practice, not a sign of collapse."}, {"q": "South Africa's approach to corporate governance is mainly:", "o": ["Statutory, like SOX", "A code of principles and practices (King Report)", "Unregulated", "Set by the JSE only"], "a": 1, "e": "SA and the 27 EU states opted for a code of principles and practices; the USA uses SOX (2002)."}, {"q": "King II identified seven characteristics. Which is one?", "o": ["Profitability", "Independence", "Market share", "Speed"], "a": 1, "e": "Discipline, transparency, independence, accountability, responsibility, fairness, social responsibility."}, {"q": "Which King report first explicitly required sustainability reporting?", "o": ["King I", "King II", "King III", "King V"], "a": 2, "e": "Per the slides, King III explicitly requires sustainability reporting as a core aspect of governance."}, {"q": "Ethical AI and technology is a focus of:", "o": ["King I (1994)", "King II (2002)", "King IV (2016)", "King V (draft, 2025)"], "a": 3, "e": "The King V draft proposal (2025) formally addresses ethical use of AI, data and emerging technology."}];
+
+let qIdx=0,qScore=0,qAnswered=false,qShuffled=[];
+function initQuiz(){qMeta();qShuffled=[...MOD.quiz].sort(()=>Math.random()-0.5);qIdx=0;qScore=0;document.getElementById('qC').style.display='block';document.getElementById('qSc').style.display='none';renderQ();}
+function renderQ(){
+  qAnswered=false;const q=qShuffled[qIdx];
+  document.getElementById('qM').textContent=`Question ${qIdx+1} of ${qShuffled.length}`;
+  document.getElementById('qPF').style.width=`${(qIdx/qShuffled.length)*100}%`;
+  document.getElementById('qQ').textContent=q.q;
+  document.getElementById('qNW').style.display='none';
+  const fb=document.getElementById('qFB');fb.classList.remove('show');fb.textContent='';
+  const opts=document.getElementById('qO');opts.innerHTML='';
+  q.o.forEach((o,i)=>{const b=document.createElement('button');b.className='qo';b.textContent=o;b.onclick=()=>selQ(i,q.a,q.e);opts.appendChild(b);});
+}
+function selQ(chosen,correct,exp){
+  if(qAnswered)return;qAnswered=true;
+  document.querySelectorAll('.qo').forEach((b,i)=>{b.disabled=true;if(i===correct)b.classList.add('correct');if(i===chosen&&chosen!==correct)b.classList.add('wrong');});
+  if(chosen===correct)qScore++;
+  const fb=document.getElementById('qFB');fb.textContent=(chosen===correct?'✅ Correct. ':'❌ Not quite. ')+exp;fb.classList.add('show');
+  document.getElementById('qNW').style.display='block';
+}
+function qNext(){qIdx++;if(qIdx>=qShuffled.length){showQSc();}else{renderQ();}}
+function showQSc(){
+  document.getElementById('qC').style.display='none';
+  const pct=Math.round((qScore/qShuffled.length)*100);
+  document.getElementById('qSN').textContent=`${qScore}/${qShuffled.length}`;
+  document.getElementById('qSM').textContent=pct>=85?'Strong. You know the material.':pct>=65?'Good — review what you missed.':'Go back through the cheat sheet first.';
+  document.getElementById('qSc').style.display='block';
+}
+function qRestart(){initQuiz();}
+// CHAPTERS
+const CP=[{"n": 1, "short": "SM Process", "k": "#d4a72c", "t": "The strategic management process", "test": "", "sum": "Strategic management integrates and coordinates all organisational functions and resources to implement strategies aligned with the environment, to reach long-term goals and gain a <b>competitive advantage</b> by adding value for stakeholders.", "S": [["Introduction: a changing competitive landscape", ["ul", ["Competition is fierce and the environment often unpredictable, so organisations must plan for the future and prepare for unforeseen circumstances.", "The competitive landscape changes significantly and continuously, driven by the impact and spread of the Internet.", "Managers' own actions and decisions can influence the competitive landscape."]], ["ex", "Transformations influencing business models and strategists", "<ul><li>The available strategic space has expanded</li><li>Business is global (globalisation)</li><li>Speed is critical</li><li>Innovation is a new source of competitive advantage</li><li>Knowledge management: finding, unlocking, sharing and capitalising on expertise, skills and relationships</li><li>Collaboration</li></ul>"], ["warn", "Heads-up", "The slide title says “four transformations” but lists six bullets. The learning guide asks you to “describe four transformations”, so check textbook pp. 1–6 for the exact four."]], ["What is strategic management and why it matters", ["ex", "Definition", "<strong>Strategic management</strong>: the process whereby all organisational functions and resources are integrated and coordinated to implement formulated strategies, aligned with the environment, to achieve long-term goals and gain a competitive advantage by adding value for stakeholders."], ["ex", "Definition", "<strong>Strategy</strong>: an effort or deliberate action that an organisation implements in order to outperform its rivals."], ["ul", ["Offers a route to competitive advantage through several strategies", "Provides clear organisational direction", "Improves strategic decision-making", "Promotes efficient resource allocation", "Supports organisational adaptability and sustainability"]]], ["Views on strategy", ["ul", ["<strong>Emerging vs traditional view</strong> (Table 1.1, p. 5).", "<strong>The missing dimension of strategy</strong>: strategy as a set solution vs strategy as a dynamic process (Table 1.2, p. 6).", "<strong>Characteristics of a good strategy</strong> (p. 7): takes opportunities and threats into account, gives long-term direction, relates to all units of the business, and must be revisited when changes occur."]], ["tip", "The tables themselves aren't in the slides. Learn Table 1.1 from the textbook, because “distinguish between traditional and emerging views of strategy” is a self-assessment question."]], ["People involved and strategic planning champions", "Human resources (<strong>human capital</strong>) are the most important asset: they are the catalyst for implementing the firm's planned strategies.", ["tbl", ["Stage", "Responsibility of"], [["1. Environmental analysis", "Every manager at every managerial level"], ["2. Strategy formulation", "Top management"], ["3. Strategy implementation (often the most challenging)", "All levels of employees, sometimes other stakeholders too"]]], ["ex", "Definition", "<strong>Strategic planning champions (SPCs)</strong>: strategy practitioners who “introduce, promote and guide the strategic planning process in an organisation”. An SPC is a skilful strategic thinker and analytical planner."], ["ex", "Three roles of an SPC", "Social craftsperson · Artful interpreter · Known stranger"]], ["Strategic intuition: qualitative vs quantitative", "Strategic management is not an exact science of three easy steps. It involves both qualitative and quantitative assessment and analysis.", ["tbl", ["", "Qualitative", "Quantitative"], [["What", "Intuition: knowing something immediately, based on feeling rather than facts (gut feeling)", "Proper strategic analysis"]]]], ["The strategic management process (and the textbook map)", ["tbl", ["Phase", "What it is", "Chapters"], [["Strategic management", "Planning, implementing and evaluating strategies to achieve long-term goals", "1"], ["Organisational direction and governance", "Vision, mission, values, strategic objectives", "2 & 3"], ["Environmental analysis", "Internal and external environment (SWOT)", "4 & 5"], ["Strategic formulation", "Strategies that align capabilities with environmental opportunities and challenges", "6 & 7"], ["Business model and strategic implementation", "Resource allocation, leadership, structure, operational plans", "8 & 11"], ["Continuous strategic management cycle", "Ongoing planning, implementing, reviewing and adapting", "14"]]]], ["Benefits and risks", ["tbl", ["Functional aspects (benefits)", "Dysfunctional aspects (risks)"], [["Higher profitability", "Time"], ["Higher productivity", "Unrealistic expectations from managers and employees"], ["Improved communication across functions", "The uncertain chain of implementation"], ["Employee empowerment", "Negative perception of strategic management"], ["Discipline and a sense of responsibility", "No specific objectives or measurable outcomes"], ["More effective time management", "Culture of change"], ["More effective resource management", "Success groove"], ["Framework for change management", ""]]]], ["Strategic issues and concepts leading into the future", ["ul", ["Ethics and strategy", "Shareholder management", "Innovation economy and knowledge management: knowledge management, innovation management, knowledge innovation, multiculturalism in SA organisations and knowledge management, corporate entrepreneurship", "Change management: themes of change (Table 1.4)", "Strategic leadership"]], ["ex", "Cohesion case study", "Shoprite Checkers is the textbook's cohesion case (pp. 29–48). Outcome 2.10: analyse Shoprite using strategic management principles."]]], "Q": [["Define strategy.", "An effort or deliberate action that an organisation implements in order to outperform its rivals."], ["Define strategic management.", "The process whereby all organisational functions and resources are integrated and coordinated to implement formulated strategies, aligned with the environment, to achieve long-term goals and gain a competitive advantage by adding value for stakeholders."], ["Describe the people involved in the strategic management process.", "Environmental analysis: every manager at every level. Formulation: top management. Implementation (often hardest): all levels of employees and sometimes other stakeholders. SPCs introduce, promote and guide strategic planning (roles: social craftsperson, artful interpreter, known stranger)."], ["Distinguish between qualitative and quantitative decisions.", "Qualitative = intuition, a gut feeling about a problem rather than facts. Quantitative = proper strategic analysis. Strategic management needs both."], ["Briefly describe the strategic management phases.", "Direction and governance (vision, mission, values, objectives) → environmental analysis (SWOT) → formulation → business model and implementation → continuous cycle of reviewing and adapting."], ["Explain the benefits and the risks of strategic management.", "Benefits: higher profitability and productivity, better communication, empowerment, discipline, better time and resource management, a framework for change. Risks: time, unrealistic expectations, uncertain chain of implementation, negative perception, no measurable objectives, culture of change, success groove."]]}, {"n": 2, "short": "Direction", "k": "#5bc0be", "t": "Strategic direction", "test": "", "sum": "Two issues: <b>strategic leadership</b> (influencing) and <b>strategic direction</b> (goal setting) through vision, strategic intent, mission and values. Needed to compete in a VUCA world.", "S": [["Strategic leadership in a VUCA world", ["ex", "Definition", "<strong>VUCA</strong> = Volatility, Uncertainty, Complexity, Ambiguity."], "Strategic leadership becomes possible when strategic intelligence is determined and improved where necessary: better strategic intelligence leads to better strategic leadership.", ["ex", "Definition", "<strong>Strategic leadership</strong>: the ability of a leader or leadership team to anticipate, envision, maintain flexibility and empower others to create strategic change that enhances performance and ensures long-term sustainability (Hitt, Ireland &amp; Hoskisson, 2017)."], "Essence of leadership: a well-communicated vision, building trust among colleagues and taking effective action. It is a process of persuasion and example."], ["Great leader view vs great groups view", ["tbl", ["Great leader view", "Great groups view"], [["CEO alone responsible, a “Lone Ranger” shaping the company", "Organisation seen as a community"], ["CEO isolated from “the ones being led”", "Leadership distributed among diverse individuals (“great groups”)"], ["Top-down direction", "Collaboration; innovative thinking and speedy acceptance of change"], ["Worked when environments were predictable and stable", "Still needs a top management team"]]]], ["Components of strategic leadership", ["ul", ["Determining the company's purpose or vision", "Exploiting and maintaining core capabilities", "Developing human capital", "Sustaining an effective organisational culture", "Emphasising ethical practices", "Establishing balanced organisational controls", "Change orientation: driving and managing transformation in VUCA environments; embracing innovation, adaptation and resilience"]]], ["Six leadership tasks emerging as priorities (Abell, 2006)", ["ul", ["Recognise the dual nature of strategy (short term and long term)", "Start with a vision, mission and distinctive profile", "Replace “resource-based” strategy with a new basis for strategy formulation", "Focus on strategy as aligning the company's external and internal worlds", "Compete through business systems, not through businesses", "Recognise the growing decentralisation of strategy-making and leadership"]]], ["Vision statement", ["ex", "Definition", "<strong>Vision</strong>: “a description of what the organisation aspires to become, to achieve, or to create in the long-term future. It serves as a guiding star for strategy and decision-making” (Collins &amp; Porras, 1996)."], ["ul", ["Answers: <em>“What do we want to become in the future?”</em>", "The long-range idea that drives the organisation: a road map, a dream and an enduring promise.", "Guided by general requirements; some things are not representative of a vision statement and should be avoided."]], ["ex", "When formulating one", "<ul><li>As many managers as possible should contribute</li><li>It should be achievable in the long term</li><li>It is an exercise in creative thinking about future direction</li><li>Once achieved, it loses its power and must be redeveloped</li></ul>"]], ["Strategic intent", ["ex", "Definition", "<strong>Strategic intent</strong> “envisions a desired leadership position and establishes the criterion the organisation will use to chart its progress”."], ["ul", ["An overarching, ambitious goal that stretches the organisation, focused on winning in the long run", "Gives a sense of direction and purpose"]]], ["Mission statement", ["ex", "Definition", "<strong>Mission</strong>: “an enduring statement of purpose that distinguishes one organization from others. It identifies the scope of its operations in terms of product, market, and technology, and reflects the values and priorities of the organization” (Pearce &amp; David, 1987)."], ["ul", ["Often derived from the vision or strategic intent", "Answers: <em>“What is our business?”</em>", "Typically has four focus areas; see the textbook for its components, stakeholders and formulation factors (Strategy in action 2.7)"]]], ["Values, and how the pieces fit together", ["ul", ["Core values significantly influence behaviour and attitude and are essential to the structural fibre of an organisation", "Prioritising core values is important; winning organisations show <strong>consistency</strong>", "Shared core values help everyone act consistently according to predetermined guidelines", "The core value statement forms the basis of every activity", "Examples: honesty, integrity, openness, transparency"]], ["ex", "Vision vs mission vs intent", "Mission and vision are different concepts. Strategic intent contains elements of both, and a vision or mission statement can articulate the strategic intent."], ["tip", "Whatever an organisation uses to set direction, it should be unique, reflect the culture and be implementable. Case studies: Vodacom, Woolworths, Shoprite Checkers."]]], "Q": [["Define strategic leadership.", "The ability of a leader or leadership team to anticipate, envision, maintain flexibility and empower others to create strategic change that enhances performance and ensures long-term sustainability (Hitt, Ireland &amp; Hoskisson, 2017)."], ["Distinguish between the great leader and great groups views.", "Great leader: CEO as a “Lone Ranger”, isolated, top-down; it suited stable environments. Great groups: organisation as a community, leadership distributed among diverse individuals, collaboration, still with a top management team."], ["Identify the key components of strategic leadership.", "Purpose/vision; core capabilities; human capital; effective culture; ethical practices; balanced controls; change orientation."], ["Describe the six leadership tasks (Abell, 2006).", "Dual nature of strategy; start with vision, mission and distinctive profile; replace resource-based strategy; align external and internal worlds; compete through business systems; recognise decentralised strategy-making."], ["Vision vs mission: which question does each answer?", "Vision: “What do we want to become in the future?” Mission: “What is our business?”"], ["Guide exercises", "Develop a vision or mission for a company of your choice; evaluate Telkom's vision statement against the general requirements; identify and evaluate UJ's values. (No model answers in the slides.)"]]}, {"n": 3, "short": "Governance", "k": "#e07a5f", "t": "Corporate governance and strategy", "test": "", "sum": "<b>Corporate governance</b> is the system of rules, practices and processes by which a company is directed, managed and controlled, balancing the interests of all stakeholders. In SA the definitive authority is the <b>King Report</b>.", "S": [["Definition and key elements", ["ex", "Definition", "<strong>Corporate governance</strong>: the system of rules, practices and processes by which a company is directed, managed and controlled to ensure accountability, fairness and transparency. It balances the interests of shareholders, management, customers, suppliers, financiers, government and the community."], "Organisations cannot focus solely on economic gain; they must consider the well-being of all stakeholders.", ["tbl", ["Element", "Role"], [["Board of directors", "Oversees strategy, performance and risk management"], ["Senior management", "Implements decisions, runs daily operations"], ["Shareholders and stakeholders", "Provide capital, have interests in success"], ["Accountability, transparency and disclosure", "Open reporting of financial and operational information"], ["Accountability and compliance", "Adherence to laws, regulations and ethical standards"]]]], ["Responsible leadership, CSR and sustainability", ["ul", ["Organisations must embrace responsible leadership: corporate financial prosperity vs ESG (Ecological, Social, Governance); purpose over profit.", "They must take ownership of the economic, social and environmental consequences of their decisions and actions."]], ["tbl", ["Corporate social responsibility (CSR)", "Corporate sustainability"], [["Related concepts: corporate citizenship, social accountability", "Measured by the triple bottom line: economic, social, environmental impact"]]], "Good corporate governance benefits all stakeholders beyond shareholders and achieves a triple bottom line."], ["Agency theory vs stewardship theory", ["tbl", ["Agency theory", "Stewardship theory"], [["Managers (agents) may act in their own interest rather than shareholders' (principals)", "Managers are stewards who act responsibly for long-term success and stakeholders' benefit"], ["So governance mechanisms are needed to align interests", "Assumes they can be trusted to act in the organisation's best interest"]]], ["ex", "Example: Enron (USA, 2001)", "Lack of transparency and poor governance led to massive fraud and bankruptcy, prompting new global governance regulations."]], ["Governance in the strategic management process", ["tbl", ["Phase", "Governance role"], [["Formulation", "Setting direction on broader principles of economic, social and environmental performance"], ["Implementation", "Clarifying the role of the board and management in overseeing implementation"], ["Control and evaluation", "Clarifying the role of the audit committee in managing and overseeing implementation"]]], "Traditionally, strategic management focused on formulating the most competitive strategy. A governance focus means thinking differently about selecting the optimal strategy: ensuring accountability and transparency and upholding ethical standards."], ["Ethics and the seven signs of ethical collapse", "Corporate governance should be based on sound ethical values: accountability and responsible decision-making, transparency and trust, stakeholder rights and fair treatment, protecting customers, fair treatment of employees.", ["ul", ["1. Pressure to meet the numbers", "2. Far away and silent", "3. Sycophantic (flattering) executives and an iconic CEO", "4. A weak board", "5. Conflicts of interest", "6. Overconfidence", "7. Social responsibility as the only measure of goodness"]]], ["Corporate governance in South Africa", ["ul", ["After 1994, SA organisations faced a new political system, rapid trade liberalisation, demanding international investors, an emerging markets crisis and rapid regulatory reform.", "Legislation, regulations, listing rules and accounting standards are converging to international norms.", "Governance can be statutory, a code of principles and practices, or both. USA: Sarbanes-Oxley Act 2002 (SOX). SA and the 27 EU states chose a <strong>code of principles and practices</strong>.", "Various Acts affect governance, but the definitive authority is the <strong>King Report on Corporate Governance</strong>."]]], ["The King Reports", ["tbl", ["Report", "Key points"], [["King I (1994)", "Fundamental principles for good financial, social, ethical and environmental practice. Two dimensions: financial (responsibility to shareholders) and ethical (standards of ethics)"], ["King II (2002)", "Replaced King I; went beyond the Companies Act of 1973; Code of Corporate Practice and Conduct. Seven characteristics: discipline, transparency, independence, accountability, responsibility, fairness, social responsibility"], ["King III (released for comment 25 Feb 2009)", "Prompted by the anticipated new Companies Act and international trends. Philosophy: good governance is effective leadership; sustainability is the primary moral and economic imperative; corporate citizenship; the apartheid legacy is unsustainable (transformation and redress); requires sustainability reporting"], ["King IV (Nov 2016, IoDSA)", "Ethical leadership; integrated thinking; organisation as integral to society; corporate citizenship; stakeholder inclusivity; integrated reporting. Principles, practices and governance outcomes (Table 3.4)"], ["King V (draft proposal, 2025)", "Outcomes-based approach (ethical culture, performance, conformance, legitimacy); ethical AI and technology; opportunity-focused risk management; integrated thinking incl. SDGs; stronger “apply and explain” disclosure; proportional application"]]], ["ex", "King III key points adopted", "Risk-based approach (not pure legal compliance); integrated reporting; explanation of the financial crisis; sustainability, ethics and new-era risk (e.g. reputation); executive remuneration fixed by stakeholders; internal audit assesses controls."], ["tip", "Good governance supports a successful strategy that considers sustainability and the triple bottom line. Case studies: MTN, Shoprite Checkers."]]], "Q": [["Define corporate governance.", "The system of rules, practices and processes by which a company is directed, managed and controlled to ensure accountability, fairness and transparency, balancing the interests of its stakeholders."], ["Distinguish between corporate citizenship (CSR) and corporate sustainability.", "CSR is a business responsibility movement with related concepts of corporate citizenship and social accountability. Corporate sustainability measures performance by the triple bottom line: economic, social and environmental impact."], ["Discuss the main assumption of the agency problem.", "Managers (agents) may act in their own interest rather than in shareholders' (principals') interest, so governance mechanisms are needed to align interests."], ["What role does governance play in formulation and implementation?", "Formulation: setting direction on broader economic, social and environmental principles. Implementation: clarifying the roles of the board and management in overseeing it. Control: the audit committee's oversight role."], ["Fully discuss the signs of ethical collapse.", "Pressure to meet the numbers; far away and silent; sycophantic executives and an iconic CEO; a weak board; conflicts of interest; overconfidence; social responsibility as the only measure of goodness."], ["Distinguish the main focus of King I and King II.", "King I (1994): financial (to shareholders) and ethical dimensions. King II (2002): a Code of Corporate Practice and Conduct beyond the 1973 Companies Act, with seven characteristics: discipline, transparency, independence, accountability, responsibility, fairness, social responsibility."]]}];
+
+let cpCur=0,cpDone=[];const cpKey=()=>'sh:'+MOD.id+':done';
+function cpLoad(){try{let v=localStorage.getItem(cpKey());if(v===null&&MOD.id==='mne7xb1')v=localStorage.getItem('mne-cp-done');cpDone=JSON.parse(v||'[]')}catch(e){cpDone=[]}}
+function cpSave(){try{localStorage.setItem(cpKey(),JSON.stringify(cpDone))}catch(e){}}
+function cpItem(x){
+  if(typeof x==='string')return `<p>${x}</p>`;
+  const t=x[0];
+  if(t==='ul')return `<ul>${x[1].map(i=>`<li>${i}</li>`).join('')}</ul>`;
+  if(t==='f')return `<div class="cp-f">${x[1]}</div>`;
+  if(t==='tbl')return `<div class="cp-tw"><table><thead><tr>${x[1].map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${x[2].map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  if(t==='ex')return `<div class="cp-co"><b>${x[1]}</b>${x[2]}</div>`;
+  if(t==='tip')return `<div class="cp-co tip"><b>Exam tip</b>${x[1]}</div>`;
+  if(t==='warn')return `<div class="cp-co warn"><b>${x[1]}</b>${x[2]}</div>`;
+  return '';
+}
+function cpRender(i,scroll){
+  cpCur=i;try{localStorage.setItem('sh:'+MOD.id+':ch',i)}catch(e){}const c=MOD.chapters[i],done=cpDone.includes(c.n);
+  const root=document.getElementById('cpRoot');
+  root.style.setProperty('--k',c.k);
+  document.getElementById('cpSide').innerHTML=`<h2>Chapters</h2><div class="cp-count">${cpDone.length} of ${MOD.chapters.length} complete</div>`+MOD.chapters.map((x,j)=>`<button class="cp-li${cpDone.includes(x.n)?' done':''}" style="--k:${x.k}" aria-current="${j===i}" onclick="cpRender(${j},true)"><span class="cp-dot">${cpDone.includes(x.n)?'✓':x.n}</span>${x.t}</button>`).join('');
+  document.getElementById('cpBar').style.cssText=`width:${cpDone.length/MOD.chapters.length*100}%;background:${c.k}`;
+  const jump=c.S.map((s,j)=>`<a href="#cp-s${j}" onclick="event.preventDefault();document.getElementById('cp-s${j}').scrollIntoView({behavior:'smooth'})">${s[0]}</a>`).join('');
+  const body=c.S.map((s,j)=>`<h3 id="cp-s${j}">${s[0]}</h3>`+s.slice(1).map(cpItem).join('')).join('');
+  const qs=c.Q.map(q=>`<details class="cp-q"><summary>${q[0]}</summary><div>${q[1]}</div></details>`).join('');
+  document.getElementById('cpArt').innerHTML=`<div class="cp-meta">Chapter ${c.n}${c.test?` · Assessed in ${c.test}`:''}</div><h1 class="cp-h1">${c.t}</h1><div class="cp-sum"><b>In short:</b> ${c.sum}</div><nav class="cp-jump" aria-label="In this chapter">${jump}</nav>${body}<h3 id="cp-q">Check yourself</h3><p>Try answering before you open each one.</p>${qs}<div class="cp-nav"><button class="cp-b" ${i===0?'disabled':''} onclick="cpRender(${i-1},true)">← Previous</button><button class="cp-b main${done?' on':''}" onclick="cpToggle()">${done?'✓ Completed (undo)':'Mark chapter complete'}</button><button class="cp-b" ${i===MOD.chapters.length-1?'disabled':''} onclick="cpRender(${i+1},true)">Next →</button></div>`;
+  if(scroll)window.scrollTo(0,0);
+}
+function cpToggle(){const n=MOD.chapters[cpCur].n,p=cpDone.indexOf(n);p<0?cpDone.push(n):cpDone.splice(p,1);cpSave();cpRender(cpCur,false)}
+function cpInit(){if(!document.getElementById('cpArt').innerHTML){cpLoad();let i=0;try{i=Math.min(+localStorage.getItem('sh:'+MOD.id+':ch')||0,MOD.chapters.length-1)}catch(e){}cpRender(i,false)}}
+
+const CHEAT={"1": "<div class=\"ch-label\">Chapter 1 — The Strategic Management Process</div><div class=\"cram-grid\"><div class=\"cc\"><span class=\"ch\">Ch 1</span><h4>Definitions</h4><div class=\"row\"><span class=\"rn\">1</span><span><strong>Strategy</strong>: deliberate action to outperform rivals</span></div><div class=\"row\"><span class=\"rn\">2</span><span><strong>Strategic management</strong>: integrate and coordinate functions and resources to implement strategies aligned with the environment → long-term goals and competitive advantage by adding stakeholder value</span></div></div><div class=\"cc\"><span class=\"ch\">Ch 1</span><h4>Transformations</h4><div class=\"row\"><span class=\"rn\">1</span><span>Strategic space expanded</span></div><div class=\"row\"><span class=\"rn\">2</span><span>Globalisation</span></div><div class=\"row\"><span class=\"rn\">3</span><span>Speed is critical</span></div><div class=\"row\"><span class=\"rn\">4</span><span>Innovation = new source of competitive advantage</span></div><div class=\"row\"><span class=\"rn\">5</span><span>Knowledge management</span></div><div class=\"row\"><span class=\"rn\">6</span><span>Collaboration</span></div></div><div class=\"cc\"><span class=\"ch\">Ch 1</span><h4>Who does what</h4><div class=\"row\"><span class=\"rn\">1</span><span>Environmental analysis: every manager at every level</span></div><div class=\"row\"><span class=\"rn\">2</span><span>Formulation: top management</span></div><div class=\"row\"><span class=\"rn\">3</span><span>Implementation: all employees (+ stakeholders)</span></div><div class=\"chip\">SPC roles: social craftsperson · artful interpreter · known stranger</div></div><div class=\"cc\"><span class=\"ch\">Ch 1</span><h4>Process → chapters</h4><div class=\"row\"><span class=\"rn\">1</span><span>Direction and governance: Ch 2–3</span></div><div class=\"row\"><span class=\"rn\">2</span><span>Environmental analysis (SWOT): Ch 4–5</span></div><div class=\"row\"><span class=\"rn\">3</span><span>Formulation: Ch 6–7</span></div><div class=\"row\"><span class=\"rn\">4</span><span>Business model and implementation: Ch 8, 11</span></div><div class=\"row\"><span class=\"rn\">5</span><span>Continuous cycle: Ch 14</span></div></div><div class=\"cc\"><span class=\"ch\">Ch 1</span><h4>Benefits</h4><div class=\"row\"><span class=\"rn\">1</span><span>Profitability and productivity</span></div><div class=\"row\"><span class=\"rn\">2</span><span>Communication across functions</span></div><div class=\"row\"><span class=\"rn\">3</span><span>Empowerment, discipline and responsibility</span></div><div class=\"row\"><span class=\"rn\">4</span><span>Time and resource management</span></div><div class=\"row\"><span class=\"rn\">5</span><span>Framework for change management</span></div></div><div class=\"cc\"><span class=\"ch\">Ch 1</span><h4>Risks</h4><div class=\"row\"><span class=\"rn\">1</span><span>Time</span></div><div class=\"row\"><span class=\"rn\">2</span><span>Unrealistic expectations</span></div><div class=\"row\"><span class=\"rn\">3</span><span>Uncertain chain of implementation</span></div><div class=\"row\"><span class=\"rn\">4</span><span>Negative perception</span></div><div class=\"row\"><span class=\"rn\">5</span><span>No measurable objectives</span></div><div class=\"row\"><span class=\"rn\">6</span><span>Culture of change</span></div><div class=\"row\"><span class=\"rn\">7</span><span>Success groove</span></div><div class=\"chip\">Intuition (gut feel) = qualitative · strategic analysis = quantitative</div></div></div>", "2": "<div class=\"ch-label\">Chapter 2 — Strategic Direction</div><div class=\"cram-grid\"><div class=\"cc\"><span class=\"ch\">Ch 2</span><h4>Big ideas</h4><div class=\"row\"><span class=\"rn\">1</span><span>VUCA: Volatility, Uncertainty, Complexity, Ambiguity</span></div><div class=\"row\"><span class=\"rn\">2</span><span>Strategic leadership = influencing</span></div><div class=\"row\"><span class=\"rn\">3</span><span>Strategic direction = goal setting</span></div><div class=\"row\"><span class=\"rn\">4</span><span>Better strategic intelligence → better strategic leadership</span></div></div><div class=\"cc\"><span class=\"ch\">Ch 2</span><h4>Great leader vs great groups</h4><div class=\"row\"><span class=\"rn\">1</span><span>Leader: CEO “Lone Ranger”, isolated, top-down, suited stable times</span></div><div class=\"row\"><span class=\"rn\">2</span><span>Groups: organisation as a community, distributed leadership, collaboration, still a top team</span></div></div><div class=\"cc\"><span class=\"ch\">Ch 2</span><h4>Components of strategic leadership</h4><div class=\"row\"><span class=\"rn\">1</span><span>Purpose / vision</span></div><div class=\"row\"><span class=\"rn\">2</span><span>Core capabilities</span></div><div class=\"row\"><span class=\"rn\">3</span><span>Human capital</span></div><div class=\"row\"><span class=\"rn\">4</span><span>Effective culture</span></div><div class=\"row\"><span class=\"rn\">5</span><span>Ethical practices</span></div><div class=\"row\"><span class=\"rn\">6</span><span>Balanced controls</span></div><div class=\"row\"><span class=\"rn\">7</span><span>Change orientation</span></div></div><div class=\"cc\"><span class=\"ch\">Ch 2</span><h4>Six leadership tasks (Abell)</h4><div class=\"row\"><span class=\"rn\">1</span><span>Dual nature (short and long term)</span></div><div class=\"row\"><span class=\"rn\">2</span><span>Start with vision, mission and profile</span></div><div class=\"row\"><span class=\"rn\">3</span><span>Replace resource-based strategy</span></div><div class=\"row\"><span class=\"rn\">4</span><span>Align external and internal worlds</span></div><div class=\"row\"><span class=\"rn\">5</span><span>Compete via business systems</span></div><div class=\"row\"><span class=\"rn\">6</span><span>Decentralised strategy-making</span></div></div><div class=\"cc\"><span class=\"ch\">Ch 2</span><h4>Direction statements</h4><div class=\"row\"><span class=\"rn\">1</span><span><strong>Vision</strong>: “What do we want to become?”</span></div><div class=\"row\"><span class=\"rn\">2</span><span><strong>Strategic intent</strong>: desired leadership position + criterion to chart progress</span></div><div class=\"row\"><span class=\"rn\">3</span><span><strong>Mission</strong>: “What is our business?” (product, market, technology)</span></div><div class=\"row\"><span class=\"rn\">4</span><span><strong>Values</strong>: e.g. honesty, integrity, openness, transparency</span></div><div class=\"chip\">Intent contains elements of both vision and mission</div></div></div>", "3": "<div class=\"ch-label\">Chapter 3 — Corporate Governance and Strategy</div><div class=\"cram-grid\"><div class=\"cc\"><span class=\"ch\">Ch 3</span><h4>Core</h4><div class=\"row\"><span class=\"rn\">1</span><span>Governance = rules, practices, processes to direct, manage, control</span></div><div class=\"row\"><span class=\"rn\">2</span><span>Balance all stakeholders</span></div><div class=\"row\"><span class=\"rn\">3</span><span>Triple bottom line: economic, social, environmental</span></div><div class=\"row\"><span class=\"rn\">4</span><span>ESG; purpose over profit</span></div></div><div class=\"cc\"><span class=\"ch\">Ch 3</span><h4>Theories</h4><div class=\"row\"><span class=\"rn\">1</span><span><strong>Agency</strong>: agents may self-serve → align interests</span></div><div class=\"row\"><span class=\"rn\">2</span><span><strong>Stewardship</strong>: managers are trustworthy stewards</span></div><div class=\"chip\">Enron 2001: poor transparency → fraud, bankruptcy</div></div><div class=\"cc\"><span class=\"ch\">Ch 3</span><h4>Governance in the SM process</h4><div class=\"row\"><span class=\"rn\">1</span><span>Formulation: direction on economic, social, environmental principles</span></div><div class=\"row\"><span class=\"rn\">2</span><span>Implementation: board and management roles</span></div><div class=\"row\"><span class=\"rn\">3</span><span>Control and evaluation: audit committee</span></div></div><div class=\"cc\"><span class=\"ch\">Ch 3</span><h4>7 signs of ethical collapse</h4><div class=\"row\"><span class=\"rn\">1</span><span>Pressure to meet numbers</span></div><div class=\"row\"><span class=\"rn\">2</span><span>Far away and silent</span></div><div class=\"row\"><span class=\"rn\">3</span><span>Sycophantic execs and iconic CEO</span></div><div class=\"row\"><span class=\"rn\">4</span><span>Weak board</span></div><div class=\"row\"><span class=\"rn\">5</span><span>Conflicts of interest</span></div><div class=\"row\"><span class=\"rn\">6</span><span>Overconfidence</span></div><div class=\"row\"><span class=\"rn\">7</span><span>Social responsibility as only measure of goodness</span></div></div><div class=\"cc\"><span class=\"ch\">Ch 3</span><h4>King Reports</h4><div class=\"row\"><span class=\"rn\">1</span><span>I (1994): financial + ethical dimensions</span></div><div class=\"row\"><span class=\"rn\">2</span><span>II (2002): 7 characteristics</span></div><div class=\"row\"><span class=\"rn\">3</span><span>III (2009 comment): sustainability, risk-based, integrated reporting</span></div><div class=\"row\"><span class=\"rn\">4</span><span>IV (Nov 2016): ethical leadership, integrated thinking, stakeholder inclusivity</span></div><div class=\"row\"><span class=\"rn\">5</span><span>V (draft 2025): outcomes, ethical AI, opportunity-focused risk</span></div><div class=\"chip\">SA: code of principles · USA: SOX 2002 (statutory)</div></div><div class=\"cc\"><span class=\"ch\">Ch 3</span><h4>King II: 7 characteristics</h4><div class=\"row\"><span class=\"rn\">1</span><span>Discipline</span></div><div class=\"row\"><span class=\"rn\">2</span><span>Transparency</span></div><div class=\"row\"><span class=\"rn\">3</span><span>Independence</span></div><div class=\"row\"><span class=\"rn\">4</span><span>Accountability</span></div><div class=\"row\"><span class=\"rn\">5</span><span>Responsibility</span></div><div class=\"row\"><span class=\"rn\">6</span><span>Fairness</span></div><div class=\"row\"><span class=\"rn\">7</span><span>Social responsibility</span></div></div></div>"};
+/* ===== MODULE REGISTRY =====
+To add a module, push one object into MODULES:
+ { id, code, name, sub, accent,
+   chapters:[{n,k,t,short,test,sum,S:[[heading,...items]],Q:[[q,a]]}],  // "Chapters" tab
+   cheat:{ [n]: 'html cards' },   // "Cheat sheet" tab
+   tp:[{t:'s'|'i'|'n'|'sp',c:n,x:text}],  // "Teleprompter" tab
+   cards:[{u:n,q,a,n}],           // "Cards" tab
+   quiz:[{q,o:[..],a:index,e}] }  // "Quiz" tab
+Leave out any key and that tab hides itself. Progress is saved per module id. */
+const MODULES=[{id:'str7xb1',code:'STR7XB1',name:'Strategic Management 4',sub:'UJ · Chapters 1–3 · Semester 2, 2026',accent:'#d4a72c',chapters:CP,cheat:CHEAT,tp:TP_S,cards:CARDS,quiz:QUIZ}];
+let MOD=MODULES[0],TAB='chapters';
+const $=id=>document.getElementById(id);
+function chOf(n){return MOD.chapters.find(c=>c.n===n)||{k:MOD.accent,short:'Chapter '+n}}
+function chColorOf(n){return chOf(n).k}
+function chShort(n){return 'Ch '+n+' · '+chOf(n).short}
+function tabsAvail(){const a=[];if(MOD.chapters)a.push('chapters');if(MOD.cheat)a.push('cheat');if(MOD.tp)a.push('tp');if(MOD.cards)a.push('flash');if(MOD.quiz)a.push('quiz');return a}
+function setHash(){try{history.replaceState(null,'','#/'+MOD.id+'/'+TAB)}catch(e){}}
+
+/* module switcher */
+function swProgress(m){try{let v=localStorage.getItem('sh:'+m.id+':done');if(v===null&&m.id==='mne7xb1')v=localStorage.getItem('mne-cp-done');return JSON.parse(v||'[]').length}catch(e){return 0}}
+function swRender(){
+  $('swCode').textContent=MOD.code;$('swName').textContent=MOD.name;
+  $('swMenu').innerHTML='<div class="sw-h">Your modules</div>'+MODULES.map(m=>`<button class="sw-i" role="menuitem" style="--m:${m.accent}" aria-current="${m===MOD}" onclick="swPick('${m.id}')"><b>${m.code}</b><span>${m.name}</span><small>${m.sub} · ${swProgress(m)} of ${m.chapters?m.chapters.length:0} chapters complete</small></button>`).join('');
+}
+function swClose(){const m=$('swMenu');if(m.hidden)return;m.hidden=true;$('swBtn').setAttribute('aria-expanded','false')}
+function swToggle(){
+  const m=$('swMenu'),b=$('swBtn');
+  if(!m.hidden){swClose();return}
+  swRender();m.hidden=false;b.setAttribute('aria-expanded','true');
+  const r=b.getBoundingClientRect();m.style.top=(r.bottom+8)+'px';m.style.left=Math.max(10,Math.min(r.left,innerWidth-m.offsetWidth-10))+'px';
+  const cur=m.querySelector('[aria-current=true]');if(cur)cur.focus();
+}
+function swPick(id){swClose();if(MODULES.find(m=>m.id===id)!==MOD)setModule(id,TAB);$('swBtn').focus()}
+document.addEventListener('click',e=>{if(!e.target.closest('.sw')&&!e.target.closest('#swMenu'))swClose()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){swClose()}});
+
+function setModule(id,tab){
+  MOD=MODULES.find(m=>m.id===id)||MODULES[0];
+  document.documentElement.style.setProperty('--acc',MOD.accent);
+  document.title=MOD.code+' · Study Hub';
+  try{localStorage.setItem('sh:last',MOD.id)}catch(e){}
+  /* reset every per-module view */
+  if(typeof stopTP==='function')stopTP();
+  tpManIdx=0;$('tpC').innerHTML='';
+  $('cpArt').innerHTML='';$('chtArt').dataset.m='';
+  $('fcPills').innerHTML=MOD.cards?`<button class="fcb on" data-f="ALL" onclick="fcFlt('ALL',this)">All</button>`+MOD.chapters.filter(c=>MOD.cards.some(x=>x.u===c.n)).map(c=>`<button class="fcb" data-f="${c.n}" onclick="fcFlt(${c.n},this)">Ch ${c.n}</button>`).join(''):'';
+  const av=tabsAvail();
+  document.querySelectorAll('.nb').forEach(b=>b.hidden=!av.includes(b.dataset.tab));
+  swRender();
+  go(av.includes(tab)?tab:av[0]);
+}
+function qMeta(){const n=MOD.quiz.length;$('qSub').textContent=n+(n===1?' question':' questions')+' · '+MOD.chapters.length+(MOD.chapters.length===1?' chapter':' chapters')+' · Shuffled · Instant feedback';$('qOut').textContent='out of '+n+' correct'}
+
+/* cheat sheet with chapter sidebar */
+let chtSel=null,chtQ='';
+function chtList(){return MOD.chapters.filter(c=>MOD.cheat&&MOD.cheat[c.n])}
+function chtInit(){if($('chtArt').dataset.m!==MOD.id){$('chtArt').dataset.m=MOD.id;chtSel=chtList()[0].n;chtQ='';$('chtQ').value='';chtRender(false)}}
+function chtPick(n){chtSel=n;chtQ='';$('chtQ').value='';chtRender(true)}
+function chtFind(v){chtQ=v.trim().toLowerCase();chtRender(false)}
+function chtRender(scroll){
+  const L=chtList(),all=chtSel==='ALL'||!!chtQ,cur=all?null:L.find(c=>c.n===chtSel),A=$('chtArt');
+  $('chtRoot').style.setProperty('--k',cur?cur.k:MOD.accent);
+  $('chtSide').innerHTML=`<h2>Cram sheet</h2><div class="cp-count">${L.length} chapters</div><button class="cp-li" style="--k:${MOD.accent}" aria-current="${all}" onclick="chtSel='ALL';chtQ='';$('chtQ').value='';chtRender(true)"><span class="cp-dot">≡</span>All chapters</button>`+L.map(c=>`<button class="cp-li" style="--k:${c.k}" aria-current="${!all&&c.n===chtSel}" onclick="chtPick(${c.n})"><span class="cp-dot">${c.n}</span>${c.t}</button>`).join('');
+  const wrap=c=>`<div class="cht-ch" style="--k:${c.k}">${MOD.cheat[c.n]}</div>`;
+  if(all){A.className='cp-art wide';A.innerHTML=`<div class="cp-meta">${MOD.code} · ${MOD.name}</div><h1 class="cp-h1">Cram sheet</h1><p class="cht-n" id="chtN"></p>`+L.map(wrap).join('')+'<div class="cht-empty" id="chtE" hidden>No cards match. Try a shorter word, such as “King” or “vision”.</div>'}
+  else{const i=L.indexOf(cur);A.className='cp-art wide cht-single';A.innerHTML=`<div class="cp-meta">Chapter ${cur.n}</div><h1 class="cp-h1">${cur.t}</h1>`+wrap(cur)+`<div class="cp-nav"><button class="cp-b" ${i===0?'disabled':''} onclick="chtPick(${i?L[i-1].n:0})">← Previous</button><button class="cp-b" ${i===L.length-1?'disabled':''} onclick="chtPick(${i<L.length-1?L[i+1].n:0})">Next →</button></div>`}
+  if(chtQ){let hits=0;A.querySelectorAll('.cht-ch').forEach(w=>{let any=0;w.querySelectorAll('.cc,.bf').forEach(x=>{const m=x.textContent.toLowerCase().includes(chtQ);x.hidden=!m;if(m){any++;hits++}});w.querySelectorAll('.cram-grid').forEach(g=>g.hidden=![...g.children].some(x=>!x.hidden));w.hidden=!any});$('chtN').textContent=hits+(hits===1?' matching card':' matching cards')+' for “'+chtQ+'”';$('chtE').hidden=hits>0}
+  if(scroll)window.scrollTo(0,0);
+}
+
+function boot(){
+  let id=null,tab=null;
+  try{const m=(location.hash||'').match(/^#\/([^/]+)\/?([^/]*)/);if(m){id=m[1];tab=m[2]}}catch(e){}
+  if(!id){try{id=localStorage.getItem('sh:last')}catch(e){}}
+  setModule(id,tab||'chapters');
+}
+boot();
+</script>
+</body>
+</html>
