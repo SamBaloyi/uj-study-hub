@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FMA7XB1 — Study Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080810;--mid:#10101a;--card:#161622;--border:#22223a;--text:#e6e6f2;--muted:#66668a;--c2:#5b8dee;--c3:#0ea880;--c5:#9b6dff;--c6:#e8a020;--c8:#e05a5a;--acc:#7eb3ff;--green:#7effd8;--warn:#ff7575;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.55;}
+nav{position:sticky;top:0;z-index:50;background:rgba(8,8,16,0.97);border-bottom:1px solid var(--border);height:50px;padding:0 14px;display:flex;align-items:center;gap:4px;overflow-x:auto;}
+nav::-webkit-scrollbar{display:none;}
+.brand{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;color:var(--acc);letter-spacing:2px;margin-right:14px;flex-shrink:0;text-decoration:none;}
+.nb{background:none;border:none;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:0.68rem;font-weight:700;padding:0 9px;height:50px;cursor:pointer;white-space:nowrap;flex-shrink:0;border-bottom:2px solid transparent;text-transform:uppercase;letter-spacing:0.5px;}
+.nb:hover{color:var(--text);}.nb.active{color:#fff;border-bottom-color:var(--acc);}
+.sec{display:none;}.sec.active{display:block;}
+.wrap{max-width:980px;margin:0 auto;padding:30px 16px 80px;}
+.pg-head{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:2px;margin-bottom:4px;}
+.pg-sub{font-size:0.72rem;color:var(--muted);margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+.ch-label{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:2px;margin:28px 0 10px;padding-bottom:5px;border-bottom:1px solid var(--border);color:var(--acc);}
+.alert{background:rgba(224,90,90,0.12);border:1px solid var(--c8);border-radius:9px;padding:12px 16px;margin-bottom:18px;}
+.alert b{color:#fff;}
+.cram-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:9px;margin-bottom:12px;}
+.cc{background:var(--card);border:1px solid var(--border);border-radius:9px;padding:13px 15px;font-size:0.8rem;}
+.cc h4{font-size:0.85rem;font-weight:700;margin-bottom:6px;color:#fff;}
+.cc ul{padding-left:16px;}
+.bf{background:var(--mid);border:1px solid var(--border);border-radius:9px;padding:14px 18px;margin:12px 0;}
+.bf-l{font-size:0.6rem;font-weight:700;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:8px;}
+.bff{font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--green);line-height:1.9;white-space:pre-wrap;}
+.note{font-size:0.75rem;color:var(--c6);margin-top:6px;}
+table{border-collapse:collapse;width:100%;font-size:0.78rem;margin:8px 0;}
+th,td{border:1px solid var(--border);padding:5px 8px;text-align:right;}
+th:first-child,td:first-child{text-align:left;}
+th{background:var(--mid);color:var(--acc);}
+details{background:var(--card);border:1px solid var(--border);border-radius:9px;margin:9px 0;padding:11px 15px;}
+summary{cursor:pointer;font-weight:700;color:#fff;}
+details .ans{margin-top:10px;border-top:1px dashed var(--border);padding-top:10px;}
+.tag{font-size:0.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:2px 7px;border-radius:3px;background:var(--c5);color:#080810;margin-right:6px;}
+</style>
+</head>
+<body>
+<nav>
+<a class="brand" href="../">FMA7XB1</a>
+<button class="nb active" data-s="overview">Overview</button>
+<button class="nb" data-s="lu1">LU1 Cost concepts</button>
+<button class="nb" data-s="lu2">LU2 Material</button>
+<button class="nb" data-s="lu3">LU3 Labour</button>
+<button class="nb" data-s="lu4">LU4 Overheads</button>
+<button class="nb" data-s="test">Self-test</button>
+<button class="nb" data-s="lu57">LU5–7</button>
+</nav>
+
+<!-- OVERVIEW -->
+<section class="sec active" id="overview"><div class="wrap">
+<h1 class="pg-head">Financial Management Aspects</h1>
+<p class="pg-sub">FMA7XB1 · AdvDip Business Management · Semester 2, 2026 · Mr K Morake · Built only from the unit slides, class work, tutorial and learner guide</p>
+<div class="alert"><b>Sick / replacement Test 1 (AO1): Friday 16 October 2026, 18:00, Cowan G01 computer lab.</b><br>Scope: Learning Units 1–4 (cost concepts, material cost, labour cost, manufacturing overheads). Check Moodle in case the lecturer changed the scope.</div>
+<div class="ch-label">The big picture (every unit plugs into this)</div>
+<div class="bf"><div class="bf-l">Manufacturing cost build-up (LU1)</div><div class="bff">Direct materials + Direct labour            = PRIME COST
+Direct labour + Manufacturing overheads      = CONVERSION COST
+Direct materials + Direct labour + Manufacturing overheads = TOTAL MANUFACTURING COST
+Manufacturing overheads = Indirect materials + Indirect labour + Other indirect costs</div></div>
+<div class="bf"><div class="bf-l">Worked through the course: one product, all three elements (LU4 slides)</div><div class="bff">Direct materials          R127.05
+Direct labour             R193.74   (product "G", LU3: 3 h × R64.58)
+Manufacturing overheads   R615.08   ("Drip Air", LU4)
+Total manufacturing cost  R935.87</div></div>
+<div class="ch-label">Formula cram sheet</div>
+<div class="cram-grid">
+<div class="cc"><h4>LU1 · Mixed cost &amp; high/low</h4>Y = a + bX (a = fixed, b = variable per unit)<br>Variable cost/unit = (highest cost − lowest cost) ÷ (highest activity − lowest activity)<br>Total fixed = Total cost − Total variable</div>
+<div class="cc"><h4>LU2 · Inventory</h4>Cost of inventory = purchase price + import duties + insurance + transport<br>COGS = Opening inventory + Purchases − Closing inventory<br>WAM cost/unit = (cost opening + cost acquired) ÷ (units opening + units acquired)<br>FIFO: closing stock = latest purchases</div>
+<div class="cc"><h4>LU3 · Labour</h4>Gross = normal + overtime + extra earnings + incentive bonus (+ fringe benefits)<br>Taxable income = gross + taxable fringe benefits − employee pension<br>Net pay = Gross − deductions<br>Recovery rate/hour = Total cost to employer ÷ Productive labour hours</div>
+<div class="cc"><h4>LU4 · Overheads</h4>Rate per cost driver = overhead item ÷ total driver units<br>Primary: allocate to ALL departments (incl. service)<br>Secondary: service dept total → production depts only<br>Dept recovery rate = dept total overheads ÷ dept basis (machine or labour hours)<br>Product OH = (minutes ÷ 60) × dept rate</div>
+</div>
+</div></section>
+
+<!-- LU1 -->
+<section class="sec" id="lu1"><div class="wrap">
+<h1 class="pg-head">LU1 · Cost Concepts</h1>
+<p class="pg-sub">Cost classification &amp; terminology · fixed vs variable · direct vs indirect · high/low method</p>
+<div class="cram-grid">
+<div class="cc"><h4>Direct costs</h4>Costs that can be traced easily to a cost object.<ul><li><b>Direct materials</b>: raw materials transformed into the finished product; integral part of it. Delivery cost and import duties on purchase are usually included.</li><li><b>Direct labour</b>: labour directly converting materials into finished products (e.g. wages of bricklayers).</li></ul></div>
+<div class="cc"><h4>Manufacturing overheads</h4>Manufacturing costs that cannot easily be traced to specific units produced, e.g. indirect materials and indirect labour.</div>
+<div class="cc"><h4>Cost behaviour</h4>How a cost reacts to a change in volume/activity.<ul><li><b>Fixed</b>: total does not change with production within a range (rent, salaries, insurance, depreciation); incurred even at zero output.</li><li><b>Variable</b>: total changes in direct proportion; <i>per unit stays the same</i>.</li><li><b>Mixed (semi-variable)</b>: fixed + variable part, e.g. electricity: fixed monthly charge + rate per kWh.</li></ul></div>
+<div class="cc"><h4>Separating mixed costs</h4>High/low method · scatter graph · simple regression. High/low is simple but not the most accurate (only two observations). Since fixed cost doesn't change, the change in cost between levels is variable cost.</div>
+</div>
+<div class="ch-label">Worked example · cost sheet (slide 8)</div>
+<table><tr><th>Item</th><th>R</th></tr>
+<tr><td>Cement 600 m³ @ R25</td><td>15 000</td></tr><tr><td>Bricks 750 @ R15</td><td>11 250</td></tr><tr><td>Roof sheets 110 @ R75</td><td>8 250</td></tr>
+<tr><td>Bricklayers 480 h @ R30</td><td>14 400</td></tr><tr><td>Roofing 90 h @ R48</td><td>4 320</td></tr><tr><td>Painters 48 h @ R50</td><td>2 400</td></tr>
+<tr><th>Prime cost</th><th>55 620</th></tr><tr><td>+ Overhead costs</td><td>13 320</td></tr><tr><th>Total production cost</th><th>68 940</th></tr></table>
+<div class="ch-label">Worked example · mixed cost (slides 19–20)</div>
+<div class="bf"><div class="bff">Fixed electricity charge R200/month, variable R0.30 per kWh, 2 000 kWh used.
+Y = a + bX = R200 + (R0.30 × 2 000) = R200 + R600 = R800</div></div>
+<div class="ch-label">Worked example · high/low (slides 24–26)</div>
+<table><tr><th>Month</th><th>Units</th><th>Total cost</th></tr><tr><td>January</td><td>600</td><td>R2 750</td></tr><tr><td>February</td><td>800</td><td>R3 250</td></tr><tr><td>March</td><td>700</td><td>R3 000</td></tr><tr><td>April</td><td>1 000</td><td>R3 750</td></tr></table>
+<div class="bf"><div class="bff">Step 1  Pick highest (April 1 000 / R3 750) and lowest (Jan 600 / R2 750) ACTIVITY
+Step 2  Differences: 400 units, R1 000  → the R1 000 is variable cost
+Step 3  Variable cost/unit = R1 000 ÷ 400 = R2.50
+Step 4  Fixed = R2 750 − (R2.50 × 600) = R2 750 − R1 500 = R1 250</div></div>
+<div class="ch-label">Worked example · class work 13 July 2026 (high/low)</div>
+<table><tr><th>Month</th><th>Machine hours</th><th>Total cost</th></tr><tr><td>Jul 2026</td><td>1 500</td><td>35 000</td></tr><tr><td>Aug 2026</td><td>2 000</td><td>40 000</td></tr><tr><td>Sep 2026</td><td>2 500</td><td>45 000</td></tr><tr><td>Oct 2026</td><td>2 200</td><td>42 500</td></tr><tr><td>Nov 2026</td><td>1 800</td><td>37 000</td></tr><tr><td>Dec 2026</td><td>3 200</td><td>54 000</td></tr><tr><td>Jan 2027</td><td>1 200</td><td>30 000</td></tr></table>
+<div class="bf"><div class="bff">High: Dec 3 200 / R54 000   Low: Jan 1 200 / R30 000
+Difference: 2 000 hours, R24 000
+Variable cost = R24 000 ÷ 2 000 = R12 per machine hour
+Fixed = R54 000 − (R12 × 3 200) = R54 000 − R38 400 = R15 600 per month</div>
+<p class="note">Note: the class-work doc labels the low month "Jun 2027" and writes the subtraction as 38,400 − 54,000; the low month in the data is Jan 2027 and the correct order is 54 000 − 38 400. The answer R15 600 is the same.</p></div>
+</div></section>
+
+<!-- LU2 -->
+<section class="sec" id="lu2"><div class="wrap">
+<h1 class="pg-head">LU2 · Material Cost</h1>
+<p class="pg-sub">Cost of inventory · journals · perpetual vs periodic · FIFO &amp; weighted average</p>
+<div class="cram-grid">
+<div class="cc"><h4>Inventory flow</h4>Raw materials: opening + purchases − issued to production = closing.<br>WIP: opening + raw materials issued + direct labour + manufacturing overheads − completed = closing.<br>Finished goods: opening + completed − sold = closing.</div>
+<div class="cc"><h4>Perpetual vs periodic</h4><b>Perpetual</b>: cost of sale recorded every time a sale is made; inventory account updated.<br><b>Periodic</b>: purchases account updated on each purchase; physical stock count at period end. COGS = opening + purchases − closing.</div>
+<div class="cc"><h4>FIFO</h4>Items bought first are used/sold/issued first, so stock on hand at year-end is the latest inventory received.</div>
+<div class="cc"><h4>Weighted average (WAM)</h4>Every new purchase is added to stock and a new average is calculated (total cost on hand ÷ units on hand); that average is used for cost of sales.</div>
+</div>
+<div class="ch-label">Example 1 · cost of imported inventory (One Pty Ltd)</div>
+<div class="bf"><div class="bff">10 items @ €880, exchange rate €1 = R15
+Purchase price (10 × 880 × R15)   R132 000
+Import duties                      R2 000
+Insurance                          R6 500
+Transport to RSA                   R5 900
+Total inventory cost              R146 400   → per item R146 400 ÷ 10 = R14 640
+
+Journals: Dr Inventory (SFP) R132 000 / Cr Bank R132 000
+          Dr Inventory (duties R2 000, insurance R6 500, transport R5 900) / Cr Bank</div></div>
+<div class="ch-label">Example 1 continued · production &amp; sale journals</div>
+<div class="bf"><div class="bff">Production cost R250 000 for 20 units; 10 units sold @ R40 000
+1. Dr Finished goods (SFP) R250 000   Cr Bank R250 000
+2. Dr Bank R400 000                   Cr Sales (P/L) R400 000   (R40 000 × 10)
+3. Dr Cost of sales (P/L) R125 000    Cr Finished goods R125 000 (R250 000 ÷ 20 = R12 500 × 10)</div></div>
+<div class="ch-label">Example 2 · cost of goods sold (periodic)</div>
+<div class="bf"><div class="bff">Opening R300 000 + Purchases R400 000 − Closing R150 000 = COGS R550 000</div></div>
+<div class="ch-label">Lecture examples 2 &amp; 3 · FIFO vs WAM (periodic)</div>
+<div class="bf"><div class="bff">Opening 180 @ R40; purchases 200 @ R50, 250 @ R45, 150 @ R55; 225 units on hand at 31 Dec.
+FIFO: closing = latest buys → 150 @ R55 = R8 250 + 75 @ R45 = R3 375 → R11 625
+WAM:  (R7 200 + R10 000 + R11 250 + R8 250) ÷ (180 + 200 + 250 + 150)
+      = R36 700 ÷ 780 = R47.05 per unit → 225 × R47.05 = R10 586</div></div>
+<div class="ch-label">Class work 20 July · perpetual FIFO &amp; WAM (Two Pty Ltd)</div>
+<p>Opening 1 Jan: 100 @ R50 (R5 000). 5 Jan buy 200 @ R55 · 10 Jan issue 150 · 15 Jan buy 300 @ R60 · 20 Jan issue 250 · 25 Jan buy 100 @ R65.</p>
+<table><tr><th>FIFO</th><th>Units</th><th>Cost</th><th>Balance</th></tr>
+<tr><td>Opening</td><td>100</td><td>R5 000</td><td>100 @ R50</td></tr>
+<tr><td>5 Jan purchase</td><td>+200</td><td>+R11 000</td><td>100 @ R50 / 200 @ R55</td></tr>
+<tr><td>10 Jan issue 150</td><td>−100 @ R50, −50 @ R55</td><td>−R5 000 −R2 750</td><td>150 @ R55</td></tr>
+<tr><td>15 Jan purchase</td><td>+300</td><td>+R18 000</td><td>150 @ R55 / 300 @ R60</td></tr>
+<tr><td>20 Jan issue 250</td><td>−150 @ R55, −100 @ R60</td><td>−R8 250 −R6 000</td><td>200 @ R60</td></tr>
+<tr><td>25 Jan purchase</td><td>+100</td><td>+R6 500</td><td>200 @ R60 / 100 @ R65</td></tr></table>
+<table><tr><th>WAM</th><th>Units</th><th>Cost</th><th>Avg/unit</th></tr>
+<tr><td>Opening</td><td>100</td><td>R5 000</td><td>R50.0000</td></tr>
+<tr><td>After 5 Jan buy</td><td>300</td><td>R16 000</td><td>R53.3333</td></tr>
+<tr><td>10 Jan issue 150</td><td>−150</td><td>−R8 000</td><td>R53.3333</td></tr>
+<tr><td>After 15 Jan buy</td><td>450</td><td>R26 000</td><td>R57.7778</td></tr>
+<tr><td>20 Jan issue 250</td><td>−250</td><td>−R14 444.45</td><td>R57.7778</td></tr>
+<tr><td>After 25 Jan buy</td><td>300</td><td>R18 055.55</td><td>R60.1852</td></tr></table>
+<table><tr><th>Method</th><th>Cost of sales</th><th>Closing inventory</th><th>Total</th></tr>
+<tr><td>FIFO</td><td>R22 000.00</td><td>R18 500.00</td><td>R40 500.00</td></tr>
+<tr><td>WAM</td><td>R22 444.45</td><td>R18 055.55</td><td>R40 500.00</td></tr></table>
+<p class="note">Check: both methods total R40 500 (= opening R5 000 + purchases R35 500). Note the class-work answer table shows WAM closing R18 055.55, while the running WAM table in the doc ends at R18 555.55 (avg R61.8519). R26 000 − R14 444.45 + R6 500 = R18 055.55, so the doc's running-table figure looks like a typo. The table above uses R18 055.55.</p>
+</div></section>
+
+<!-- LU3 -->
+<section class="sec" id="lu3"><div class="wrap">
+<h1 class="pg-head">LU3 · Labour Cost</h1>
+<p class="pg-sub">Remuneration · overtime · deductions · labour recovery rate</p>
+<div class="cram-grid">
+<div class="cc"><h4>Terminology</h4>Direct vs indirect labour · normal time · overtime · gross pay · deductions · <b>Net pay = Gross − Deductions</b></div>
+<div class="cc"><h4>Remuneration methods</h4><b>Fixed salary</b>: regardless of quantity/time.<br><b>Hourly wages</b>: (normal + overtime hours) × rate per hour.</div>
+<div class="cc"><h4>Deductions</h4>Legal deductions: PAYE and UIF. PAYE is on <b>taxable income</b> = gross + taxable fringe benefits − employee's pension contribution.</div>
+<div class="cc"><h4>Productive hours</h4>Total available hours − annual leave − public holidays − (sick leave) − idle time = productive hours. Idle time = when production stops and direct labour is unoccupied.</div>
+</div>
+<div class="ch-label">Example 1 · weekly net salary</div>
+<p>Normal week 45 h (Mon–Fri 8 h, Sat 5 h). Worked: Mon 8, Tue 8, Wed 10, Thu 8, Fri 8, Sat 5, Sun 3 = 50 h. Rate R200/h; overtime 1.5×, Sunday 2×. Employee pension 7.5% of normal pay; employee medical R720; PAYE 13% of taxable income; UIF R200.</p>
+<div class="bf"><div class="bff">Hours: normal 45 · overtime 2 (Wednesday) · Sunday 3
+Normal pay      45 × R200          R9 000
+Overtime        2 × R200 × 1.5       R600
+Sunday          3 × R200 × 2       R1 200
+Gross                             R10 800
+Less pension    7.5% × R9 000      (R675)   ← on NORMAL pay
+Taxable income                    R10 125
+Less: PAYE 13% × R10 125 R1 316.25 + medical R720 + UIF R200 = (R2 236.25)
+Net salary                         R7 888.75</div>
+<p class="note">Employer contributions (5% pension, R720 medical) are not deducted from the employee; they are a cost to the employer.</p></div>
+<div class="ch-label">Example 2 · labour recovery rate per hour</div>
+<p>52 weeks; 3 weeks leave; 6 public holidays; idle time 15%; sick leave 5 days; 40 h/week; annual pay R84 000; employer pension 6%, medical 8%; bonus = 1/12 of annual pay.</p>
+<div class="bf"><div class="bff">STEP 1 Cost to employer
+  Normal pay R84 000 + bonus (÷12) R7 000 + pension 6% R5 040 + medical 8% R6 720 = R102 760
+STEP 2 Productive hours
+  52 − 3 = 49 weeks × 40 = 1 960 h
+  − public holidays 6 × 8 = (48)  − sick leave 5 × 8 = (40)  = 1 872 h
+  − idle time 15% × 1 872 = (280.8)  = 1 591.2 productive hours
+STEP 3 Rate = R102 760 ÷ 1 591.2 = R64.58 per hour
+Product "G" takes 3 h → 3 × R64.58 = R193.74 direct labour</div>
+<p class="note">Idle time is a % of hours paid to be at work (after leave, holidays and sick leave), not of the 1 960.</p></div>
+</div></section>
+
+<!-- LU4 -->
+<section class="sec" id="lu4"><div class="wrap">
+<h1 class="pg-head">LU4 · Manufacturing Overheads</h1>
+<p class="pg-sub">Classification · primary &amp; secondary allocation · departmental recovery rates · overhead per product</p>
+<div class="cram-grid">
+<div class="cc"><h4>Examples of manufacturing overheads</h4>Supervisor salaries, factory rent, machine depreciation, electricity, indirect materials (glue, thread, cleaning agents), equipment maintenance, factory insurance, security, factory supplies, canteen &amp; sanitation, waste disposal, indirect labour (cleaners, helpers).</div>
+<div class="cc"><h4>Departmentalisation</h4><b>Primary allocation</b>: initial allocation of overheads to <i>all</i> departments (production and service).<br><b>Secondary allocation</b>: service department overheads reallocated to the <i>production</i> departments.</div>
+<div class="cc"><h4>Cost drivers (Drips example)</h4>Supervisor salaries → number of employees<br>Rent → floor space<br>Depreciation → value of machinery<br>Electricity → kilowatt hours<br><i>In an assessment the driver will be given; it can differ between companies.</i></div>
+<div class="cc"><h4>Also in the LU4 criteria (no worked example in your slides)</h4>Classify OH as fixed, variable, semi-fixed or semi-variable; separate OH into fixed/variable (use high/low from LU1); budgeted vs applied vs actual; under/over-applied overheads; OH journal entries.</div>
+</div>
+<div class="ch-label">Lecture example · Drips (Pty) Ltd</div>
+<p>Budgeted OH: supervisors R124 000, rent R500 000, depreciation R80 000, electricity R90 000 = R794 000.</p>
+<table><tr><th></th><th>Assembly</th><th>Finishing</th><th>Service (Maint. &amp; QC)</th></tr>
+<tr><td>Employees</td><td>35</td><td>20</td><td>7</td></tr><tr><td>Floor space m²</td><td>1 000</td><td>900</td><td>600</td></tr>
+<tr><td>Machine value</td><td>R500 000</td><td>R300 000*</td><td>R200 000*</td></tr><tr><td>kWh</td><td>1 400</td><td>1 200</td><td>400</td></tr>
+<tr><td>Labour hours</td><td>400</td><td>225</td><td>95</td></tr><tr><td>Machine hours</td><td>2 000</td><td>3 000</td><td>200</td></tr></table>
+<div class="bf"><div class="bf-l">Steps 1–2 · total driver &amp; rate per driver</div><div class="bff">Supervisors  R124 000 ÷ 62 employees   = R2 000 per employee
+Rent         R500 000 ÷ 2 500 m²       = R200 per m²
+Depreciation R80 000 ÷ R1 600 000      = 5% of machine value
+Electricity  R90 000 ÷ 3 000 kWh       = R30 per kWh</div></div>
+<div class="bf"><div class="bf-l">Step 3 · primary allocation</div>
+<table><tr><th>Item</th><th>Assembly</th><th>Finishing</th><th>Service</th><th>Total</th></tr>
+<tr><td>Supervisors (R2 000 × emp)</td><td>70 000</td><td>40 000</td><td>14 000</td><td>124 000</td></tr>
+<tr><td>Rent (R200 × m²)</td><td>200 000</td><td>180 000</td><td>120 000</td><td>500 000</td></tr>
+<tr><td>Depreciation (5% × value)</td><td>25 000</td><td>40 000</td><td>15 000</td><td>80 000</td></tr>
+<tr><td>Electricity (R30 × kWh)</td><td>42 000</td><td>36 000</td><td>12 000</td><td>90 000</td></tr>
+<tr><th>Primary total</th><th>337 000</th><th>296 000</th><th>161 000</th><th>794 000</th></tr>
+<tr><td>Secondary (machine hours)</td><td>64 400</td><td>96 600</td><td>(161 000)</td><td>–</td></tr>
+<tr><th>After secondary</th><th>401 400</th><th>392 600</th><th>0</th><th>794 000</th></tr></table>
+<p class="note">*The slide's data table shows machine values R500 000 / R300 000 / R200 000, but the solution uses R500 000 / R800 000 / R300 000 (total R1 600 000). The figures above follow the solution. Ask your lecturer which is right; in a test, use the figures in the question.</p></div>
+<div class="bf"><div class="bf-l">Step 4 · secondary allocation (machine hours)</div><div class="bff">Use production depts only: 2 000 + 3 000 = 5 000 machine hours (ignore service dept's 200)
+R161 000 ÷ 5 000 = R32.20 per machine hour
+Assembly 2 000 × R32.20 = R64 400 · Finishing 3 000 × R32.20 = R96 600</div></div>
+<div class="bf"><div class="bf-l">Step 5 · departmental recovery rates</div><div class="bff">Assembly  R401 400 ÷ 2 000 machine hours = R200.70 per machine hour
+Finishing R392 600 ÷ 225 labour hours    = R1 744.89 per labour hour</div></div>
+<div class="bf"><div class="bf-l">Step 6 · overhead per product ("Drip Air")</div><div class="bff">Assembly  10/60 × R200.70   = R33.45
+Finishing 20/60 × R1 744.89 = R581.63   (convert minutes to hours)
+Total manufacturing overheads = R615.08
+DM R127.05 + DL R193.74 + MOH R615.08 = R935.87 total manufacturing cost</div></div>
+<div class="ch-label">Unit 4 tutorial · FlexWear (Pty) Ltd (practice)</div>
+<p>Budgeted OH: supervisors R150 000, rent R600 000, depreciation R100 000, electricity R120 000 (total R970 000).</p>
+<table><tr><th></th><th>Cutting</th><th>Stitching</th><th>Maintenance service</th></tr>
+<tr><td>Employees</td><td>40</td><td>25</td><td>10</td></tr><tr><td>Floor space m²</td><td>1 200</td><td>1 000</td><td>800</td></tr>
+<tr><td>Machine value</td><td>R600 000</td><td>R400 000</td><td>R200 000</td></tr><tr><td>kWh</td><td>1 500</td><td>1 200</td><td>600</td></tr>
+<tr><td>Machine hours</td><td>2 500</td><td>3 500</td><td>500</td></tr><tr><td>Labour hours</td><td>500</td><td>300</td><td>100</td></tr></table>
+<p>Required: (1) primary allocation, (2) secondary allocation of service dept OH, (3) recovery rate for Cutting and Stitching. Try it yourself first. A worked primary allocation is in the Self-test tab.</p>
+</div></section>
+
+<!-- SELF TEST -->
+<section class="sec" id="test"><div class="wrap">
+<h1 class="pg-head">Self-test · LU1–4</h1>
+<p class="pg-sub">Every question comes from your slides, class work or tutorial. Work it on paper, then click to reveal the answer.</p>
+<details><summary><span class="tag">LU1</span>Define prime cost and conversion cost.</summary><div class="ans">Prime cost = direct materials + direct labour. Conversion cost = direct labour + manufacturing overheads.</div></details>
+<details><summary><span class="tag">LU1</span>What happens to total variable cost and to variable cost per unit as production rises?</summary><div class="ans">Total variable cost rises in direct proportion; variable cost per unit stays the same.</div></details>
+<details><summary><span class="tag">LU1</span>Fixed electricity charge R200/month plus R0.30 per kWh. Total cost at 2 000 kWh?</summary><div class="ans">Y = R200 + (R0.30 × 2 000) = R200 + R600 = <b>R800</b>.</div></details>
+<details><summary><span class="tag">LU1</span>High/low: Jan 600 units R2 750 · Feb 800 R3 250 · Mar 700 R3 000 · Apr 1 000 R3 750. Variable cost per unit and total fixed cost?</summary><div class="ans">R1 000 ÷ 400 = <b>R2.50/unit</b>. Fixed = R2 750 − (R2.50 × 600) = <b>R1 250</b>.</div></details>
+<details><summary><span class="tag">LU1</span>High/low (class work 13 July): highest 3 200 h at R54 000, lowest 1 200 h at R30 000. Variable cost per machine hour and fixed cost per month?</summary><div class="ans">R24 000 ÷ 2 000 = <b>R12/hour</b>. Fixed = R54 000 − R38 400 = <b>R15 600</b>.</div></details>
+<details><summary><span class="tag">LU1</span>Why is high/low not the most accurate method?</summary><div class="ans">It uses only two observations (the highest and lowest).</div></details>
+<details><summary><span class="tag">LU2</span>10 items @ €880, €1 = R15; import duties R2 000, insurance R6 500, transport R5 900. Total cost and cost per item?</summary><div class="ans">R132 000 + R2 000 + R6 500 + R5 900 = <b>R146 400</b>; per item <b>R14 640</b>.</div></details>
+<details><summary><span class="tag">LU2</span>Opening inventory R300 000, purchases R400 000, closing R150 000. COGS?</summary><div class="ans">R300 000 + R400 000 − R150 000 = <b>R550 000</b>.</div></details>
+<details><summary><span class="tag">LU2</span>Production R250 000 for 20 units; 10 sold @ R40 000. Give the three journals.</summary><div class="ans">Dr Finished goods R250 000 / Cr Bank. Dr Bank R400 000 / Cr Sales. Dr Cost of sales R125 000 / Cr Finished goods.</div></details>
+<details><summary><span class="tag">LU2</span>Opening 180 @ R40; buys 200 @ R50, 250 @ R45, 150 @ R55; 225 on hand. Closing value under FIFO and WAM?</summary><div class="ans">FIFO: 150 @ R55 + 75 @ R45 = <b>R11 625</b>. WAM: R36 700 ÷ 780 = R47.05 × 225 = <b>R10 586</b>.</div></details>
+<details><summary><span class="tag">LU2</span>Perpetual: opening 100 @ R50; buy 200 @ R55; issue 150; buy 300 @ R60; issue 250; buy 100 @ R65. Cost of sales and closing inventory (FIFO and WAM)?</summary><div class="ans">FIFO: COS <b>R22 000</b>, closing <b>R18 500</b> (200 @ R60 + 100 @ R65).<br>WAM: COS <b>R22 444.45</b>, closing <b>R18 055.55</b>. Both total R40 500.</div></details>
+<details><summary><span class="tag">LU2</span>Difference between the perpetual and periodic systems?</summary><div class="ans">Perpetual: cost of sale recorded at every sale and inventory updated. Periodic: purchases recorded, physical count at period end; COGS = opening + purchases − closing.</div></details>
+<details><summary><span class="tag">LU3</span>50 hours worked (45 normal, 2 overtime, 3 Sunday) at R200/h; OT 1.5×, Sunday 2×; employee pension 7.5% of normal pay; PAYE 13%; medical R720; UIF R200. Net pay?</summary><div class="ans">Gross R9 000 + R600 + R1 200 = R10 800. Taxable R10 800 − R675 = R10 125. Deductions R1 316.25 + R720 + R200 = R2 236.25. Net <b>R7 888.75</b>.</div></details>
+<details><summary><span class="tag">LU3</span>Annual pay R84 000; bonus 1/12; employer pension 6%, medical 8%. Total cost to employer?</summary><div class="ans">R84 000 + R7 000 + R5 040 + R6 720 = <b>R102 760</b>.</div></details>
+<details><summary><span class="tag">LU3</span>52 weeks, 3 weeks leave, 40 h/week, 6 public holidays, 5 sick days (8 h days), idle time 15%. Productive hours? Recovery rate if cost is R102 760?</summary><div class="ans">49 × 40 = 1 960 − 48 − 40 = 1 872 − 280.8 = <b>1 591.2 h</b>. R102 760 ÷ 1 591.2 = <b>R64.58/h</b>.</div></details>
+<details><summary><span class="tag">LU3</span>Product takes 3 labour hours at R64.58/h. Direct labour cost?</summary><div class="ans"><b>R193.74</b>.</div></details>
+<details><summary><span class="tag">LU4</span>Primary vs secondary allocation?</summary><div class="ans">Primary: overheads allocated to all departments, service included. Secondary: service department overheads reallocated to production departments.</div></details>
+<details><summary><span class="tag">LU4</span>Drips: supervisors R124 000 over 35/20/7 employees. Rate and allocation?</summary><div class="ans">R2 000 per employee → Assembly R70 000, Finishing R40 000, Service R14 000.</div></details>
+<details><summary><span class="tag">LU4</span>Service dept R161 000 reallocated on machine hours (Assembly 2 000, Finishing 3 000, Service 200). Allocation?</summary><div class="ans">Ignore service hours: R161 000 ÷ 5 000 = R32.20 → Assembly <b>R64 400</b>, Finishing <b>R96 600</b>.</div></details>
+<details><summary><span class="tag">LU4</span>Assembly R401 400 (2 000 machine h), Finishing R392 600 (225 labour h). Recovery rates? OH for a product spending 10 min in Assembly and 20 min in Finishing?</summary><div class="ans">R200.70/machine h; R1 744.89/labour h. 10/60 × 200.70 = R33.45 + 20/60 × 1 744.89 = R581.63 → <b>R615.08</b>.</div></details>
+<details><summary><span class="tag">LU4</span>FlexWear tutorial: perform the primary allocation (bases as in Drips: employees, floor space, machine value, kWh).</summary><div class="ans"><p class="note">Not an official memo. Worked from the tutorial figures using the Drips cost drivers. The tutorial doesn't give a basis for the secondary allocation or the recovery rates, so those are left out.</p>
+<table><tr><th>Item (rate)</th><th>Cutting</th><th>Stitching</th><th>Maintenance</th><th>Total</th></tr>
+<tr><td>Supervisors (R150 000 ÷ 75 = R2 000/emp)</td><td>80 000</td><td>50 000</td><td>20 000</td><td>150 000</td></tr>
+<tr><td>Rent (R600 000 ÷ 3 000 = R200/m²)</td><td>240 000</td><td>200 000</td><td>160 000</td><td>600 000</td></tr>
+<tr><td>Depreciation (R100 000 ÷ R1 200 000 = 8.33%)</td><td>50 000.00</td><td>33 333.33</td><td>16 666.67</td><td>100 000</td></tr>
+<tr><td>Electricity (R120 000 ÷ 3 300 = R36.36/kWh)</td><td>54 545.45</td><td>43 636.36</td><td>21 818.18</td><td>120 000</td></tr>
+<tr><th>Primary total</th><th>424 545.45</th><th>326 969.70</th><th>218 484.85</th><th>970 000</th></tr></table></div></details>
+</div></section>
+
+<!-- LU5-7 -->
+<section class="sec" id="lu57"><div class="wrap">
+<h1 class="pg-head">LU5–7 · After Test 1</h1>
+<p class="pg-sub">From the learner guide outcomes only. The LU5–7 slides aren't in your FIN folder yet, so there are no worked examples here.</p>
+<div class="cram-grid">
+<div class="cc"><h4>LU5 · Cost determination</h4>Outcome: understand cost flow in a manufacturing concern; determine cost of manufactured products and services.<ul><li>Prepare a cost of goods manufactured and sold statement</li><li>Prepare a statement of comprehensive income</li></ul>Reading: Van Rensburg et al. pp. 122–135. Uses LU2 inventory flow (raw materials → WIP → finished goods → cost of sales).</div>
+<div class="cc"><h4>LU6 · Cost-volume-profit analysis</h4>Outcome: use CVP as a management tool.<ul><li>Marginal income (per unit and total) and marginal income ratio</li><li>Break-even point using formulas and graphs</li><li>Margin of safety and margin of safety ratio</li><li>"What-if" analyses (volume, cost, price changes) using formulas and marginal income statements</li></ul>Reading: pp. 144–162. Builds on LU1 fixed vs variable costs.</div>
+<div class="cc"><h4>LU7 · Cash budget</h4>Outcome: explain and analyse budgetary information flow and prepare a cash budget.<ul><li>Function and aim of cash budgets</li><li>Advantages and disadvantages</li><li>Cash vs non-cash items</li><li>Prepare a cash budget from given data</li></ul>Reading: pp. 267–271.</div>
+</div>
+</div></section>
+
+<script>
+const bs=document.querySelectorAll('.nb');
+function show(id){document.querySelectorAll('.sec').forEach(s=>s.classList.toggle('active',s.id===id));bs.forEach(b=>b.classList.toggle('active',b.dataset.s===id));window.scrollTo(0,0);}
+bs.forEach(b=>b.onclick=()=>{show(b.dataset.s);history.replaceState(null,'','#'+b.dataset.s);});
+const h=location.hash.slice(1);if(h&&document.getElementById(h))show(h);
+</script>
+</body>
+</html>
